@@ -57,7 +57,11 @@ dependencies {
     //Stepper
     compile 'com.github.DanielMartinus:Stepper-Touch:0.+'
 
+    compile 'com.sdsmdg.harjot:rotatingtext:1.0.2'
+
 }
+
+//resolve radiorealbutton conflict
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         def requested = details.requested
