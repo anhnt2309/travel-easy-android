@@ -7,4 +7,6 @@
     <string name="infants_detail">(Dưới 2 tuổi)</string>
     <string name="childrens">Trẻ em</string>
     <string name="childerns_detail">(Dưới 12 tuổi)</string>
+    <string name="one_way">Một Chiều</string>
+    <string name="round_trip">Khứ Hồi</string>
 </resources>
