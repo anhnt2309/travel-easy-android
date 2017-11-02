@@ -14,7 +14,7 @@
         android:background="#68B7AB"
         app:showIndicators="true"
         app:indicatorUnselected="#99b7b7b7"
-        app:indicatorSelected="#bfb7b7b7" />
+        app:indicatorSelected="@color/app_primary_color" />
 
 
     <!--<Button-->
