@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright Txus Ballesteros 2016 (@txusballesteros)
+This file is part of some open source application.
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
+-->
 <resources>
     <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#00303F9F</color>
+    <color name="colorPrimaryDarkAlpha">#84303f9f</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffffff</color>
+    <color name="page1">#ff21B8AC</color>
+    <color name="page2">#ff218AB8</color>
+    <color name="page3">#ff21A5B8</color>
+    <color name="page4">#ff1F8B9B</color>
+
+    <color name="rocket">#e55555</color>
+    <color name="avatar1">#e1f4f8</color>
+    <color name="avatar2">#c6b9e7</color>
+    <color name="avatar3">#f8e71d</color>
+    <color name="avatar4">#65aa01</color>
+    <color name="avatar5">#4ee4c1</color>
+    <color name="app_primary_color">#FFA500</color>
+
 </resources>

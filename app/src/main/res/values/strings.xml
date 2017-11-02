@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">travel-easy-android</string>
+    <string name="app_name">Trasy</string>
+    <string name="adults">Người lớn</string>
+    <string name="adult_detail">(Trên 12 tuổi)</string>
+    <string name="infants">Trẻ Sơ Sinh</string>
+    <string name="infants_detail">(Dưới 2 tuổi)</string>
+    <string name="childrens">Trẻ em</string>
+    <string name="childerns_detail">(Dưới 12 tuổi)</string>
 </resources>
