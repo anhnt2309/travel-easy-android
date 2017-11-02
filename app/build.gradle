@@ -1,11 +1,15 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    jcenter()
+}
+
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.0'
     defaultConfig {
         applicationId "com.httt.uit.travel_easy_android"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -24,7 +28,43 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //noinspection GradleCompatible
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    //butter knife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //drawer
+    compile 'com.mxn.soul:flowingdrawer-core:2.0.0'
+    compile 'com.nineoldandroids:library:2.4.0'
+
+    compile 'com.android.support:design:26.+'
+
+    //View pager indicator
+    compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
+
+    //search bar
+    compile 'com.github.arimorty:floatingsearchview:1.+'
+
+    compile 'com.savvi.datepicker:rangepicker:1.0.1'
+
+    compile 'com.redbooth:WelcomeCoordinator:1.0.1'
+
+    compile 'com.github.ceryle:RadioRealButton:v2.1.1'
+    //Stepper
+    compile 'com.github.DanielMartinus:Stepper-Touch:0.+'
+
+}
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '25.3.0'
+            }
+        }
+    }
 }
