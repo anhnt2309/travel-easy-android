@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.redbooth.WelcomePageLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context="com.httt.uit.travel_easy_android.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.redbooth.WelcomeCoordinatorLayout
+        android:id="@+id/coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#68B7AB"
+        app:showIndicators="true"
+        app:indicatorUnselected="#99b7b7b7"
+        app:indicatorSelected="#bfb7b7b7" />
 
-</android.support.constraint.ConstraintLayout>
+
+    <!--<Button-->
+        <!--style="?attr/borderlessButtonStyle"-->
+        <!--android:id="@+id/skip"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="skip"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginTop="20dp"/>-->
+
+
+</com.redbooth.WelcomePageLayout>
