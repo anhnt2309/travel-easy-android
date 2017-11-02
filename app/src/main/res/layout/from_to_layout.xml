@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.redbooth.WelcomePageLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"/>
+
+    <android.support.v4.view.ViewPager xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/viewpager_from"
+        android:layout_width="match_parent"
+        android:layout_above="@id/anchor"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_dark_background">
+
+        <github.chenupt.springindicator.SpringIndicator xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/from_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:siIndicatorColor="@color/colorPrimary"
+            app:siSelectedTextColor="@android:color/white"
+            app:siTextColor="@color/colorPrimaryDark"
+            app:siTextSize="18sp" />
+    </android.support.v4.view.ViewPager>
+
+
+
+    <FrameLayout
+        android:id="@+id/star"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignRight="@+id/card2_page2"
+        android:layout_alignTop="@+id/card2_page2"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        app:destiny="@+id/android_destiny"
+        app:view_behavior=".AnimationFlightTo">
+
+        <ImageView
+            android:id="@+id/star_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:alpha="0"
+            android:src="@drawable/star_large_no_shadow"
+            android:tint="#000000" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/star_large_no_shadow" />
+
+    </FrameLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_to"
+        android:layout_width="match_parent"
+        android:layout_below="@id/anchor"
+        android:layout_height="wrap_content"
+        android:background="@color/avatar5">
+
+        <github.chenupt.springindicator.SpringIndicator
+            android:id="@+id/to_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </github.chenupt.springindicator.SpringIndicator>
+    </android.support.v4.view.ViewPager>
+
+    <com.redbooth.WelcomePageLayout
+        android:id="@+id/card2_page2"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/anchor"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+            <!--android:translationX="500dp">-->
+            <ImageView
+                android:id="@+id/avatar2_page2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/avatar_maggie2" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/avatar2_page2"
+                android:src="@drawable/bubble_excellent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_toRightOf="@id/avatar2_page2"
+                android:text="Chọn điểm đến, đi nào!!!!"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+    </com.redbooth.WelcomePageLayout>
+</com.redbooth.WelcomePageLayout>

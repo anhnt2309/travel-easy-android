@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.redbooth.WelcomePageLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:background="@color/page3">
+
+    <TextView
+        android:id="@+id/txt_from_code"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:text="SGN"
+        android:textColor="@android:color/white"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+    <TextView
+        android:id="@+id/txt_from_city"
+        style="@style/text_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_from_code"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Hồ Chí Minh"
+        android:textColor="@android:color/white"
+        app:view_behavior=".ParallaxSubtitleBehaviour" />
+
+    <TextView
+        android:id="@+id/txt_to_code"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="40dp"
+        android:text="DLI"
+        android:textColor="@android:color/white"
+        app:view_behavior=".ParallaxTitleBehaviour"
+
+        />
+
+    <TextView
+        android:id="@+id/txt_to_city"
+        style="@style/text_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/txt_to_code"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="0dp"
+        android:text="Đà Lạt"
+        android:textColor="@android:color/white"
+        app:view_behavior=".ParallaxSubtitleBehaviour" />
+
+    <com.httt.uit.travel_easy_android.RectangleWithCapCircleView
+        android:id="@+id/semicircle_page4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        app:view_behavior=".AnimationLaunch" />
+
+    <View
+        android:id="@+id/android_destiny"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="145dp"
+        android:layout_marginTop="80dp" />
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/title"-->
+    <!--style="@style/text_title"-->
+    <!--android:layout_above="@+id/subtitle"-->
+    <!--android:text="In sync and on track"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--app:view_behavior=".ParallaxTitleBehaviour" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/subtitle"-->
+    <!--style="@style/text_subtitle"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:text="Visualize progress and notify\nteam members of important\nupdates."-->
+    <!--android:textColor="@android:color/black"-->
+    <!--app:view_behavior=".ParallaxSubtitleBehaviour" />-->
+
+    <co.ceryle.radiorealbutton.RadioRealButtonGroup
+        android:id="@+id/rbg_fly_type"
+        android:layout_width="225dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/android_destiny"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/shadow_bg"
+        app:rrbg_animateDrawables_enter="overshoot"
+        app:rrbg_animateTexts_enter="overshoot"
+        app:rrbg_dividerColor="@color/black"
+        app:rrbg_dividerSize="1dp"
+        app:rrbg_radius="40dp"
+        app:rrbg_selectorColor="@color/app_primary_color"
+        app:rrbg_selectorSize="6dp"
+        app:view_behavior=".ParallaxTitleBehaviour">
+
+        <co.ceryle.radiorealbutton.RadioRealButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rrb_checked="true"
+            app:rrb_drawable="@drawable/ic_roundtrip"
+            app:rrb_drawableHeight="20dp"
+            app:rrb_drawablePadding="10dp"
+            app:rrb_drawableWidth="20dp"
+            app:rrb_ripple="true"
+            app:rrb_rippleColor="@color/black"
+            app:rrb_text="Khứ Hồi"
+            app:rrb_textColor="@color/black" />
+
+        <co.ceryle.radiorealbutton.RadioRealButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rrb_drawable="@drawable/ic_oneway"
+            app:rrb_drawableGravity="right"
+            app:rrb_drawableHeight="20dp"
+            app:rrb_drawablePadding="10dp"
+            app:rrb_drawableWidth="20dp"
+            app:rrb_ripple="true"
+            app:rrb_rippleColor="@color/black"
+            app:rrb_text="1 Chiều"
+            app:rrb_textColor="@color/black" />
+    </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
+    <ImageView
+        android:id="@+id/img_infants"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="50dp"
+        android:src="@mipmap/ic_infants"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+    <TextView
+        android:id="@+id/txt_infants"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/img_infants"
+        android:text="@string/infants"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+    <TextView
+        android:id="@+id/txt_infants_detail"
+        style="@style/text_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/img_infants"
+        android:text="@string/infants_detail"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:view_behavior=".ParallaxSubtitleBehaviour" />
+
+    <nl.dionsegijn.steppertouch.StepperTouch
+        android:id="@+id/stepper_infants"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@id/txt_infants"
+        app:stepperBackgroundColor="@color/app_primary_color"
+        app:stepperTextColor="@color/app_primary_color"
+        app:view_behavior=".ParallaxTitleBehaviour">
+
+    </nl.dionsegijn.steppertouch.StepperTouch>
+
+
+    <ImageView
+        android:id="@+id/img_childrens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/img_infants"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="50dp"
+        android:src="@mipmap/ic_children"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+    <TextView
+        android:id="@+id/txt_childrens"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="105dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/img_childrens"
+        android:text="@string/childrens"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+    <TextView
+        android:id="@+id/txt_childrens_detail"
+        style="@style/text_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="95dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/img_childrens"
+        android:text="@string/childerns_detail"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:view_behavior=".ParallaxSubtitleBehaviour" />
+
+
+    <nl.dionsegijn.steppertouch.StepperTouch
+        android:id="@+id/stepper_childrens"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="95dp"
+        android:layout_marginLeft="60dp"
+        android:layout_toRightOf="@id/txt_childrens"
+        app:stepperBackgroundColor="@color/app_primary_color"
+        app:stepperTextColor="@color/app_primary_color"
+        app:view_behavior=".ParallaxTitleBehaviour">
+
+    </nl.dionsegijn.steppertouch.StepperTouch>
+
+    <ImageView
+        android:id="@+id/img_adults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/img_infants"
+        android:layout_marginBottom="67dp"
+        android:layout_marginLeft="50dp"
+        android:src="@mipmap/ic_adult"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+
+    <TextView
+        android:id="@+id/txt_adults"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="155dp"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@id/img_adults"
+        android:text="@string/adults"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+    <TextView
+        android:id="@+id/txt_adults_detail"
+        style="@style/text_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="140dp"
+        android:layout_marginLeft="9dp"
+        android:layout_toRightOf="@id/img_adults"
+        android:text="@string/adult_detail"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:view_behavior=".ParallaxSubtitleBehaviour" />
+
+
+    <nl.dionsegijn.steppertouch.StepperTouch
+        android:id="@+id/stepper_adults"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="140dp"
+        android:layout_marginLeft="33dp"
+        android:layout_toRightOf="@id/txt_adults"
+        app:stepperBackgroundColor="@color/app_primary_color"
+        app:stepperTextColor="@color/app_primary_color"
+        app:view_behavior=".ParallaxTitleBehaviour">
+
+    </nl.dionsegijn.steppertouch.StepperTouch>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_check"
+        app:backgroundTint="@color/app_primary_color"
+        app:view_behavior=".AnimationLaunch" />
+</com.redbooth.WelcomePageLayout>

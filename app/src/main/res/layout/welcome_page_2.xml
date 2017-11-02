@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.redbooth.WelcomePageLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/page2">
+
+    <RelativeLayout
+        android:id="@+id/card1_page2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@+id/avatar1_page2"
+        android:translationX="-500dp"
+        android:visibility="invisible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bubble_finished" />
+
+        <ImageView
+            android:id="@+id/decorator_finished"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/finished" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/decorator_finished"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/file" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/avatar1_page2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:scaleX="0"
+        android:scaleY="0"
+        android:src="@drawable/avatar_jack2" />
+
+
+    <ImageView
+        android:id="@+id/card2_page2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card1_page2"
+        android:layout_marginTop="150dp"
+        android:layout_toRightOf="@+id/avatar2_page2"
+        android:src="@drawable/bubble_excellent"
+        android:translationX="500dp"
+        android:visibility="invisible"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+
+    <TextView
+        android:id="@+id/txt_command"
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card1_page2"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="165dp"
+        android:layout_toRightOf="@+id/avatar2_page2"
+        android:text="Chọn điểm đến\n và đi nào!!!"
+        android:textColor="@android:color/black"
+        android:textSize="18dp"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+    <FrameLayout
+        android:id="@+id/star"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignRight="@+id/card2_page2"
+        android:layout_alignTop="@+id/card2_page2"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:visibility="invisible"
+        app:destiny="@+id/android_destiny"
+        app:view_behavior=".AnimationFlightTo">
+
+        <ImageView
+            android:id="@+id/star_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="6dp"
+            android:alpha="0"
+            android:src="@drawable/ic_airplane"
+            android:tint="#000000" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/ic_airplane" />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/avatar2_page2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card1_page2"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="155dp"
+        android:scaleX="0"
+        android:scaleY="0"
+        android:src="@drawable/avatar_maggie2"
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
+    <TextView
+        android:id="@+id/txt_from"
+        style="@style/text_title"
+        android:layout_above="@+id/subtitle"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:text="Chọn sân bay đi"
+        android:textSize="20sp"
+        app:view_behavior=".ParallaxSubtitleBehaviour" />
+
+    <com.arlib.floatingsearchview.FloatingSearchView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/txt_from"
+        app:floatingSearch_leftActionMode="showSearch"
+        app:floatingSearch_searchHint="Search..."
+        app:floatingSearch_showSearchKey="false"
+        app:floatingSearch_showVoiceInput="true"
+        app:floatingSearch_hideOverflowMenuWhenFocused="true"
+        app:floatingSearch_showOverFlowMenu="false"
+        app:floatingSearch_viewTextColor="@color/black">
+
+    </com.arlib.floatingsearchview.FloatingSearchView>
+
+    <TextView
+        android:id="@+id/txt_to"
+        style="@style/text_title"
+        android:layout_above="@+id/subtitle"
+        android:layout_below="@id/star"
+        android:layout_marginTop="50dp"
+        android:text="Chọn sân bay đến"
+        android:textSize="20sp"
+        app:view_behavior=".ParallaxSubtitleBehaviour" />
+
+    <com.arlib.floatingsearchview.FloatingSearchView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/txt_to"
+        app:floatingSearch_leftActionMode="showSearch"
+        app:floatingSearch_searchHint="Search..."
+        app:floatingSearch_showSearchKey="false"
+        app:floatingSearch_showVoiceInput="true"
+        app:floatingSearch_hideOverflowMenuWhenFocused="true"
+        app:floatingSearch_showOverFlowMenu="false"
+        app:floatingSearch_viewTextColor="@color/black">
+
+    </com.arlib.floatingsearchview.FloatingSearchView>
+
+</com.redbooth.WelcomePageLayout>
