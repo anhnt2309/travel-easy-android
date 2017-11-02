@@ -32,6 +32,9 @@
         android:textColor="@android:color/white"
         app:view_behavior=".ParallaxSubtitleBehaviour" />
 
+
+
+
     <TextView
         android:id="@+id/txt_to_code"
         style="@style/text_title"
@@ -63,12 +66,15 @@
         android:textColor="@android:color/white"
         app:view_behavior=".ParallaxSubtitleBehaviour" />
 
+
+
     <com.httt.uit.travel_easy_android.RectangleWithCapCircleView
         android:id="@+id/semicircle_page4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
         app:view_behavior=".AnimationLaunch" />
+
 
     <View
         android:id="@+id/android_destiny"
@@ -79,66 +85,67 @@
         android:layout_marginRight="145dp"
         android:layout_marginTop="80dp" />
 
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toLeftOf="@id/txt_to_city"
+        android:rotation="245"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/test"
+        app:view_behavior=".ParallaxTitleBehaviour"/>
 
-    <!--<TextView-->
-    <!--android:id="@+id/title"-->
-    <!--style="@style/text_title"-->
-    <!--android:layout_above="@+id/subtitle"-->
-    <!--android:text="In sync and on track"-->
-    <!--android:textColor="@android:color/black"-->
-    <!--app:view_behavior=".ParallaxTitleBehaviour" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/subtitle"-->
-    <!--style="@style/text_subtitle"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:text="Visualize progress and notify\nteam members of important\nupdates."-->
-    <!--android:textColor="@android:color/black"-->
-    <!--app:view_behavior=".ParallaxSubtitleBehaviour" />-->
-
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="10dp"
+        android:rotation="150"
+        android:src="@drawable/from_airport"
+        app:view_behavior=".ParallaxTitleBehaviour"
+        android:layout_toRightOf="@id/txt_from_city"/>
     <co.ceryle.radiorealbutton.RadioRealButtonGroup
         android:id="@+id/rbg_fly_type"
         android:layout_width="225dp"
         android:layout_height="50dp"
         android:layout_below="@+id/android_destiny"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="14dp"
         android:background="@drawable/shadow_bg"
-        app:rrbg_animateDrawables_enter="overshoot"
-        app:rrbg_animateTexts_enter="overshoot"
-        app:rrbg_dividerColor="@color/black"
-        app:rrbg_dividerSize="1dp"
-        app:rrbg_radius="40dp"
+        android:elevation="2dp"
+        app:rrbg_backgroundColor="@android:color/transparent"
+        app:rrbg_borderColor="@color/app_primary_color"
+        app:rrbg_borderSize="1dp"
+        app:rrbg_checkedPosition="0"
+        app:rrbg_radius="28dp"
         app:rrbg_selectorColor="@color/app_primary_color"
-        app:rrbg_selectorSize="6dp"
+        app:rrbg_selectorFullSize="true"
+        app:rrbg_selectorRadius="28dp"
         app:view_behavior=".ParallaxTitleBehaviour">
 
         <co.ceryle.radiorealbutton.RadioRealButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:rrb_checked="true"
             app:rrb_drawable="@drawable/ic_roundtrip"
-            app:rrb_drawableHeight="20dp"
-            app:rrb_drawablePadding="10dp"
-            app:rrb_drawableWidth="20dp"
-            app:rrb_ripple="true"
-            app:rrb_rippleColor="@color/black"
-            app:rrb_text="Khứ Hồi"
-            app:rrb_textColor="@color/black" />
+            app:rrb_drawableHeight="36dp"
+            app:rrb_drawableWidth="36dp"
+            app:rrb_ripple="false"
+            app:rrb_text="@string/round_trip"
+            app:rrb_textColor="@color/black"
+            app:rrb_textSize="10sp" />
 
         <co.ceryle.radiorealbutton.RadioRealButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:rrb_drawable="@drawable/ic_oneway"
-            app:rrb_drawableGravity="right"
-            app:rrb_drawableHeight="20dp"
-            app:rrb_drawablePadding="10dp"
-            app:rrb_drawableWidth="20dp"
-            app:rrb_ripple="true"
-            app:rrb_rippleColor="@color/black"
-            app:rrb_text="1 Chiều"
-            app:rrb_textColor="@color/black" />
+            app:rrb_drawableHeight="36dp"
+            app:rrb_drawableWidth="36dp"
+            app:rrb_ripple="false"
+            app:rrb_text="@string/one_way"
+            app:rrb_textColor="@color/black"
+            app:rrb_textSize="10sp" />
     </co.ceryle.radiorealbutton.RadioRealButtonGroup>
+
 
     <ImageView
         android:id="@+id/img_infants"
