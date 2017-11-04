@@ -9,4 +9,8 @@
     <string name="childerns_detail">(Dưới 12 tuổi)</string>
     <string name="one_way">Một Chiều</string>
     <string name="round_trip">Khứ Hồi</string>
+    <string name="departure_date">Ngày Đi</string>
+    <string name="return_date">Ngày Về</string>
+    <string name="num_passenger">Số lượng hành khách</string>
+    <string name="fa_custom_pick_date">Chọn ngày {fa-plus}</string>
 </resources>

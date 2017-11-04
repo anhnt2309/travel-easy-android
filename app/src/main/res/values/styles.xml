@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
 Copyright Txus Ballesteros 2016 (@txusballesteros)
 This file is part of some open source application.
 Licensed to the Apache Software Foundation (ASF) under one
@@ -19,16 +18,18 @@ under the License.
 Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/rocket</item>
+        <item name="spinnerStyle">@style/MySpinner</item>
     </style>
 
     <style name="AppTheme.Transparent" parent="AppTheme">
         <item name="windowActionBarOverlay">true</item>
     </style>
-    
+
     <style name="welcome_page">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -59,10 +60,19 @@ Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
-    <style name = "NoActionBar" parent = "Theme.AppCompat.Light.NoActionBar">
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+
+    <style name="MySpinner" parent="Base.Widget.AppCompat.Spinner">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="MySpinner.Dark" parent="MySpinner">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
 </resources>
