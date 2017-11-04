@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 
 repositories {
     jcenter()
+    mavenCentral()
+    maven {
+        url "http://dl.bintray.com/glomadrian/maven"
+    }
 }
 
 android {
@@ -58,6 +62,34 @@ dependencies {
     compile 'com.github.DanielMartinus:Stepper-Touch:0.+'
 
     compile 'com.sdsmdg.harjot:rotatingtext:1.0.2'
+
+    //retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    //gson
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    //easy font textview
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+
+    //calender
+    compile 'com.github.badoualy:datepicker-timeline:c6dcd05737'
+
+    //cool code input
+    compile 'com.github.glomadrian:CodeInput:1.1@aar'
+
+    //exlosion view
+    compile 'tyrantgit:explosionfield:1.0.1'
+
+    //shine button
+    compile 'com.sackcentury:shinebutton:0.1.9'
+
+    //font awesome use
+    compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+
+    //lg snackbar
+    compile 'com.github.loregr:lgsnackbar:1.0.2'
 
 }
 
