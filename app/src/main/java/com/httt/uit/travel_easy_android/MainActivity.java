@@ -210,9 +210,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, PickDateActivity.class);
-
-                if (rbId == R.id.rb_round_trip)
+                if (mDepartDate != null)
+                    intent.putExtra(PickDateActivity.DEPART_DATE_DATE, mDepartDate.getTime());
+                if (rbId == R.id.rb_round_trip) {
+                    if (mReturnDate != null)
+                        intent.putExtra(PickDateActivity.RETURN_DATE_DATE, mReturnDate.getTime());
                     startActivityForResult(intent, ROUND_TRIP_DATE_REQUEST);
+                }
                 if (rbId == R.id.rb_one_way)
                     startActivityForResult(intent, ONE_WAY_DATE_REQUEST);
                 overridePendingTransition(0, 0);
@@ -275,10 +279,7 @@ public class MainActivity extends AppCompatActivity {
         spChildrens.stepper.setMin(0);
         spChildrens.stepper.setMax(12);
 
-
         spInfants.stepper.setMin(0);
-
-
     }
 
     private void initializeListeners() {

@@ -47,6 +47,28 @@ public class PickDateActivity extends AppCompatActivity {
         Iconify.with(new FontAwesomeModule());
         initView();
         initEvent();
+        
+        Intent intent = getIntent();
+        if (intent == null)
+            return;
+        Long departTime = intent.getLongExtra(DEPART_DATE_DATE, 0);
+        if (departTime == 0)
+            return;
+        Date departure = new Date();
+        departure.setTime(departTime);
+        departDate = departure;
+        displayDepartDate(departure);
+
+        Long returnTime = intent.getLongExtra(RETURN_DATE_DATE, 0);
+        if (returnTime == 0)
+            return;
+        Date returnD = new Date();
+        returnD.setTime(returnTime);
+        returnDate = returnD;
+        displayReturnDate(returnD);
+        mCalendarPickerView.selectDate(departure);
+        mCalendarPickerView.selectDate(returnD);
+
     }
 
     public void initView() {
@@ -72,11 +94,11 @@ public class PickDateActivity extends AppCompatActivity {
             @Override
             public void onDateSelected(Date date) {
                 if (departDate != null && returnDate == null) {
-                    setReturnDate(date);
+                    displayReturnDate(date);
                 }
 
                 if (departDate == null && returnDate == null) {
-                    setDepartDate(date);
+                    displayDepartDate(date);
                 }
 
             }
@@ -132,14 +154,14 @@ public class PickDateActivity extends AppCompatActivity {
         view.setAnimation(AnimationUtils.loadAnimation(context, animation));
     }
 
-    public void setDepartDate(Date date) {
+    public void displayDepartDate(Date date) {
         departDate = date;
         String displayDate = DateUtils.getDateDisplay(date);
         tvDepart.setText(displayDate);
         setViewAnimation(PickDateActivity.this, tvDepart, android.R.anim.fade_in);
     }
 
-    public void setReturnDate(Date date) {
+    public void displayReturnDate(Date date) {
         returnDate = date;
         String displayDate = DateUtils.getDateDisplay(date);
         tvReturn.setText(displayDate);
