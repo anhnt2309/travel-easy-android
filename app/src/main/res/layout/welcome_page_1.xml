@@ -78,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
             android:scaleX="0"
             android:scaleY="0"
             android:background="@drawable/avatar_fred" />
@@ -97,5 +98,6 @@
         android:layout_alignParentBottom="true"
         android:text="Kéo qua phải để tiến hành  \ntìm kiếm chuyến bay của bạn."
         app:view_behavior=".ParallaxSubtitleBehaviour" />
+
 
 </com.redbooth.WelcomePageLayout>

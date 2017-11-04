@@ -33,8 +33,6 @@
         app:view_behavior=".ParallaxSubtitleBehaviour" />
 
 
-
-
     <TextView
         android:id="@+id/txt_to_code"
         style="@style/text_title"
@@ -67,7 +65,6 @@
         app:view_behavior=".ParallaxSubtitleBehaviour" />
 
 
-
     <com.httt.uit.travel_easy_android.RectangleWithCapCircleView
         android:id="@+id/semicircle_page4"
         android:layout_width="match_parent"
@@ -88,22 +85,23 @@
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
         android:layout_toLeftOf="@id/txt_to_city"
         android:rotation="245"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
         android:src="@drawable/test"
-        app:view_behavior=".ParallaxTitleBehaviour"/>
+        app:view_behavior=".ParallaxTitleBehaviour" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="70dp"
-        android:layout_marginTop="80dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="80dp"
+        android:layout_toRightOf="@id/txt_from_city"
         android:rotation="150"
         android:src="@drawable/from_airport"
-        app:view_behavior=".ParallaxTitleBehaviour"
-        android:layout_toRightOf="@id/txt_from_city"/>
+        app:view_behavior=".ParallaxTitleBehaviour" />
+
     <co.ceryle.radiorealbutton.RadioRealButtonGroup
         android:id="@+id/rbg_fly_type"
         android:layout_width="225dp"
@@ -121,9 +119,10 @@
         app:rrbg_selectorColor="@color/app_primary_color"
         app:rrbg_selectorFullSize="true"
         app:rrbg_selectorRadius="28dp"
-        app:view_behavior=".ParallaxTitleBehaviour">
+        app:view_behavior=".ParallaxSubtitleBehaviour">
 
         <co.ceryle.radiorealbutton.RadioRealButton
+            android:id="@+id/rb_round_trip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:rrb_drawable="@drawable/ic_roundtrip"
@@ -132,9 +131,11 @@
             app:rrb_ripple="false"
             app:rrb_text="@string/round_trip"
             app:rrb_textColor="@color/black"
-            app:rrb_textSize="10sp" />
+            app:rrb_textSize="10sp"
+            app:rrb_textStyle="bold" />
 
         <co.ceryle.radiorealbutton.RadioRealButton
+            android:id="@+id/rb_one_way"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:rrb_drawable="@drawable/ic_oneway"
@@ -143,7 +144,8 @@
             app:rrb_ripple="false"
             app:rrb_text="@string/one_way"
             app:rrb_textColor="@color/black"
-            app:rrb_textSize="10sp" />
+            app:rrb_textSize="10sp"
+            app:rrb_textStyle="bold" />
     </co.ceryle.radiorealbutton.RadioRealButtonGroup>
 
 
@@ -306,6 +308,165 @@
         app:view_behavior=".ParallaxTitleBehaviour">
 
     </nl.dionsegijn.steppertouch.StepperTouch>
+
+    <Spinner
+        android:id="@+id/sp_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rbg_fly_type"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/shadow_bg"
+        android:popupElevation="20dp"
+        android:popupTheme="@color/transparent"
+        android:spinnerMode="dialog"
+        app:view_behavior=".ParallaxTitleBehaviour"
+        tools:listitem="@layout/item_flight_class">
+
+    </Spinner>
+
+
+    <TextView
+        style="@style/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/img_adults"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="45dp"
+        android:text="@string/num_passenger"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:view_behavior=".ParallaxSubtitleBehaviour" />
+
+    <LinearLayout
+        android:id="@+id/grp_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/sp_class"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shadow_bg"
+        android:orientation="horizontal"
+        app:view_behavior=".ParallaxSubtitleBehaviour">
+
+        <RelativeLayout
+            android:id="@+id/rl_departure_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/shadow_bg_color"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/date_depart"
+                style="@style/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/departure_date"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/date_depart"
+                android:src="@mipmap/ic_take_off" />
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/tv_day_depart"
+                style="@style/text_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/date_depart"
+                android:layout_marginBottom="0dp"
+                android:text="@string/fa_custom_pick_date"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_date_depart"
+                style="@style/text_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_day_depart"
+                android:layout_marginTop="2dp"
+                android:text="3 Tháng 11,2017"
+                android:textColor="@color/black"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/light_gray"></LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/ln_return_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/return_depart"
+                style="@style/text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/return_date"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/return_depart"
+                android:src="@mipmap/ic_return" />
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/tv_day_return"
+                style="@style/text_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/return_depart"
+                android:layout_marginBottom="0dp"
+                android:text="@string/fa_custom_pick_date"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_date_return"
+                style="@style/text_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_day_return"
+                android:layout_marginTop="2dp"
+                android:text="3 Tháng 11,2017"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"

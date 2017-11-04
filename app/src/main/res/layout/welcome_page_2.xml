@@ -77,6 +77,8 @@
         android:text="Chọn điểm đến\n và đi nào!!!"
         android:textColor="@android:color/black"
         android:textSize="18dp"
+        android:translationX="500dp"
+        android:visibility="invisible"
         app:view_behavior=".ParallaxTitleBehaviour" />
 
     <FrameLayout
@@ -125,12 +127,13 @@
     <TextView
         android:id="@+id/txt_from"
         style="@style/text_title"
-        android:layout_above="@+id/subtitle"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
         android:text="Chọn sân bay đi"
         android:textSize="20sp"
-        app:view_behavior=".ParallaxSubtitleBehaviour" />
+        app:view_behavior=".ParallaxSubtitleBehaviour"
+        android:layout_alignBottom="@+id/avatar1_page2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
 
     <com.arlib.floatingsearchview.FloatingSearchView
         android:layout_width="match_parent"

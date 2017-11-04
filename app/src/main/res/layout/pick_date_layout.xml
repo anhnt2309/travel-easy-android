@@ -7,20 +7,137 @@
     android:fitsSystemWindows="true"
     tools:context="com.httt.uit.travel_easy_android.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/grp_from_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/shadow_bg">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/divider"
+                android:background="@drawable/shadow_bg_color">
+
+                <TextView
+                    android:id="@+id/tv_day_depart"
+                    style="@style/text_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/departure_date"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/tv_date_depart"
+                    style="@style/text_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_day_depart"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/fa_custom_pick_date"
+                    android:textColor="@color/black"
+                    android:textSize="13dp" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@color/light_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/divider"
+                android:background="@drawable/shadow_bg_color_right">
+
+                <TextView
+                    android:id="@+id/tv_day_return"
+                    style="@style/text_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/return_date"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/tv_date_return"
+                    style="@style/text_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_day_return"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/fa_custom_pick_date"
+                    android:textColor="@color/black"
+                    android:textSize="13dp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/ic_circle_calendar" />
+
+        </RelativeLayout>
+    </FrameLayout>
+
+
     <com.savvi.rangedatepicker.CalendarPickerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/grp_from_to"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:paddingBottom="16dp"
         android:scrollbarStyle="outsideOverlay"
-        android:clipToPadding="false"
+        app:tsquare_dayTextColor="@color/app_primary_color"
+        app:tsquare_displayHeader="true"
         app:tsquare_dividerColor="@color/transparent"
-        app:tsquare_headerTextColor="@color/color_red"
-        />
-
+        app:tsquare_headerTextColor="@color/page3"
+        app:tsquare_titleTextColor="@color/black" />
+    <com.sackcentury.shinebuttonlib.ShineButton
+        android:id="@+id/shine_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@android:color/darker_gray"
+        app:allow_random_color="false"
+        app:big_shine_color="@color/app_primary_color"
+        app:btn_color="@android:color/darker_gray"
+        app:btn_fill_color="@color/app_primary_color"
+        app:click_animation_duration="200"
+        app:enable_flashing="false"
+        app:shine_animation_duration="1500"
+        app:shine_count="8"
+        app:shine_turn_angle="10"
+        app:siShape="@raw/ic_checked"
+        app:small_shine_color="@color/page3"
+        app:small_shine_offset_angle="20" />
 
 </com.redbooth.WelcomePageLayout>

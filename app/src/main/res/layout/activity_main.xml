@@ -11,20 +11,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#68B7AB"
-        app:showIndicators="true"
-        app:indicatorUnselected="#99b7b7b7"
-        app:indicatorSelected="@color/app_primary_color" />
+        android:nestedScrollingEnabled="true"
+        app:indicatorSelected="@color/app_primary_color"
+        app:indicatorUnselected="#4D000000"
+        app:showIndicators="true" />
+
+    <TextView
+        android:id="@+id/custom_switcher"
+        fontPath="fonts/Reckoner_Bold.ttf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="60sp"
+        tools:ignore="MissingPrefix" />
 
 
-    <!--<Button-->
-        <!--style="?attr/borderlessButtonStyle"-->
-        <!--android:id="@+id/skip"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="skip"-->
-        <!--android:textColor="@color/white"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_marginTop="20dp"/>-->
-
+    <com.github.badoualy.datepicker.DatePickerTimeline
+        android:id="@+id/datepicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="200dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:minWidth="300dp"
+        android:nestedScrollingEnabled="true"
+        android:visibility="gone"
+        app:mti_bgLblDateSelectedColor="@color/page3"
+        app:mti_followScroll="true"
+        app:mti_primaryColor="@color/app_primary_color"
+        app:mti_primaryDarkColor="@color/light_gray_inactive_icon"
+        app:mti_ringLblDateSelectedColor="@color/page3" />
 
 </com.redbooth.WelcomePageLayout>
