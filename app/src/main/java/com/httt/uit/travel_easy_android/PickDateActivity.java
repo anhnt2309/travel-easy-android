@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
@@ -35,7 +36,11 @@ public class PickDateActivity extends AppCompatActivity {
     private Date departDate;
     private Date returnDate;
     private IconTextView tvDepart;
+    private IconTextView tvDepart2;
     private IconTextView tvReturn;
+    private RelativeLayout rlRoundTrip;
+    private RelativeLayout rlOneWay;
+    private boolean isRoundTrip = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,26 +52,46 @@ public class PickDateActivity extends AppCompatActivity {
         Iconify.with(new FontAwesomeModule());
         initView();
         initEvent();
-        
+
         Intent intent = getIntent();
         if (intent == null)
             return;
+        int type = intent.getIntExtra(MainActivity.FLIGHT_TYPE_CODE, 0);
+        if (type == 0)
+            return;
+        if (type == MainActivity.ONE_WAY_TYPE) {
+            isRoundTrip = false;
+            oneWayUI();
+            mCalendarPickerView.init(new Date(), new Date(2099, 12, 30))
+                    .inMode(CalendarPickerView.SelectionMode.SINGLE)
+                    .withSelectedDate(new Date());
+        }
+        if (type == MainActivity.ROUND_TRIP_TYPE) {
+            isRoundTrip = true;
+            roundTripUI();
+            mCalendarPickerView.init(new Date(), new Date(2099, 12, 30))
+                    .inMode(CalendarPickerView.SelectionMode.RANGE)
+                    .withSelectedDate(new Date());
+        }
+
         Long departTime = intent.getLongExtra(DEPART_DATE_DATE, 0);
         if (departTime == 0)
             return;
         Date departure = new Date();
         departure.setTime(departTime);
         departDate = departure;
+        mCalendarPickerView.selectDate(departure);
         displayDepartDate(departure);
 
         Long returnTime = intent.getLongExtra(RETURN_DATE_DATE, 0);
-        if (returnTime == 0)
+        if (returnTime == 0) {
             return;
+        }
         Date returnD = new Date();
         returnD.setTime(returnTime);
         returnDate = returnD;
+
         displayReturnDate(returnD);
-        mCalendarPickerView.selectDate(departure);
         mCalendarPickerView.selectDate(returnD);
 
     }
@@ -76,13 +101,12 @@ public class PickDateActivity extends AppCompatActivity {
         shineButton = (ShineButton) findViewById(R.id.shine_button);
         tvDepart = (IconTextView) findViewById(R.id.tv_date_depart);
         tvReturn = (IconTextView) findViewById(R.id.tv_date_return);
+        tvDepart2 = (IconTextView) findViewById(R.id.tv_date_depart2);
+        rlOneWay = (RelativeLayout) findViewById(R.id.rl_one_way);
+        rlRoundTrip = (RelativeLayout) findViewById(R.id.rl_round_trip);
     }
 
     public void initEvent() {
-
-        mCalendarPickerView.init(new Date(), new Date(2099, 12, 30))
-                .inMode(CalendarPickerView.SelectionMode.RANGE)
-                .withSelectedDate(new Date());
 
         //must have to prevent crash
         ArrayList<Integer> list = new ArrayList<>();
@@ -98,7 +122,10 @@ public class PickDateActivity extends AppCompatActivity {
                 }
 
                 if (departDate == null && returnDate == null) {
-                    displayDepartDate(date);
+                    if (isRoundTrip)
+                        displayDepartDate(date);
+                    if (!isRoundTrip)
+                        displayDepartDate2(date);
                 }
 
             }
@@ -130,10 +157,19 @@ public class PickDateActivity extends AppCompatActivity {
     }
 
     public void finishMyActivity() {
-        if (departDate == null || returnDate == null) {
-            LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.ERROR, "Chưa chọn đủ ngày!!! Vui lòng chọn lại");
-            shineButton.setChecked(false);
-            return;
+        if (isRoundTrip) {
+            if (departDate == null || returnDate == null) {
+                LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.ERROR, "Chưa chọn đủ ngày!!! Vui lòng chọn lại");
+                shineButton.setChecked(false);
+                return;
+            }
+        }
+        if (!isRoundTrip) {
+            if (departDate == null) {
+                LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.ERROR, "Chưa chọn đủ ngày!!! Vui lòng chọn lại");
+                shineButton.setChecked(false);
+                return;
+            }
         }
 
         Intent data = new Intent();
@@ -155,13 +191,23 @@ public class PickDateActivity extends AppCompatActivity {
     }
 
     public void displayDepartDate(Date date) {
+        roundTripUI();
         departDate = date;
         String displayDate = DateUtils.getDateDisplay(date);
         tvDepart.setText(displayDate);
         setViewAnimation(PickDateActivity.this, tvDepart, android.R.anim.fade_in);
     }
 
+    public void displayDepartDate2(Date date) {
+        oneWayUI();
+        departDate = date;
+        String displayDate = DateUtils.getDateDisplay(date);
+        tvDepart2.setText(displayDate);
+        setViewAnimation(PickDateActivity.this, tvDepart2, android.R.anim.fade_in);
+    }
+
     public void displayReturnDate(Date date) {
+
         returnDate = date;
         String displayDate = DateUtils.getDateDisplay(date);
         tvReturn.setText(displayDate);
@@ -179,5 +225,15 @@ public class PickDateActivity extends AppCompatActivity {
         returnDate = null;
         tvReturn.setText(getResources().getString(R.string.fa_custom_pick_date));
         setViewAnimation(PickDateActivity.this, tvReturn, android.R.anim.fade_out);
+    }
+
+    public void roundTripUI() {
+        rlOneWay.setVisibility(View.GONE);
+        rlRoundTrip.setVisibility(View.VISIBLE);
+    }
+
+    public void oneWayUI() {
+        rlOneWay.setVisibility(View.VISIBLE);
+        rlRoundTrip.setVisibility(View.GONE);
     }
 }

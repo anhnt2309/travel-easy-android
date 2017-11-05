@@ -61,6 +61,10 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainActivity extends AppCompatActivity {
     public static final int ROUND_TRIP_DATE_REQUEST = 1234;
     public static final int ONE_WAY_DATE_REQUEST = 1235;
+    public static final String FLIGHT_TYPE_CODE = "FLIGHT_TYPE_CODE";
+
+    public static final int ONE_WAY_TYPE = 1236;
+    public static final int ROUND_TRIP_TYPE = 1237;
 
     private boolean animationReady = false;
     private ValueAnimator backgroundAnimator;
@@ -117,17 +121,17 @@ public class MainActivity extends AppCompatActivity {
         initializePages();
         initializeBackgroundTransitions();
         explosionField = ExplosionField.attach2Window(MainActivity.this);
-        ApiManager.getLocationInfo(this, "DLI", new MyDataCallback<JsonElement>() {
-            @Override
-            public void success(JsonElement jsonElement) {
-                Log.d("abc", "" + jsonElement);
-            }
-
-            @Override
-            public void failure(Throwable t) {
-                t.printStackTrace();
-            }
-        });
+//        ApiManager.getLocationInfo(this, "DLI", new MyDataCallback<JsonElement>() {
+//            @Override
+//            public void success(JsonElement jsonElement) {
+//                Log.d("abc", "" + jsonElement);
+//            }
+//
+//            @Override
+//            public void failure(Throwable t) {
+//                t.printStackTrace();
+//            }
+//        });
     }
 
     @Override
@@ -215,10 +219,13 @@ public class MainActivity extends AppCompatActivity {
                 if (rbId == R.id.rb_round_trip) {
                     if (mReturnDate != null)
                         intent.putExtra(PickDateActivity.RETURN_DATE_DATE, mReturnDate.getTime());
+                    intent.putExtra(FLIGHT_TYPE_CODE, ROUND_TRIP_TYPE);
                     startActivityForResult(intent, ROUND_TRIP_DATE_REQUEST);
                 }
-                if (rbId == R.id.rb_one_way)
+                if (rbId == R.id.rb_one_way) {
+                    intent.putExtra(FLIGHT_TYPE_CODE, ONE_WAY_TYPE);
                     startActivityForResult(intent, ONE_WAY_DATE_REQUEST);
+                }
                 overridePendingTransition(0, 0);
             }
         });
@@ -228,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClickedButton(RadioRealButton button, int position) {
                 if (button.getId() == R.id.rb_one_way) {
                     rbId = R.id.rb_one_way;
+                    mReturnDate = null;
                     explosionField.explode(lnReturnDate);
                     lnReturnDate.setVisibility(View.GONE);
                     lnDepartDate.setBackground(getResources().getDrawable(R.drawable.shadow_bg_color_full));
@@ -236,6 +244,7 @@ public class MainActivity extends AppCompatActivity {
                     rbId = R.id.rb_round_trip;
                     if (explosionField != null)
                         explosionField.clear();
+                    displayReturnDate(mReturnDate);
                     lnDepartDate.setBackground(getResources().getDrawable(R.drawable.shadow_bg_color));
                     //get View Back
                     lnReturnDate.animate().setDuration(150).setStartDelay(150).scaleX(1.0f).scaleY(1.0f).alpha(1.0f).start();
@@ -280,6 +289,7 @@ public class MainActivity extends AppCompatActivity {
         spChildrens.stepper.setMax(12);
 
         spInfants.stepper.setMin(0);
+        spInfants.stepper.setMax(1);
     }
 
     private void initializeListeners() {
@@ -370,6 +380,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayDepartureDate(Date date) {
+        if (date == null) {
+            String reset = getResources().getString(R.string.fa_custom_pick_date);
+            tvDayDepart.setText(reset);
+            PickDateActivity.setViewAnimation(this, tvDayDepart, android.R.anim.fade_in);
+            tvDateDepart.setVisibility(View.GONE);
+            return;
+        }
         String day = DateUtils.getDay(date);
         String dateMonth = DateUtils.getDayMonth(date);
         tvDayDepart.setText(day);
@@ -381,6 +398,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayReturnDate(Date date) {
+        if (date == null) {
+            String reset = getResources().getString(R.string.fa_custom_pick_date);
+            tvDayReturn.setText(reset);
+            PickDateActivity.setViewAnimation(this, tvDayDepart, android.R.anim.fade_in);
+            tvDateReturn.setVisibility(View.GONE);
+            return;
+        }
         String day = DateUtils.getDay(date);
         String dateMonth = DateUtils.getDayMonth(date);
         tvDayReturn.setText(day);
