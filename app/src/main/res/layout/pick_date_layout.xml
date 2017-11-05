@@ -7,20 +7,21 @@
     android:fitsSystemWindows="true"
     tools:context="com.httt.uit.travel_easy_android.MainActivity">
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/grp_from_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <RelativeLayout
-
+            android:id="@+id/rl_round_trip"
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginTop="35dp"
-            android:background="@drawable/shadow_bg">
+            android:background="@drawable/shadow_bg"
+            android:visibility="visible">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -97,7 +98,48 @@
                 android:src="@mipmap/ic_circle_calendar" />
 
         </RelativeLayout>
-    </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_one_way"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/shadow_bg_color_full"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_day_depart2"
+                style="@style/text_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/departure_date"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/tv_date_depart2"
+                style="@style/text_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_day_depart2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="2dp"
+                android:text="@string/fa_custom_pick_date"
+                android:textColor="@color/black"
+                android:textSize="13dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 
     <com.savvi.rangedatepicker.CalendarPickerView
@@ -118,14 +160,15 @@
         app:tsquare_dividerColor="@color/transparent"
         app:tsquare_headerTextColor="@color/page3"
         app:tsquare_titleTextColor="@color/black" />
+
     <com.sackcentury.shinebuttonlib.ShineButton
         android:id="@+id/shine_button"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
         android:layout_marginTop="2dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:src="@android:color/darker_gray"
         app:allow_random_color="false"
         app:big_shine_color="@color/app_primary_color"
