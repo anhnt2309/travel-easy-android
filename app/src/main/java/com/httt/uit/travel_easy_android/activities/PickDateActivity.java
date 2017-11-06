@@ -1,4 +1,4 @@
-package com.httt.uit.travel_easy_android;
+package com.httt.uit.travel_easy_android.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 
+import com.httt.uit.travel_easy_android.MainActivity;
+import com.httt.uit.travel_easy_android.R;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
