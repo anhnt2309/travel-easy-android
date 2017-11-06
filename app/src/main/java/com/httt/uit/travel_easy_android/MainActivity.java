@@ -8,37 +8,32 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.badoualy.datepicker.DatePickerTimeline;
-import com.github.badoualy.datepicker.TimelineView;
-import com.google.gson.JsonElement;
+import com.google.gson.Gson;
+import com.httt.uit.travel_easy_android.activities.PickDateActivity;
+import com.httt.uit.travel_easy_android.activities.SearchAirportActivity;
 import com.httt.uit.travel_easy_android.adapters.ClassSpinnerAdapter;
 import com.httt.uit.travel_easy_android.animators.ChatAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.InSyncAnimator;
 import com.httt.uit.travel_easy_android.animators.RocketAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.RocketFlightAwayAnimator;
-import com.httt.uit.travel_easy_android.manager.ApiManager;
+import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
-import com.httt.uit.travel_easy_android.request.MyDataCallback;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.redbooth.WelcomeCoordinatorLayout;
-import com.sackcentury.shinebuttonlib.ShineButton;
-import com.savvi.rangedatepicker.CalendarPickerView;
 
 
 import java.util.ArrayList;
@@ -48,10 +43,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.ceryle.radiorealbutton.RadioRealButton;
 import co.ceryle.radiorealbutton.RadioRealButtonGroup;
-import github.chenupt.springindicator.SpringIndicator;
 import greco.lorenzo.com.lgsnackbar.LGSnackbarManager;
-import greco.lorenzo.com.lgsnackbar.style.LGSnackBarTheme;
 import greco.lorenzo.com.lgsnackbar.style.LGSnackBarThemeManager;
+import me.grantland.widget.AutofitTextView;
 import nl.dionsegijn.steppertouch.OnStepCallback;
 import nl.dionsegijn.steppertouch.StepperTouch;
 import tyrantgit.explosionfield.ExplosionField;
@@ -61,6 +55,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class MainActivity extends AppCompatActivity {
     public static final int ROUND_TRIP_DATE_REQUEST = 1234;
     public static final int ONE_WAY_DATE_REQUEST = 1235;
+    public static final int ORIGIN_AIRPORT_REQUEST = 1238;
+    public static final int DESTINATION_AIRPORT_REQUEST = 1239;
     public static final String FLIGHT_TYPE_CODE = "FLIGHT_TYPE_CODE";
 
     public static final int ONE_WAY_TYPE = 1236;
@@ -91,10 +87,30 @@ public class MainActivity extends AppCompatActivity {
     private StepperTouch spChildrens;
     private StepperTouch spInfants;
 
+    private RelativeLayout grpOrigin;
+    private AutofitTextView tvOriginAiportName;
+    private TextView tvOriginCity;
+    private TextView tvOriginCode;
+    private ImageView imgOriginCity;
+
+    private RelativeLayout grpDestination;
+    private AutofitTextView tvDestinationAirportName;
+    private TextView tvDestinationCity;
+    private TextView tvDestinationCode;
+    private ImageView imgDestinationCity;
+
+    private TextView tvOriginCode3;
+    private AutofitTextView tvOriginAirport3;
+    private TextView tvDestinationCode3;
+    private AutofitTextView tvDestinationAirport3;
+
     private int rbId = R.id.rb_round_trip;
     private int spInfantMax = 0;
     private Date mDepartDate;
     private Date mReturnDate;
+    private AutoCompleteAirport mOriginAirport;
+    private AutoCompleteAirport mDestinationAirport;
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -141,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode == ROUND_TRIP_DATE_REQUEST) {
             if (resultCode == RESULT_OK) {
 
@@ -172,6 +187,32 @@ public class MainActivity extends AppCompatActivity {
                 displayDepartureDate(departDate);
             }
         }
+
+        if (requestCode == ORIGIN_AIRPORT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                String modelString = data.getStringExtra(SearchAirportActivity.RESULT_MODEL);
+                if (modelString == null || modelString.equals(""))
+                    return;
+                AutoCompleteAirport model = new Gson().fromJson(modelString, AutoCompleteAirport.class);
+                if (model == null)
+                    return;
+                displayOriginAirport(model);
+                mOriginAirport = model;
+            }
+        }
+
+        if (requestCode == DESTINATION_AIRPORT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                String modelString = data.getStringExtra(SearchAirportActivity.RESULT_MODEL);
+                if (modelString == null || modelString.equals(""))
+                    return;
+                AutoCompleteAirport model = new Gson().fromJson(modelString, AutoCompleteAirport.class);
+                if (model == null)
+                    return;
+                displayDestinationAirport(model);
+                mDestinationAirport = model;
+            }
+        }
     }
 
     public void finishMyActivity() {
@@ -185,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
         coordinatorLayout.addPage(R.layout.welcome_page_1,
                 R.layout.welcome_page_2,
                 R.layout.welcome_page_3
-
         );
         tvAppName = (TextView) findViewById(R.id.custom_switcher);
         tvCommandScene2 = (TextView) findViewById(R.id.txt_command);
@@ -202,14 +242,32 @@ public class MainActivity extends AppCompatActivity {
         spChildrens = (StepperTouch) findViewById(R.id.stepper_childrens);
         spInfants = (StepperTouch) findViewById(R.id.stepper_infants);
 
+        tvOriginCode3 = (TextView) findViewById(R.id.txt_from_code);
+        tvOriginAirport3 = (AutofitTextView) findViewById(R.id.txt_from_city);
+        tvDestinationCode3 = (TextView) findViewById(R.id.txt_to_code);
+        tvDestinationAirport3 = (AutofitTextView) findViewById(R.id.txt_to_city);
+
         grpDate = (LinearLayout) findViewById(R.id.grp_date);
-
+        initAirportHolder();
         initEvents();
+    }
 
+    private void initAirportHolder() {
+        grpOrigin = (RelativeLayout) findViewById(R.id.grpOrigin);
+        tvOriginAiportName = (AutofitTextView) findViewById(R.id.txt_airport_name);
+        tvOriginCity = (TextView) findViewById(R.id.txt_city_name);
+        tvOriginCode = (TextView) findViewById(R.id.tv_depart_code);
+        imgOriginCity = (ImageView) findViewById(R.id.img_city);
 
+        grpDestination = (RelativeLayout) findViewById(R.id.grpDestination);
+        tvDestinationAirportName = (AutofitTextView) findViewById(R.id.txt_airport_name_return);
+        tvDestinationCity = (TextView) findViewById(R.id.txt_city_name_return);
+        tvDestinationCode = (TextView) findViewById(R.id.tv_return_code);
+        imgDestinationCity = (ImageView) findViewById(R.id.img_city_return);
     }
 
     private void initEvents() {
+        initAirportEvent();
         grpDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -290,6 +348,24 @@ public class MainActivity extends AppCompatActivity {
 
         spInfants.stepper.setMin(0);
         spInfants.stepper.setMax(1);
+    }
+
+    public void initAirportEvent() {
+        grpOrigin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchAirportActivity.class);
+                startActivityForResult(intent, ORIGIN_AIRPORT_REQUEST);
+            }
+        });
+
+        grpDestination.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchAirportActivity.class);
+                startActivityForResult(intent, DESTINATION_AIRPORT_REQUEST);
+            }
+        });
     }
 
     private void initializeListeners() {
@@ -413,5 +489,57 @@ public class MainActivity extends AppCompatActivity {
         tvDateReturn.setVisibility(View.VISIBLE);
         tvDateReturn.setText(dateMonth);
         PickDateActivity.setViewAnimation(this, tvDateReturn, android.R.anim.fade_in);
+    }
+
+    public void displayOriginAirport(AutoCompleteAirport model) {
+        if (model == null)
+            return;
+        if (tvOriginCity == null || tvOriginAiportName == null || tvOriginCode == null || imgOriginCity == null)
+            return;
+        tvOriginCode3.setText(model.value);
+        tvOriginAirport3.setText(model.airport_name);
+        if (model.hasCityName) {
+
+            tvOriginCity.setVisibility(View.VISIBLE);
+            imgOriginCity.setVisibility(View.VISIBLE);
+
+
+            tvOriginCode.setText(model.value);
+            tvOriginAiportName.setText(model.airport_name);
+            tvOriginCity.setText(model.city_name);
+
+
+        } else {
+            tvOriginCity.setVisibility(View.GONE);
+            imgOriginCity.setVisibility(View.GONE);
+            tvOriginCode.setText(model.value);
+            tvOriginAiportName.setText(model.city_name);
+        }
+    }
+
+    public void displayDestinationAirport(AutoCompleteAirport model) {
+        if (model == null)
+            return;
+        if (tvDestinationAirportName == null || tvDestinationCity == null || tvDestinationCode == null || imgDestinationCity == null)
+            return;
+
+        tvDestinationCode3.setText(model.value);
+        tvDestinationAirport3.setText(model.airport_name);
+        if (model.hasCityName) {
+            tvDestinationCity.setVisibility(View.VISIBLE);
+            imgDestinationCity.setVisibility(View.VISIBLE);
+
+            tvDestinationCode.setText(model.value);
+            tvDestinationAirportName.setText(model.airport_name);
+            tvDestinationCity.setText(model.city_name);
+
+
+        } else {
+            tvDestinationCity.setVisibility(View.GONE);
+            imgDestinationCity.setVisibility(View.GONE);
+
+            tvDestinationCode.setText(model.value);
+            tvDestinationAirportName.setText(model.airport_name);
+        }
     }
 }
