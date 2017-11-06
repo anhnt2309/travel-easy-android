@@ -51,7 +51,7 @@ dependencies {
     compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
 
     //search bar
-    compile 'com.github.arimorty:floatingsearchview:1.+'
+//    compile 'com.github.arimorty:floatingsearchview:1.+'
 
     compile 'com.savvi.datepicker:rangepicker:1.0.1'
 
@@ -91,6 +91,9 @@ dependencies {
     //lg snackbar
     compile 'com.github.loregr:lgsnackbar:1.0.2'
 
+    compile 'me.grantland:autofittextview:0.2.+'
+
+    compile project(path: ':library')
 }
 
 //resolve radiorealbutton conflict
