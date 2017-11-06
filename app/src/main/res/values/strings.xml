@@ -13,4 +13,12 @@
     <string name="return_date">Ngày Về</string>
     <string name="num_passenger">Số lượng hành khách</string>
     <string name="fa_custom_pick_date">Chọn ngày {fa-plus}</string>
+    <string name="nearby_airport_text">{fa-map-marker} Các sân bay gần bạn</string>
+    <string name="found_airport_text">{fa-globe} Các sân bay tìm thấy</string>
+    <string name="depart_airport_text">Nơi Đi</string>
+    <string name="return_airport_text">Nơi Đến</string>
+    <string name="domestic_airport">Chỉ tìm các sân bay trong nước</string>
+    <string name="choose_airport">Chọn sân bay</string>
+    <string name="code_holder">XXX</string>
+    <string name="city_holder">Thành Phố/Địa Điểm</string>
 </resources>

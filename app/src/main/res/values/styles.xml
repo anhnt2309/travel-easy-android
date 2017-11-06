@@ -75,4 +75,15 @@ Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
     <style name="MySpinner.Dark" parent="MySpinner">
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
     </style>
+
+    <style name="SearchView">
+        <item name="floatingSearch_backgroundColor">@color/app_primary_color_alpha_20</item>
+        <item name="floatingSearch_hintTextColor">@color/app_primary_color_alpha_50</item>
+        <item name="floatingSearch_clearBtnColor">@color/app_primary_color_alpha_50</item>
+        <item name="floatingSearch_dividerColor">@color/transparent</item>
+        <item name="floatingSearch_leftActionColor">@color/app_primary_color_alpha_50</item>
+        <item name="floatingSearch_menuItemIconColor">@color/white</item>
+        <item name="floatingSearch_suggestionRightIconColor">@color/white</item>
+        <item name="floatingSearch_actionMenuOverflowColor">@color/white</item>
+    </style>
 </resources>
