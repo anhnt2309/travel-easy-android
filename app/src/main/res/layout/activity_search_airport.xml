@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:background="@color/white">
+
+    <com.sackcentury.shinebuttonlib.ShineButton
+        android:id="@+id/shine_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+
+        android:src="@android:color/darker_gray"
+        app:allow_random_color="false"
+        app:big_shine_color="@color/app_primary_color"
+        app:btn_color="@android:color/darker_gray"
+        app:btn_fill_color="@color/app_primary_color"
+        app:click_animation_duration="200"
+        app:enable_flashing="false"
+        app:shine_animation_duration="1500"
+        app:shine_count="8"
+        app:shine_turn_angle="10"
+        app:siShape="@raw/ic_back"
+        app:small_shine_color="@color/page3"
+        app:small_shine_offset_angle="20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shadow_bg_color_full_alpha">
+
+        <com.arlib.floatingsearchview.FloatingSearchView
+            android:id="@+id/fsv_search"
+            style="@style/SearchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            app:floatingSearch_hideOverflowMenuWhenFocused="true"
+            app:floatingSearch_leftActionMode="showSearch"
+            app:floatingSearch_searchHint="Tìm Sân Bay"
+            app:floatingSearch_showOverFlowMenu="false"
+            app:floatingSearch_showSearchKey="false"
+            app:floatingSearch_showVoiceInput="true"
+            app:floatingSearch_viewTextColor="@color/white">
+
+        </com.arlib.floatingsearchview.FloatingSearchView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <com.sackcentury.shinebuttonlib.ShineButton
+            android:id="@+id/shine_button_VN"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:src="@android:color/darker_gray"
+            app:allow_random_color="false"
+            app:big_shine_color="@color/color_red"
+            app:btn_color="@android:color/darker_gray"
+            app:btn_fill_color="@color/color_red"
+            app:click_animation_duration="200"
+            app:enable_flashing="false"
+            app:shine_animation_duration="1500"
+            app:shine_count="8"
+            app:shine_turn_angle="10"
+            app:siShape="@raw/ic_vietnam"
+            app:small_shine_color="@color/page3"
+            app:small_shine_offset_angle="20" />
+
+        <TextView
+            style="@style/text_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/domestic_airport"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/app_primary_color_alpha_20">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/iconTextView"
+            style="@style/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="left"
+            android:text="@string/nearby_airport_text"
+            android:textColor="@color/page3_50"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/lv_nearby_airport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:clipToPadding="false"
+            android:divider="@color/transparent"
+            android:dividerHeight="10dp"
+            tools:listitem="@layout/item_airport_search">
+
+        </ListView>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/app_primary_color_alpha_20">
+
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            style="@style/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="left"
+            android:text="@string/found_airport_text"
+            android:textColor="@color/page3_50"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/lv_found_airport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:divider="@color/transparent"
+            android:dividerHeight="10dp"
+            tools:listitem="@layout/item_airport_search">
+
+        </ListView>
+    </LinearLayout>
+
+
+</LinearLayout>

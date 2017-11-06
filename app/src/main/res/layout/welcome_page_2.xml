@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.redbooth.WelcomePageLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+<com.redbooth.WelcomePageLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -32,10 +32,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/decorator_finished"
+            android:layout_alignStart="@+id/decorator_finished"
             android:layout_below="@+id/decorator_finished"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="17dp"
             android:src="@drawable/file" />
+
 
     </RelativeLayout>
 
@@ -127,30 +129,120 @@
     <TextView
         android:id="@+id/txt_from"
         style="@style/text_title"
-        android:text="Chọn sân bay đi"
-        android:textSize="20sp"
-        app:view_behavior=".ParallaxSubtitleBehaviour"
         android:layout_alignBottom="@+id/avatar1_page2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:text="Chọn sân bay đi"
+        android:textSize="25sp"
+        app:view_behavior=".ParallaxTitleBehaviour" />
 
-    <com.arlib.floatingsearchview.FloatingSearchView
+    <RelativeLayout
+        android:id="@+id/grpOrigin"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_below="@id/txt_from"
-        app:floatingSearch_leftActionMode="showSearch"
-        app:floatingSearch_searchHint="Search..."
-        app:floatingSearch_showSearchKey="false"
-        app:floatingSearch_showVoiceInput="true"
-        app:floatingSearch_hideOverflowMenuWhenFocused="true"
-        app:floatingSearch_showOverFlowMenu="false"
-        app:floatingSearch_viewTextColor="@color/black">
+        android:layout_height="140dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/avatar1_page2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/shadow_bg"
+        app:view_behavior=".ParallaxSubtitleBehaviour">
 
-    </com.arlib.floatingsearchview.FloatingSearchView>
+        <TextView
+            android:id="@+id/tv_depart_text"
+            style="@style/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/depart_airport_text"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tv_depart_text"
+            android:src="@mipmap/ic_airplane_takeoff" />
+
+        <TextView
+            android:id="@+id/tv_depart_code"
+            style="@style/text_title"
+            fontPath="fonts/Reckoner_Bold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/code_holder"
+            android:textColor="@color/app_primary_color"
+            tools:ignore="MissingPrefix" />
+
+        <View
+            android:id="@+id/depart_divider"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/light_gray_inactive_icon"></View>
+
+        <ImageView
+            android:id="@+id/img_airport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_depart_text"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/depart_divider"
+            android:src="@mipmap/ic_airport" />
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/txt_airport_name"
+            style="@style/text_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_depart_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/img_airport"
+            android:autoSizeMaxTextSize="10sp"
+            android:gravity="left"
+            android:maxLines="2"
+            android:text="@string/choose_airport"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/img_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_airport"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/depart_divider"
+            android:src="@mipmap/ic_city" />
+
+        <TextView
+            android:id="@+id/txt_city_name"
+            style="@style/text_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_airport"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/img_city"
+            android:gravity="left"
+
+            android:text="@string/city_holder"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/txt_to"
@@ -159,24 +251,110 @@
         android:layout_below="@id/star"
         android:layout_marginTop="50dp"
         android:text="Chọn sân bay đến"
-        android:textSize="20sp"
-        app:view_behavior=".ParallaxSubtitleBehaviour" />
+        android:textSize="25sp"
+        app:view_behavior=".ParallaxTitleBehaviour" />
 
-    <com.arlib.floatingsearchview.FloatingSearchView
+    <RelativeLayout
+        android:id="@+id/grpDestination"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="140dp"
         android:layout_below="@id/txt_to"
-        app:floatingSearch_leftActionMode="showSearch"
-        app:floatingSearch_searchHint="Search..."
-        app:floatingSearch_showSearchKey="false"
-        app:floatingSearch_showVoiceInput="true"
-        app:floatingSearch_hideOverflowMenuWhenFocused="true"
-        app:floatingSearch_showOverFlowMenu="false"
-        app:floatingSearch_viewTextColor="@color/black">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shadow_bg"
+        app:view_behavior=".ParallaxSubtitleBehaviour">
 
-    </com.arlib.floatingsearchview.FloatingSearchView>
+        <TextView
+            android:id="@+id/tv_return_text"
+            style="@style/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="@string/return_airport_text"
+            android:textColor="@color/black" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tv_return_text"
+            android:src="@mipmap/ic_airplane_landing" />
+
+        <TextView
+            android:id="@+id/tv_return_code"
+            style="@style/text_title"
+            fontPath="fonts/Reckoner_Bold.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="@string/code_holder"
+            android:textColor="@color/app_primary_color"
+            tools:ignore="MissingPrefix" />
+
+        <View
+            android:id="@+id/return_divider"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/light_gray_inactive_icon"></View>
+
+        <ImageView
+            android:id="@+id/img_airport_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_return_text"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/return_divider"
+            android:src="@mipmap/ic_airport" />
+
+        <me.grantland.widget.AutofitTextView
+            android:id="@+id/txt_airport_name_return"
+            style="@style/text_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_return_text"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/img_airport_return"
+            android:autoSizeMaxTextSize="10sp"
+            android:gravity="left"
+            android:maxLines="2"
+            android:text="@string/choose_airport"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/img_city_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_airport_return"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/return_divider"
+            android:src="@mipmap/ic_city" />
+
+        <TextView
+            android:id="@+id/txt_city_name_return"
+            style="@style/text_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_airport_return"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/img_city_return"
+            android:gravity="left"
+
+            android:text="@string/city_holder"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
 </com.redbooth.WelcomePageLayout>
