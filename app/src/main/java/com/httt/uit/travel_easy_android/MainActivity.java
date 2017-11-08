@@ -438,9 +438,9 @@ public class MainActivity extends AppCompatActivity {
         final int colorPage1 = ResourcesCompat.getColor(resources, R.color.page1, getTheme());
         final int colorPage2 = ResourcesCompat.getColor(resources, R.color.page2, getTheme());
         final int colorPage3 = ResourcesCompat.getColor(resources, R.color.page3, getTheme());
-//        final int colorPage4 = ResourcesCompat.getColor(resources, R.color.page4, getTheme());
+        final int colorPage4 = ResourcesCompat.getColor(resources, R.color.page4, getTheme());
         backgroundAnimator = ValueAnimator
-                .ofObject(new ArgbEvaluator(), colorPage1, colorPage2, colorPage3);
+                .ofObject(new ArgbEvaluator(), colorPage1, colorPage2, colorPage3,colorPage4);
         backgroundAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
