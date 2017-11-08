@@ -73,6 +73,10 @@ public class SearchAirportActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getCurrentLocation();
             }
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.WARNING, "Vui lòng cấp quyền truy cập địa  điểm cho ứng dụng để chúng tôi có thể tìm các sân bay quanh bạn");
+//                requestLocationPermission();
+            }
         }
     }
 
@@ -301,17 +305,17 @@ public class SearchAirportActivity extends AppCompatActivity {
         }
     };
 
-    public Location requestLocationPermission() {
+    public void requestLocationPermission() {
         if (ContextCompat.checkSelfPermission(SearchAirportActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_LOCATION);
-            return null;
+            return;
         } else {
-            return getCurrentLocation();
+            getCurrentLocation();
         }
     }
 
 
-    public Location getCurrentLocation() {
+    public void getCurrentLocation() {
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -321,19 +325,49 @@ public class SearchAirportActivity extends AppCompatActivity {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return null;
+            return;
         }
         Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        Log.d("xxx", "lat: " + location.getLatitude() + " long:" + location.getLongitude());
-        return location;
+        if (location != null){
+            callNearByArportApi(location);
+            return;
+        }
+
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListener);
     }
 
     public void getNearestAirports() {
-        Location location = requestLocationPermission();
+        requestLocationPermission();
+
+    }
+
+    LocationListener locationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+           callNearByArportApi(location);
+        }
+
+        @Override
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String s) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String s) {
+
+        }
+    };
+    public void callNearByArportApi(Location location){
         ApiManager.getNearestAirports(SearchAirportActivity.this, location.getLatitude(), location.getLongitude(), new MyDataCallback<ArrayList<AutoCompleteAirport>>() {
             @Override
             public void success(ArrayList<AutoCompleteAirport> models) {
                 Log.e("a1234", "" + models.size());
+                mLocationManager.removeUpdates(locationListener);
                 for (AutoCompleteAirport model : models) {
                     if (model.city_name != null || !model.city_name.equals("")) {
                         model.setHasCityName(true);
