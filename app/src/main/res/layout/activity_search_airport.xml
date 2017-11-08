@@ -118,17 +118,33 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/lv_nearby_airport"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:clipToPadding="false"
-            android:divider="@color/transparent"
-            android:dividerHeight="10dp"
-            tools:listitem="@layout/item_airport_search">
+            android:layout_height="wrap_content">
 
-        </ListView>
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/itv_near"
+                style="@style/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/no_airport"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <ListView
+                android:id="@+id/lv_nearby_airport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:clipToPadding="false"
+                android:divider="@color/transparent"
+                android:dividerHeight="10dp"
+                android:visibility="visible"
+                tools:listitem="@layout/item_airport_search">
+
+            </ListView>
+        </RelativeLayout>
     </LinearLayout>
 
     <View
@@ -155,16 +171,31 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/lv_found_airport"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:divider="@color/transparent"
-            android:dividerHeight="10dp"
-            tools:listitem="@layout/item_airport_search">
+            android:layout_height="wrap_content">
 
-        </ListView>
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/itv_found"
+                style="@style/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/no_airport"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <ListView
+                android:id="@+id/lv_found_airport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:divider="@color/transparent"
+                android:dividerHeight="10dp"
+                tools:listitem="@layout/item_airport_search">
+
+            </ListView>
+        </RelativeLayout>
     </LinearLayout>
 
 

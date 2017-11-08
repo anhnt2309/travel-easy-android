@@ -20,6 +20,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -33,6 +35,7 @@ import com.httt.uit.travel_easy_android.manager.ApiManager;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.request.MyDataCallback;
 import com.httt.uit.travel_easy_android.utils.StringUtils;
+import com.joanzapata.iconify.widget.IconTextView;
 import com.sackcentury.shinebuttonlib.ShineButton;
 
 import java.util.ArrayList;
@@ -45,7 +48,7 @@ import greco.lorenzo.com.lgsnackbar.style.LGSnackBarThemeManager;
  * Created by TuanAnh on 11/5/17.
  */
 
-public class SearchAirportActivity extends AppCompatActivity{
+public class SearchAirportActivity extends AppCompatActivity {
     public static final String RESULT_MODEL = "RESULT_MODEL";
     public static final int PERMISSIONS_REQUEST_LOCATION = 99;
 
@@ -60,6 +63,8 @@ public class SearchAirportActivity extends AppCompatActivity{
     private AutocompleteAdapter foundAdapter;
     private AutocompleteAdapter nearByAdapter;
     private LocationManager mLocationManager;
+    private IconTextView itvNear;
+    private IconTextView itvFound;
     private boolean isNewInput = false;
 
     @Override
@@ -91,6 +96,8 @@ public class SearchAirportActivity extends AppCompatActivity{
         lvFound = (ListView) findViewById(R.id.lv_found_airport);
         lvNearBy = (ListView) findViewById(R.id.lv_nearby_airport);
         sbVN = (ShineButton) findViewById(R.id.shine_button_VN);
+        itvFound = (IconTextView) findViewById(R.id.itv_found);
+        itvNear = (IconTextView) findViewById(R.id.itv_near);
     }
 
     public void initEvent() {
@@ -227,6 +234,15 @@ public class SearchAirportActivity extends AppCompatActivity{
     }
 
     public void refreshFoundListView() {
+        if (mModels == null || mModels.size() == 0) {
+            itvFound.setVisibility(View.VISIBLE);
+            Animation animation = AnimationUtils.loadAnimation(SearchAirportActivity.this, android.R.anim.fade_in);
+
+            itvFound.setAnimation(animation);
+        } else {
+            itvFound.setVisibility(View.GONE);
+            itvFound.setAnimation(AnimationUtils.loadAnimation(SearchAirportActivity.this, android.R.anim.fade_out));
+        }
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -236,6 +252,15 @@ public class SearchAirportActivity extends AppCompatActivity{
     }
 
     public void refreshNearListView() {
+        if (mNearModels == null || mNearModels.size() == 0) {
+            itvNear.setVisibility(View.VISIBLE);
+            Animation animation = AnimationUtils.loadAnimation(SearchAirportActivity.this, android.R.anim.fade_in);
+
+            itvNear.setAnimation(animation);
+        } else {
+            itvNear.setVisibility(View.GONE);
+            itvNear.setAnimation(AnimationUtils.loadAnimation(SearchAirportActivity.this, android.R.anim.fade_out));
+        }
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -249,6 +274,7 @@ public class SearchAirportActivity extends AppCompatActivity{
         if (sbVN.isChecked())
             countryCode = "VN";
         mModels.clear();
+
         refreshFoundListView();
 
         ApiManager.getAutoCompleteAirport(SearchAirportActivity.this, query, countryCode, autoCompleteCallback);
