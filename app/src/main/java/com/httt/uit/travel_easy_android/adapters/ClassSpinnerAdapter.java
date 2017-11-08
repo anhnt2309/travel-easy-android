@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Created by TuanAnh on 11/3/17.
  */
 
-public class ClassSpinnerAdapter extends ArrayAdapter<FlightClass> implements ThemedSpinnerAdapter {
+public class ClassSpinnerAdapter extends ArrayAdapter<FlightClass> {
     public Context mContext;
     public ArrayList<FlightClass> mModels;
 
