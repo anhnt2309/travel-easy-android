@@ -21,6 +21,7 @@
     <color name="avatar5">#4ee4c1</color>
     <color name="app_primary_color">#FFA500</color>
     <color name="app_primary_color_alpha_20">#33FFA500</color>
+    <color name="app_primary_color_alpha_10">#00FFA500</color>
     <color name="app_primary_color_alpha_25">#40FFA500</color>
     <color name="app_primary_color_alpha_50">#CCFFA500</color>
     <color name="divider_color">#F0F0F0</color>

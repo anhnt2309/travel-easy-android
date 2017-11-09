@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra(FLIGHT_TYPE_CODE, ONE_WAY_TYPE);
                     startActivityForResult(intent, ONE_WAY_DATE_REQUEST);
                 }
-                overridePendingTransition(0, 0);
+//                overridePendingTransition(0, 0);
             }
         });
 

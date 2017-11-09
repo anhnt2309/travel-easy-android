@@ -77,7 +77,7 @@ Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
     </style>
 
     <style name="SearchView">
-        <item name="floatingSearch_backgroundColor">@color/app_primary_color_alpha_20</item>
+        <item name="floatingSearch_backgroundColor">@color/app_primary_color_alpha_10</item>
         <item name="floatingSearch_hintTextColor">@color/app_primary_color_alpha_50</item>
         <item name="floatingSearch_clearBtnColor">@color/app_primary_color_alpha_50</item>
         <item name="floatingSearch_dividerColor">@color/transparent</item>
