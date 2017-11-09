@@ -28,7 +28,7 @@
 
     <ImageView
         android:id="@+id/img_from_line"
-        android:layout_width="45dp"
+        android:layout_width="55dp"
         android:layout_height="70dp"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="80dp"
@@ -45,7 +45,7 @@
         android:layout_marginBottom="0dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="25dp"
-        android:text="SGN"
+        android:text="@string/code_holder"
         android:textColor="@android:color/white"
         app:view_behavior=".ParallaxTitleBehaviour" />
 
@@ -59,7 +59,7 @@
         android:layout_marginLeft="5dp"
         android:maxLines="3"
         android:singleLine="false"
-        android:text="Hồ Chí Minh"
+        android:text="@string/choose_airport"
         android:textColor="@android:color/white"
         app:minTextSize="10sp"
         app:view_behavior=".ParallaxSubtitleBehaviour" />
@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="DLI"
+        android:text="@string/code_holder"
         android:textColor="@android:color/white"
         app:view_behavior=".ParallaxTitleBehaviour"
         android:layout_alignTop="@+id/img_to_line"
@@ -89,7 +89,7 @@
         android:layout_marginLeft="10dp"
         android:maxLines="3"
         android:singleLine="false"
-        android:text="Đà Lạt"
+        android:text="@string/choose_airport"
         android:textColor="@android:color/white"
         app:minTextSize="13sp"
         app:view_behavior=".ParallaxSubtitleBehaviour" />
@@ -100,7 +100,7 @@
         android:layout_height="60dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="145dp"
+        android:layout_marginRight="160dp"
         android:layout_marginTop="80dp" />
 
 
@@ -352,6 +352,8 @@
         android:layout_above="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
         android:background="@drawable/shadow_bg"
         android:orientation="horizontal"
         app:view_behavior=".ParallaxTitleBehaviour">
@@ -360,6 +362,7 @@
             android:id="@+id/rl_departure_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+
             android:layout_weight="1"
             android:background="@drawable/shadow_bg_color"
             android:orientation="vertical">
