@@ -20,6 +20,7 @@ import com.sackcentury.shinebuttonlib.ShineButton;
 import com.savvi.rangedatepicker.CalendarPickerView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import greco.lorenzo.com.lgsnackbar.LGSnackbarManager;
@@ -52,6 +53,13 @@ public class PickDateActivity extends AppCompatActivity {
                 LGSnackBarThemeManager.LGSnackbarThemeName.SHINE);
         overridePendingTransition(R.anim.appearance_go_in, R.anim.appearance_go_out);
         Iconify.with(new FontAwesomeModule());
+        final Calendar next3Year = Calendar.getInstance();
+        next3Year.add(Calendar.YEAR, 30);
+
+        final Calendar currentYear = Calendar.getInstance();
+
+
+
         initView();
         initEvent();
 
@@ -64,14 +72,14 @@ public class PickDateActivity extends AppCompatActivity {
         if (type == MainActivity.ONE_WAY_TYPE) {
             isRoundTrip = false;
             oneWayUI();
-            mCalendarPickerView.init(new Date(), new Date(2099, 12, 30))
+            mCalendarPickerView.init(currentYear.getTime(), next3Year.getTime())
                     .inMode(CalendarPickerView.SelectionMode.SINGLE)
                     .withSelectedDate(new Date());
         }
         if (type == MainActivity.ROUND_TRIP_TYPE) {
             isRoundTrip = true;
             roundTripUI();
-            mCalendarPickerView.init(new Date(), new Date(2099, 12, 30))
+            mCalendarPickerView.init(currentYear.getTime(), next3Year.getTime())
                     .inMode(CalendarPickerView.SelectionMode.RANGE)
                     .withSelectedDate(new Date());
         }
