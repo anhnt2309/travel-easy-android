@@ -58,4 +58,19 @@ public class ApiManager extends BaseRequest {
         GET(context, url, params, type, null, myCallback);
     }
 
+    public static void getSearchResult(final Context context, double lat, double lg, MyDataCallback<ArrayList<AutoCompleteAirport>> myCallback) {
+        if (lat == 0 || lg == 0)
+            return;
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("latitude", lat);
+        params.put("longitude", lg);
+
+
+        Type type = new TypeToken<ArrayList<AutoCompleteAirport>>() {
+        }.getType();
+        String url = "airports/nearest-relevant";
+        GET(context, url, params, type, null, myCallback);
+    }
+
+
 }
