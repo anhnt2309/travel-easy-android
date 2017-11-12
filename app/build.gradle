@@ -93,6 +93,9 @@ dependencies {
 
     compile 'me.grantland:autofittextview:0.2.+'
 
+    //menu
+    compile 'nl.psdcompany:duo-navigation-drawer:2.0.6'
+
     compile project(path: ':library')
 }
 
