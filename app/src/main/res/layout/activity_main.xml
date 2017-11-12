@@ -29,22 +29,37 @@
         tools:ignore="MissingPrefix" />
 
 
-    <com.github.badoualy.datepicker.DatePickerTimeline
-        android:id="@+id/datepicker"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        androida:layout_marginBottom="200dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:minWidth="300dp"
-        android:nestedScrollingEnabled="true"
-        android:visibility="gone"
-        app:mti_bgLblDateSelectedColor="@color/page3"
-        app:mti_followScroll="true"
-        app:mti_primaryColor="@color/app_primary_color"
-        app:mti_primaryDarkColor="@color/light_gray_inactive_icon"
-        app:mti_ringLblDateSelectedColor="@color/page3" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/page3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@drawable/cloud_bg1">
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="@color/white">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="260dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/subtitle"
+                app:lottie_fileName="swipe_left.json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </com.redbooth.WelcomePageLayout>
