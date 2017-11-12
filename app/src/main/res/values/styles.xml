@@ -60,6 +60,9 @@ Contact: Txus Ballesteros <txus.ballesteros@gmail.com>
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
+    <style name="text_subtitle_color" parent="text_subtitle">
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
