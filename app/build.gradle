@@ -96,6 +96,10 @@ dependencies {
     //menu
     compile 'nl.psdcompany:duo-navigation-drawer:2.0.6'
 
+    compile 'com.tapadoo.android:alerter:2.0.1'
+
+    compile 'com.airbnb.android:lottie:2.2.5'
+
     compile project(path: ':library')
 }
 
