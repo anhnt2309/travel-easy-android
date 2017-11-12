@@ -59,7 +59,6 @@ public class PickDateActivity extends AppCompatActivity {
         final Calendar currentYear = Calendar.getInstance();
 
 
-
         initView();
         initEvent();
 
@@ -91,10 +90,14 @@ public class PickDateActivity extends AppCompatActivity {
         departure.setTime(departTime);
         departDate = departure;
         mCalendarPickerView.selectDate(departure);
-        displayDepartDate(departure);
+        if (isRoundTrip)
+            displayDepartDate(departure);
+        if (!isRoundTrip)
+            displayDepartDate2(departure);
 
         Long returnTime = intent.getLongExtra(RETURN_DATE_DATE, 0);
         if (returnTime == 0) {
+            oneWayUI();
             return;
         }
         Date returnD = new Date();
