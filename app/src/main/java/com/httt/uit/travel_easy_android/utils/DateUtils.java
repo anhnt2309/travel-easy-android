@@ -35,4 +35,9 @@ public class DateUtils {
         dateVn += date.getDate() + " tháng " + month;
         return dateVn;
     }
+
+    public static String getSearchDate(Date date) {
+        String returnDate = (date.getYear() - 100 + 2000) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        return returnDate;
+    }
 }
