@@ -1,44 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.redbooth.WelcomePageLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+
     tools:context="com.httt.uit.travel_easy_android.MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/grp_from_to"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/rl_round_trip"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/shadow_bg"
-            android:visibility="visible">
-            <View
-                android:id="@+id/divider"
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:background="@color/light_gray" />
+            android:id="@+id/grp_from_to"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_background">
+
+            <com.sackcentury.shinebuttonlib.ShineButton
+                android:id="@+id/shine_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@android:color/darker_gray"
+                app:allow_random_color="false"
+                app:big_shine_color="@color/app_primary_color"
+                app:btn_color="@android:color/darker_gray"
+                app:btn_fill_color="@color/app_primary_color"
+                app:click_animation_duration="200"
+                app:enable_flashing="false"
+                app:shine_animation_duration="1500"
+                app:shine_count="8"
+                app:shine_turn_angle="10"
+                app:siShape="@raw/ic_checked"
+                app:small_shine_color="@color/page3"
+                app:small_shine_offset_angle="20"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp" />
+
             <RelativeLayout
+                android:id="@+id/rl_round_trip"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toLeftOf="@id/divider"
-                android:background="@drawable/shadow_bg_color">
+                android:layout_height="65dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/shadow_bg"
+                android:visibility="visible">
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/light_gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/divider"
+                    android:background="@drawable/shadow_bg_color">
+
+                    <TextView
+                        android:id="@+id/tv_day_depart"
+                        style="@style/text_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/departure_date"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/tv_date_depart"
+                        style="@style/text_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_day_depart"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/fa_custom_pick_date"
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/divider"
+                    android:background="@drawable/shadow_bg_color_right">
+
+                    <TextView
+                        android:id="@+id/tv_day_return"
+                        style="@style/text_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/return_date"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/tv_date_return"
+                        style="@style/text_subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_day_return"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/fa_custom_pick_date"
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/ic_circle_calendar" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_one_way"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/shadow_bg_color_full"
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
-                    android:id="@+id/tv_day_depart"
+                    android:id="@+id/tv_day_depart2"
                     style="@style/text_subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginBottom="0dp"
                     android:layout_marginTop="5dp"
                     android:text="@string/departure_date"
@@ -47,140 +158,48 @@
                     android:textStyle="bold" />
 
                 <com.joanzapata.iconify.widget.IconTextView
-                    android:id="@+id/tv_date_depart"
+                    android:id="@+id/tv_date_depart2"
                     style="@style/text_subtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_day_depart"
+                    android:layout_below="@id/tv_day_depart2"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="2dp"
                     android:text="@string/fa_custom_pick_date"
                     android:textColor="@color/black"
                     android:textSize="13dp" />
+
             </RelativeLayout>
-
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@id/divider"
-                android:background="@drawable/shadow_bg_color_right">
-
-                <TextView
-                    android:id="@+id/tv_day_return"
-                    style="@style/text_subtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/return_date"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <com.joanzapata.iconify.widget.IconTextView
-                    android:id="@+id/tv_date_return"
-                    style="@style/text_subtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_day_return"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/fa_custom_pick_date"
-                    android:textColor="@color/black"
-                    android:textSize="13dp" />
-            </RelativeLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:src="@mipmap/ic_circle_calendar" />
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_one_way"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="35dp"
-            android:background="@drawable/shadow_bg_color_full"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:layout_height="5dp"
+            android:background="@color/page3_50">
 
-            <TextView
-                android:id="@+id/tv_day_depart2"
-                style="@style/text_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="0dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/departure_date"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        </View>
 
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/tv_date_depart2"
-                style="@style/text_subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_day_depart2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="2dp"
-                android:text="@string/fa_custom_pick_date"
-                android:textColor="@color/black"
-                android:textSize="13dp" />
-
-        </RelativeLayout>
-
-    </RelativeLayout>
+        <com.savvi.rangedatepicker.CalendarPickerView
+            android:id="@+id/calendar_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/grp_from_to"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scrollbarStyle="outsideOverlay"
+            app:tsquare_dayTextColor="@color/app_primary_color"
+            app:tsquare_displayHeader="true"
+            app:tsquare_dividerColor="@color/transparent"
+            app:tsquare_headerTextColor="@color/page3"
+            app:tsquare_titleTextColor="@color/black" />
 
 
-    <com.savvi.rangedatepicker.CalendarPickerView
-        android:id="@+id/calendar_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/grp_from_to"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:scrollbarStyle="outsideOverlay"
-        app:tsquare_dayTextColor="@color/app_primary_color"
-        app:tsquare_displayHeader="true"
-        app:tsquare_dividerColor="@color/transparent"
-        app:tsquare_headerTextColor="@color/page3"
-        app:tsquare_titleTextColor="@color/black" />
-
-    <com.sackcentury.shinebuttonlib.ShineButton
-        android:id="@+id/shine_button"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="2dp"
-        android:src="@android:color/darker_gray"
-        app:allow_random_color="false"
-        app:big_shine_color="@color/app_primary_color"
-        app:btn_color="@android:color/darker_gray"
-        app:btn_fill_color="@color/app_primary_color"
-        app:click_animation_duration="200"
-        app:enable_flashing="false"
-        app:shine_animation_duration="1500"
-        app:shine_count="8"
-        app:shine_turn_angle="10"
-        app:siShape="@raw/ic_checked"
-        app:small_shine_color="@color/page3"
-        app:small_shine_offset_angle="20" />
-
-</com.redbooth.WelcomePageLayout>
+    </LinearLayout>
+</LinearLayout>

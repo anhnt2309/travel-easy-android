@@ -6,14 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:background="@color/white">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@drawable/ic_background">
     <com.sackcentury.shinebuttonlib.ShineButton
         android:id="@+id/shine_button"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
-
         android:src="@android:color/darker_gray"
         app:allow_random_color="false"
         app:big_shine_color="@color/app_primary_color"
@@ -92,7 +96,7 @@
             android:textColor="@color/black"
             android:textSize="12sp" />
     </LinearLayout>
-
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
@@ -103,7 +107,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="3"
         android:orientation="vertical">
 
         <com.joanzapata.iconify.widget.IconTextView
