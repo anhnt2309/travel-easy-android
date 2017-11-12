@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -27,13 +29,17 @@ import com.httt.uit.travel_easy_android.animators.ChatAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.InSyncAnimator;
 import com.httt.uit.travel_easy_android.animators.RocketAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.RocketFlightAwayAnimator;
+import com.httt.uit.travel_easy_android.manager.ApiManager;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
+import com.httt.uit.travel_easy_android.model.FlightResults;
+import com.httt.uit.travel_easy_android.request.MyDataCallback;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.redbooth.WelcomeCoordinatorLayout;
+import com.tapadoo.alerter.Alerter;
 
 
 import java.util.ArrayList;
@@ -58,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int ORIGIN_AIRPORT_REQUEST = 1238;
     public static final int DESTINATION_AIRPORT_REQUEST = 1239;
     public static final String FLIGHT_TYPE_CODE = "FLIGHT_TYPE_CODE";
+    public static final String DEFAULT_CURRENCY = "VND";
 
     public static final int ONE_WAY_TYPE = 1236;
     public static final int ROUND_TRIP_TYPE = 1237;
@@ -103,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
     private AutofitTextView tvOriginAirport3;
     private TextView tvDestinationCode3;
     private AutofitTextView tvDestinationAirport3;
+    private FloatingActionButton doneButton;
 
     private int rbId = R.id.rb_round_trip;
     private int spInfantMax = 0;
@@ -132,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );
+
 
         initializeListeners();
         initializePages();
@@ -230,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
         tvAppName = (TextView) findViewById(R.id.custom_switcher);
         tvCommandScene2 = (TextView) findViewById(R.id.txt_command);
         spClass = (Spinner) findViewById(R.id.sp_class);
-        datepicker = (DatePickerTimeline) findViewById(R.id.datepicker);
+//        datepicker = (DatePickerTimeline) findViewById(R.id.datepicker);
         rdbType = (RadioRealButtonGroup) findViewById(R.id.rbg_fly_type);
         lnReturnDate = (RelativeLayout) findViewById(R.id.ln_return_date);
         lnDepartDate = (RelativeLayout) findViewById(R.id.rl_departure_date);
@@ -241,6 +250,7 @@ public class MainActivity extends AppCompatActivity {
         spAdults = (StepperTouch) findViewById(R.id.stepper_adults);
         spChildrens = (StepperTouch) findViewById(R.id.stepper_childrens);
         spInfants = (StepperTouch) findViewById(R.id.stepper_infants);
+        doneButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
 
         tvOriginCode3 = (TextView) findViewById(R.id.txt_from_code);
         tvOriginAirport3 = (AutofitTextView) findViewById(R.id.txt_from_city);
@@ -348,6 +358,110 @@ public class MainActivity extends AppCompatActivity {
 
         spInfants.stepper.setMin(0);
         spInfants.stepper.setMax(1);
+
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOriginAirport == null || mDestinationAirport == null) {
+                    if (mOriginAirport == null)
+                        Alerter.create(MainActivity.this)
+                                .setTitle("Lỗi")
+                                .setText("Chưa chọn SÂN BAY ĐI. Bấm vào đây để chọn!!!!")
+                                .enableSwipeToDismiss()
+                                .setTitleAppearance(R.style.text_title)
+                                .setTextAppearance(R.style.text_subtitle_color)
+                                .setBackgroundColorRes(R.color.color_red) // or setBackgroundColorInt(Color.CYAN)
+                                .setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        grpOrigin.callOnClick();
+                                        if (Alerter.isShowing())
+                                            Alerter.hide();
+                                    }
+                                })
+                                .show();
+                    if (mDestinationAirport == null)
+                        Alerter.create(MainActivity.this)
+                                .setTitle("Lỗi")
+                                .setText("Chưa chọn SÂN BAY ĐẾN. Bấm vào đây để chọn!!!!")
+                                .setTitleAppearance(R.style.text_title)
+                                .setTextAppearance(R.style.text_subtitle_color)
+                                .enableSwipeToDismiss()
+                                .setBackgroundColorRes(R.color.color_red) // or setBackgroundColorInt(Color.CYAN)
+                                .setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        grpDestination.callOnClick();
+                                        if (Alerter.isShowing())
+                                            Alerter.hide();
+                                    }
+                                })
+                                .show();
+                    return;
+                }
+                int adult = spAdults.stepper.getValue();
+                int children = spChildrens.stepper.getValue();
+                int infant = spInfants.stepper.getValue();
+                FlightClass selectedClass = (FlightClass) spClass.getSelectedItem();
+                String selectedClassString = selectedClass.getClassSearch();
+
+                //round trip
+                if (rbId == R.id.rb_round_trip) {
+                    if (mDepartDate == null || mReturnDate == null) {
+                        Alerter.create(MainActivity.this)
+                                .setTitle("Lỗi")
+                                .setText("Chưa chọn THỜI GIAN CHUYẾN BAY. Bấm vào đây để chọn!!!!")
+                                .enableSwipeToDismiss()
+                                .setTitleAppearance(R.style.text_title)
+                                .setTextAppearance(R.style.text_subtitle_color)
+                                .setBackgroundColorRes(R.color.color_red) // or setBackgroundColorInt(Color.CYAN)
+                                .setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        grpDate.callOnClick();
+                                        if (Alerter.isShowing())
+                                            Alerter.hide();
+                                    }
+                                })
+                                .show();
+                        return;
+                    }
+                    String departDate = DateUtils.getSearchDate(mDepartDate);
+                    String returnDate = DateUtils.getSearchDate(mReturnDate);
+                    //call api
+                    ApiManager.getSearchResult(MainActivity.this, mOriginAirport.value, mDestinationAirport.value, departDate, returnDate, adult, children, infant, DEFAULT_CURRENCY, selectedClassString, resultsCallBack);
+                }
+
+                //one-way
+                if (rbId == R.id.rb_one_way) {
+                    if (mDepartDate == null) {
+                        Alerter.create(MainActivity.this)
+                                .setTitle("Lỗi")
+                                .setText("Chưa chọn THỜI GIAN CHUYẾN BAY. Bấm vào đây để chọn!!!!")
+                                .enableSwipeToDismiss()
+                                .setTitleAppearance(R.style.text_title)
+                                .setTextAppearance(R.style.text_subtitle_color)
+                                .setBackgroundColorRes(R.color.color_red) // or setBackgroundColorInt(Color.CYAN)
+                                .setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        grpDate.callOnClick();
+                                        if (Alerter.isShowing())
+                                            Alerter.hide();
+                                    }
+                                })
+                                .show();
+                        return;
+                    }
+
+                    //call api
+                    String departDate = DateUtils.getSearchDate(mDepartDate);
+                    ApiManager.getSearchResult(MainActivity.this, mOriginAirport.value, mDestinationAirport.value, departDate, "", adult, children, infant, DEFAULT_CURRENCY, selectedClassString, resultsCallBack);
+                }
+            }
+        });
+
+
     }
 
     public void initAirportEvent() {
@@ -440,7 +554,7 @@ public class MainActivity extends AppCompatActivity {
         final int colorPage3 = ResourcesCompat.getColor(resources, R.color.page3, getTheme());
         final int colorPage4 = ResourcesCompat.getColor(resources, R.color.page4, getTheme());
         backgroundAnimator = ValueAnimator
-                .ofObject(new ArgbEvaluator(), colorPage1, colorPage2, colorPage3,colorPage4);
+                .ofObject(new ArgbEvaluator(), colorPage1, colorPage2, colorPage3, colorPage4);
         backgroundAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -542,4 +656,22 @@ public class MainActivity extends AppCompatActivity {
             tvDestinationAirportName.setText(model.airport_name);
         }
     }
+
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+    // Callback
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+
+    MyDataCallback<FlightResults> resultsCallBack = new MyDataCallback<FlightResults>() {
+        @Override
+        public void success(FlightResults flightResults) {
+            if (flightResults == null)
+                return;
+            Log.e("_x", flightResults.getCurrency());
+        }
+
+        @Override
+        public void failure(Throwable t) {
+            t.printStackTrace();
+        }
+    };
 }
