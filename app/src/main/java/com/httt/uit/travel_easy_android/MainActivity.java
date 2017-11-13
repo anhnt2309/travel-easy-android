@@ -39,6 +39,7 @@ import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.redbooth.WelcomeCoordinatorLayout;
+import com.sackcentury.shinebuttonlib.ShineButton;
 import com.tapadoo.alerter.Alerter;
 
 
@@ -105,12 +106,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvDestinationCity;
     private TextView tvDestinationCode;
     private ImageView imgDestinationCity;
+    private ShineButton sbSwitch;
 
     private TextView tvOriginCode3;
     private AutofitTextView tvOriginAirport3;
     private TextView tvDestinationCode3;
     private AutofitTextView tvDestinationAirport3;
     private FloatingActionButton doneButton;
+
+    private LinearLayout grpLoadingScreen;
 
     private int rbId = R.id.rb_round_trip;
     private int spInfantMax = 0;
@@ -251,6 +255,10 @@ public class MainActivity extends AppCompatActivity {
         spChildrens = (StepperTouch) findViewById(R.id.stepper_childrens);
         spInfants = (StepperTouch) findViewById(R.id.stepper_infants);
         doneButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
+        sbSwitch = (ShineButton) findViewById(R.id.shine_button_switch);
+
+        grpLoadingScreen = (LinearLayout) findViewById(R.id.grpLoadingScreen);
+        grpLoadingScreen.setVisibility(View.GONE);
 
         tvOriginCode3 = (TextView) findViewById(R.id.txt_from_code);
         tvOriginAirport3 = (AutofitTextView) findViewById(R.id.txt_from_city);
@@ -366,7 +374,7 @@ public class MainActivity extends AppCompatActivity {
                     if (mOriginAirport == null)
                         Alerter.create(MainActivity.this)
                                 .setTitle("Lỗi")
-                                .setText("Chưa chọn SÂN BAY ĐI. Bấm vào đây để chọn!!!!")
+                                .setText("Bạn chưa chọn SÂN BAY ĐI. Bấm vào đây để chọn!!!!")
                                 .enableSwipeToDismiss()
                                 .setTitleAppearance(R.style.text_title)
                                 .setTextAppearance(R.style.text_subtitle_color)
@@ -383,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
                     if (mDestinationAirport == null)
                         Alerter.create(MainActivity.this)
                                 .setTitle("Lỗi")
-                                .setText("Chưa chọn SÂN BAY ĐẾN. Bấm vào đây để chọn!!!!")
+                                .setText("Bạn chưa chọn SÂN BAY ĐẾN. Bấm vào đây để chọn!!!!")
                                 .setTitleAppearance(R.style.text_title)
                                 .setTextAppearance(R.style.text_subtitle_color)
                                 .enableSwipeToDismiss()
@@ -410,7 +418,7 @@ public class MainActivity extends AppCompatActivity {
                     if (mDepartDate == null || mReturnDate == null) {
                         Alerter.create(MainActivity.this)
                                 .setTitle("Lỗi")
-                                .setText("Chưa chọn THỜI GIAN CHUYẾN BAY. Bấm vào đây để chọn!!!!")
+                                .setText("Bạn chưa chọn THỜI GIAN CHO CHUYẾN BAY. Bấm vào đây để chọn!!!!")
                                 .enableSwipeToDismiss()
                                 .setTitleAppearance(R.style.text_title)
                                 .setTextAppearance(R.style.text_subtitle_color)
@@ -429,6 +437,7 @@ public class MainActivity extends AppCompatActivity {
                     String departDate = DateUtils.getSearchDate(mDepartDate);
                     String returnDate = DateUtils.getSearchDate(mReturnDate);
                     //call api
+                    grpLoadingScreen.setVisibility(View.VISIBLE);
                     ApiManager.getSearchResult(MainActivity.this, mOriginAirport.value, mDestinationAirport.value, departDate, returnDate, adult, children, infant, DEFAULT_CURRENCY, selectedClassString, resultsCallBack);
                 }
 
@@ -437,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
                     if (mDepartDate == null) {
                         Alerter.create(MainActivity.this)
                                 .setTitle("Lỗi")
-                                .setText("Chưa chọn THỜI GIAN CHUYẾN BAY. Bấm vào đây để chọn!!!!")
+                                .setText("Bạn hưa chọn THỜI GIAN CHO CHUYẾN BAY. Bấm vào đây để chọn!!!!")
                                 .enableSwipeToDismiss()
                                 .setTitleAppearance(R.style.text_title)
                                 .setTextAppearance(R.style.text_subtitle_color)
@@ -456,11 +465,39 @@ public class MainActivity extends AppCompatActivity {
 
                     //call api
                     String departDate = DateUtils.getSearchDate(mDepartDate);
+                    grpLoadingScreen.setVisibility(View.VISIBLE);
                     ApiManager.getSearchResult(MainActivity.this, mOriginAirport.value, mDestinationAirport.value, departDate, "", adult, children, infant, DEFAULT_CURRENCY, selectedClassString, resultsCallBack);
                 }
             }
         });
 
+        sbSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sbSwitch.setChecked(false);
+                if (mOriginAirport == null && mDestinationAirport == null)
+                    return;
+                if(mOriginAirport == null && mDestinationAirport != null){
+                    AutoCompleteAirport tempModel1 = null;
+                    tempModel1 = mDestinationAirport;
+                    mDestinationAirport = mOriginAirport;
+                    mOriginAirport = tempModel1;
+                    displayOriginAirport(mOriginAirport);
+                    displayDestinationAirport(mDestinationAirport);
+                    return;
+                }
+                AutoCompleteAirport tempModel = null;
+                tempModel = mOriginAirport;
+                mOriginAirport = mDestinationAirport;
+                mDestinationAirport = tempModel;
+                displayOriginAirport(mOriginAirport);
+                displayDestinationAirport(mDestinationAirport);
+
+
+
+
+            }
+        });
 
     }
 
@@ -606,8 +643,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayOriginAirport(AutoCompleteAirport model) {
-        if (model == null)
+        if (model == null) {
+            tvOriginCode.setText(getResources().getString(R.string.code_holder));
+            tvOriginAiportName.setText(getResources().getString(R.string.choose_airport));
+            tvOriginCity.setText(getResources().getString(R.string.city_holder));
             return;
+        }
         if (tvOriginCity == null || tvOriginAiportName == null || tvOriginCode == null || imgOriginCity == null)
             return;
         tvOriginCode3.setText(model.value);
@@ -632,8 +673,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayDestinationAirport(AutoCompleteAirport model) {
-        if (model == null)
+        if (model == null) {
+            tvDestinationCode.setText(getResources().getString(R.string.code_holder));
+            tvDestinationAirportName.setText(getResources().getString(R.string.choose_airport));
+            tvDestinationCity.setText(getResources().getString(R.string.city_holder));
             return;
+        }
         if (tvDestinationAirportName == null || tvDestinationCity == null || tvDestinationCode == null || imgDestinationCity == null)
             return;
 
@@ -666,6 +711,7 @@ public class MainActivity extends AppCompatActivity {
         public void success(FlightResults flightResults) {
             if (flightResults == null)
                 return;
+//            grpLoadingScreen.setVisibility(View.GONE);
             Log.e("_x", flightResults.getCurrency());
         }
 
