@@ -22,4 +22,5 @@
     <string name="code_holder">XXX</string>
     <string name="city_holder">Thành Phố/Địa Điểm</string>
     <string name="no_airport">{fa-spinner spin} Không có sân bay.</string>
+    <string name="wait_promt">Bạn vui lòng chờ một lát nhé . . .</string>
 </resources>
