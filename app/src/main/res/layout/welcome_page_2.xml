@@ -126,6 +126,33 @@
         android:src="@drawable/avatar_maggie2"
         app:view_behavior=".ParallaxTitleBehaviour" />
 
+    <com.sackcentury.shinebuttonlib.ShineButton
+        android:id="@+id/shine_button_switch"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/card1_page2"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="165dp"
+        android:layout_toRightOf="@id/card2_page2"
+        android:src="@android:color/darker_gray"
+        app:allow_random_color="false"
+        app:big_shine_color="@color/app_primary_color"
+        app:btn_color="@android:color/white"
+        app:btn_fill_color="@color/app_primary_color"
+        app:click_animation_duration="200"
+        app:enable_flashing="false"
+        app:shine_animation_duration="1500"
+        app:shine_count="8"
+        app:shine_turn_angle="10"
+        app:siShape="@raw/ic_switch"
+        app:small_shine_color="@color/page3"
+        app:small_shine_offset_angle="20"
+
+        />
+
+
     <TextView
         android:id="@+id/txt_from"
         style="@style/text_title"
@@ -137,7 +164,7 @@
         android:textSize="25sp"
         app:view_behavior=".ParallaxTitleBehaviour" />
 
-    <RelativeLayout
+    <com.redbooth.WelcomePageLayout
         android:id="@+id/grpOrigin"
         android:layout_width="match_parent"
         android:layout_height="140dp"
@@ -214,7 +241,9 @@
             android:text="@string/choose_airport"
             android:textColor="@color/black"
             android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+
+            />
 
         <ImageView
             android:id="@+id/img_city"
@@ -242,7 +271,7 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
 
-    </RelativeLayout>
+    </com.redbooth.WelcomePageLayout>
 
     <TextView
         android:id="@+id/txt_to"
@@ -254,7 +283,7 @@
         android:textSize="25sp"
         app:view_behavior=".ParallaxTitleBehaviour" />
 
-    <RelativeLayout
+    <com.redbooth.WelcomePageLayout
         android:id="@+id/grpDestination"
         android:layout_width="match_parent"
         android:layout_height="140dp"
@@ -317,7 +346,7 @@
         <me.grantland.widget.AutofitTextView
             android:id="@+id/txt_airport_name_return"
             style="@style/text_subtitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_return_text"
             android:layout_marginLeft="5dp"
@@ -356,5 +385,5 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
 
-    </RelativeLayout>
+    </com.redbooth.WelcomePageLayout>
 </com.redbooth.WelcomePageLayout>
