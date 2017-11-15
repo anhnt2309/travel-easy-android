@@ -149,8 +149,7 @@
         app:siShape="@raw/ic_switch"
         app:small_shine_color="@color/page3"
         app:small_shine_offset_angle="20"
-
-        />
+        app:view_behavior=".ParallaxTitleBehaviour" />
 
 
     <TextView

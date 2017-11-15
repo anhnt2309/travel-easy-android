@@ -87,6 +87,7 @@
             app:small_shine_offset_angle="20" />
 
         <TextView
+            android:id="@+id/tv_VN"
             style="@style/text_subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -141,6 +142,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:layout_marginBottom="5dp"
                 android:clipToPadding="false"
                 android:divider="@color/transparent"
@@ -195,6 +198,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:divider="@color/transparent"
                 android:dividerHeight="10dp"
                 tools:listitem="@layout/item_airport_search">
