@@ -4,7 +4,7 @@ repositories {
     jcenter()
     mavenCentral()
     maven {
-        url "http://dl.bintray.com/glomadrian/maven"
+       url "http://dl.bintray.com/glomadrian/maven"
     }
 }
 
@@ -100,6 +100,8 @@ dependencies {
 
     compile 'com.airbnb.android:lottie:2.2.5'
 
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
 
     compile project(path: ':library')
 }
