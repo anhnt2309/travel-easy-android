@@ -24,6 +24,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import com.arlib.floatingsearchview.FloatingSearchView;
@@ -65,6 +66,7 @@ public class SearchAirportActivity extends AppCompatActivity {
     private LocationManager mLocationManager;
     private IconTextView itvNear;
     private IconTextView itvFound;
+    private TextView tvVN;
     private boolean isNewInput = false;
 
     @Override
@@ -102,6 +104,7 @@ public class SearchAirportActivity extends AppCompatActivity {
         sbVN = (ShineButton) findViewById(R.id.shine_button_VN);
         itvFound = (IconTextView) findViewById(R.id.itv_found);
         itvNear = (IconTextView) findViewById(R.id.itv_near);
+        tvVN = (TextView) findViewById(R.id.tv_VN);
     }
 
     public void initEvent() {
@@ -190,6 +193,12 @@ public class SearchAirportActivity extends AppCompatActivity {
                         finishMyActivity();
                     }
                 }, 600);
+            }
+        });
+        tvVN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sbVN.callOnClick();
             }
         });
     }
