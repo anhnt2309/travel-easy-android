@@ -9,6 +9,8 @@ public class Itineraries {
 
     private Inbound inbound;
 
+    public Fare fare;
+
     public Outbound getOutbound ()
     {
         return outbound;

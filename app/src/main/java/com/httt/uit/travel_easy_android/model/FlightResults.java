@@ -1,20 +1,22 @@
 package com.httt.uit.travel_easy_android.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by TuanAnh on 11/12/17.
  */
 
 public class FlightResults {
-    private Results[] results;
+    private ArrayList<Results> results;
 
     private String currency;
 
-    public Results[] getResults ()
+    public ArrayList<Results> getResults ()
     {
         return results;
     }
 
-    public void setResults (Results[] results)
+    public void setResults (ArrayList<Results> results)
     {
         this.results = results;
     }

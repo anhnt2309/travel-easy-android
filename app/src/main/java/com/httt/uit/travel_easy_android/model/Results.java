@@ -1,5 +1,7 @@
 package com.httt.uit.travel_easy_android.model;
 
+import java.util.ArrayList;
+
 /**
  * Created by TuanAnh on 11/12/17.
  */
@@ -7,7 +9,7 @@ package com.httt.uit.travel_easy_android.model;
 public class Results {
     private Fare fare;
 
-    private Itineraries[] itineraries;
+    private ArrayList<Itineraries> itineraries;
 
     public Fare getFare ()
     {
@@ -19,12 +21,12 @@ public class Results {
         this.fare = fare;
     }
 
-    public Itineraries[] getItineraries ()
+    public ArrayList<Itineraries> getItineraries ()
     {
         return itineraries;
     }
 
-    public void setItineraries (Itineraries[] itineraries)
+    public void setItineraries (ArrayList<Itineraries> itineraries)
     {
         this.itineraries = itineraries;
     }
