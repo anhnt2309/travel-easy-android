@@ -1,17 +1,21 @@
 
 package com.httt.uit.travel_easy_android;
 
+import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewAnimationUtils;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -24,6 +28,7 @@ import com.github.badoualy.datepicker.DatePickerTimeline;
 import com.google.gson.Gson;
 import com.httt.uit.travel_easy_android.activities.PickDateActivity;
 import com.httt.uit.travel_easy_android.activities.SearchAirportActivity;
+import com.httt.uit.travel_easy_android.activities.SearchResultActivity;
 import com.httt.uit.travel_easy_android.adapters.ClassSpinnerAdapter;
 import com.httt.uit.travel_easy_android.animators.ChatAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.InSyncAnimator;
@@ -33,6 +38,9 @@ import com.httt.uit.travel_easy_android.manager.ApiManager;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
 import com.httt.uit.travel_easy_android.model.FlightResults;
+import com.httt.uit.travel_easy_android.model.Flights;
+import com.httt.uit.travel_easy_android.model.Itineraries;
+import com.httt.uit.travel_easy_android.model.Results;
 import com.httt.uit.travel_easy_android.request.MyDataCallback;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
@@ -66,6 +74,20 @@ public class MainActivity extends AppCompatActivity {
     public static final int DESTINATION_AIRPORT_REQUEST = 1239;
     public static final String FLIGHT_TYPE_CODE = "FLIGHT_TYPE_CODE";
     public static final String DEFAULT_CURRENCY = "VND";
+    public static final int DEFAULT_ROUND_TRIP = 1;
+    public static final int DEFAULT_ONE_WAY = 0;
+
+    public static final String ORIGIN_AIRPORT_MODEL = "ORIGIN_AIRPORT_MODEL";
+    public static final String DEPART_DATE_MODEL = "DEPART_DATE_MODEL";
+    public static final String DESTINATION_AIRPORT_MODEL = "DESTINATION_AIRPORT_MODEL";
+    public static final String RETURN_DATE_MODEL = "RETURN_DATE_MODEL";
+    public static final String FLIGHT_TYPE_STRING = "FLIGHT_TYPE_STRING";
+    public static final String FLIGHT_ADULT_STRING = "FLIGHT_ADULT_STRING";
+    public static final String FLIGHT_CHILDREN_STRING = "FLIGHT_CHILDREN_STRING";
+    public static final String FLIGHT_INFANT_STRING = "FLIGHT_INFANT_STRING";
+    public static final String FLIGHT_CLASS_MODEL = "FLIGHT_CLASS_MODEL";
+    public static final String FLIGHT_CURRENCY_STRING = "FLIGHT_CURRENCY_STRING";
+    public static final String FLIGHT_RESULT_MODEL = "FLIGHT_RESULT_MODEL";
 
     public static final int ONE_WAY_TYPE = 1236;
     public static final int ROUND_TRIP_TYPE = 1237;
@@ -122,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
     private Date mReturnDate;
     private AutoCompleteAirport mOriginAirport;
     private AutoCompleteAirport mDestinationAirport;
+    private int adult;
+    private int children;
+    private int infant;
+    private FlightClass selectedClass;
 
 
     @Override
@@ -407,10 +433,10 @@ public class MainActivity extends AppCompatActivity {
                                 .show();
                     return;
                 }
-                int adult = spAdults.stepper.getValue();
-                int children = spChildrens.stepper.getValue();
-                int infant = spInfants.stepper.getValue();
-                FlightClass selectedClass = (FlightClass) spClass.getSelectedItem();
+                adult = spAdults.stepper.getValue();
+                children = spChildrens.stepper.getValue();
+                infant = spInfants.stepper.getValue();
+                selectedClass = (FlightClass) spClass.getSelectedItem();
                 String selectedClassString = selectedClass.getClassSearch();
 
                 //round trip
@@ -477,7 +503,7 @@ public class MainActivity extends AppCompatActivity {
                 sbSwitch.setChecked(false);
                 if (mOriginAirport == null && mDestinationAirport == null)
                     return;
-                if(mOriginAirport == null && mDestinationAirport != null){
+                if (mOriginAirport == null && mDestinationAirport != null) {
                     AutoCompleteAirport tempModel1 = null;
                     tempModel1 = mDestinationAirport;
                     mDestinationAirport = mOriginAirport;
@@ -492,8 +518,6 @@ public class MainActivity extends AppCompatActivity {
                 mDestinationAirport = tempModel;
                 displayOriginAirport(mOriginAirport);
                 displayDestinationAirport(mDestinationAirport);
-
-
 
 
             }
@@ -711,13 +735,46 @@ public class MainActivity extends AppCompatActivity {
         public void success(FlightResults flightResults) {
             if (flightResults == null)
                 return;
-//            grpLoadingScreen.setVisibility(View.GONE);
-            Log.e("_x", flightResults.getCurrency());
+
+            startResultActivity(flightResults);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    grpLoadingScreen.setVisibility(View.GONE);
+                }
+            },500);
+
+
         }
 
         @Override
         public void failure(Throwable t) {
+
             t.printStackTrace();
         }
     };
+
+    public void startResultActivity(FlightResults flightResults) {
+        Intent intent = new Intent(MainActivity.this, SearchResultActivity.class);
+        intent.putExtra(ORIGIN_AIRPORT_MODEL, new Gson().toJson(mOriginAirport));
+        intent.putExtra(DESTINATION_AIRPORT_MODEL, new Gson().toJson(mDestinationAirport));
+        intent.putExtra(DEPART_DATE_MODEL, new Gson().toJson(mDepartDate));
+        intent.putExtra(RETURN_DATE_MODEL, new Gson().toJson(mReturnDate));
+        intent.putExtra(FLIGHT_CLASS_MODEL, new Gson().toJson(selectedClass));
+        intent.putExtra(FLIGHT_RESULT_MODEL, new Gson().toJson(flightResults));
+        intent.putExtra(FLIGHT_ADULT_STRING, adult);
+        intent.putExtra(FLIGHT_CHILDREN_STRING, children);
+        intent.putExtra(FLIGHT_INFANT_STRING, infant);
+        if (rbId == R.id.rb_round_trip)
+            intent.putExtra(FLIGHT_TYPE_STRING, DEFAULT_ROUND_TRIP);
+        if (rbId == R.id.rb_one_way)
+            intent.putExtra(FLIGHT_TYPE_STRING, DEFAULT_ONE_WAY);
+        intent.putExtra(FLIGHT_CURRENCY_STRING, DEFAULT_CURRENCY);
+
+        startActivity(intent);
+
+    }
+
+
 }

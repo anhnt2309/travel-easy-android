@@ -30,6 +30,9 @@
         <activity
             android:name=".activities.SearchAirportActivity"
             android:theme="@style/AppTheme.Transparent"></activity>
+        <activity
+            android:name=".activities.SearchResultActivity"
+            android:theme="@style/AppTheme.Transparent"></activity>
     </application>
 
 </manifest>
