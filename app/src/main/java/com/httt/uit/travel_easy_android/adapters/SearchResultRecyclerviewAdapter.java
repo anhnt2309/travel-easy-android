@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -76,6 +77,10 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        if (position == getItemCount() - 1) {
+            holder.grpContainer.setVisibility(View.INVISIBLE);
+            return;
+        }
         Itineraries itinerary = items.get(position);
         if (itinerary == null)
             return;
@@ -178,11 +183,11 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         holder.tvOutboundFLight.setText(obFlight);
         holder.tvOutboundDuration.setText(obDuration);
         if (hasStopFlight) {
-            priceDb = priceDb/4;
+            priceDb = priceDb / 4;
             holder.imgOutboundIndicator.setImageResource(R.mipmap.ic_dot_hasstop);
         }
         if (!hasStopFlight) {
-            priceDb = priceDb /2;
+            priceDb = priceDb / 2;
             holder.imgOutboundIndicator.setImageResource(R.mipmap.ic_dot_nonstop);
         }
 
@@ -212,7 +217,7 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return items.size() + 1;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -241,9 +246,11 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         public TextView tvOutboundFLight;
         public ImageView imgOutboundIndicator;
         public LinearLayout mGrpOutbound;
+        public RelativeLayout grpContainer;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            grpContainer = itemView.findViewById(R.id.grpContainer);
             tvPrice = (TextView) itemView.findViewById(R.id.tv_price);
             imgAirline = (ImageView) itemView.findViewById(R.id.img_airline);
 
