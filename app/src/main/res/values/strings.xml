@@ -24,4 +24,5 @@
     <string name="no_airport">{fa-spinner spin} Không có sân bay.</string>
     <string name="wait_promt">Bạn vui lòng chờ một lát nhé . . .</string>
     <string name="result_header_string">Kết quả tìm kiếm</string>
+    <string name="apply_string">Áp Dụng</string>
 </resources>

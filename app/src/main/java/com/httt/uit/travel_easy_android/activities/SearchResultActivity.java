@@ -2,6 +2,7 @@ package com.httt.uit.travel_easy_android.activities;
 
 import android.animation.Animator;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -52,6 +54,9 @@ public class SearchResultActivity extends AppCompatActivity {
     private RecyclerView rvResult;
     private LinearLayout mGrpReturn;
     private ShineButton sbBack;
+    private ShineButton sbFilter;
+    private RelativeLayout grpFilter;
+    private LinearLayout grpBtnApplyFilter;
 
     private AutoCompleteAirport mOriginAirport;
     private AutoCompleteAirport mDestinationAirport;
@@ -78,7 +83,7 @@ public class SearchResultActivity extends AppCompatActivity {
         fillUI();
 
         resolveResultModel(mFlightResults);
-        mResultAdapter = new SearchResultRecyclerviewAdapter(this,itinerariesArrayList, mType, mCurrency);
+        mResultAdapter = new SearchResultRecyclerviewAdapter(this, itinerariesArrayList, mType, mCurrency);
         rvResult.setAdapter(mResultAdapter);
         rvResult.setLayoutManager(new LinearLayoutManager(this));
 
@@ -100,7 +105,23 @@ public class SearchResultActivity extends AppCompatActivity {
         tvAdult = (TextView) findViewById(R.id.tv_adults);
         tvChildren = (TextView) findViewById(R.id.tv_childrens);
         tvInfant = (TextView) findViewById(R.id.tv_infants);
+        grpFilter = (RelativeLayout) findViewById(R.id.grpFilter);
+        sbFilter = (ShineButton) findViewById(R.id.shine_button_filter);
+        sbFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sbFilter.setChecked(false);
+                filterAnimation(grpFilter, grpFilter);
+            }
+        });
 
+        grpBtnApplyFilter = (LinearLayout) findViewById(R.id.grp_filter_apply);
+        grpBtnApplyFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterAnimationReverse(grpFilter, grpFilter);
+            }
+        });
         rvResult = (RecyclerView) findViewById(R.id.rv_results);
         mGrpReturn = (LinearLayout) findViewById(R.id.grpReturn);
         sbBack = (ShineButton) findViewById(R.id.shine_button_back);
@@ -145,7 +166,7 @@ public class SearchResultActivity extends AppCompatActivity {
             String returnDate = DateUtils.getDateDisplay(mReturnDate);
             tvReturnDate.setText(returnDate);
         }
-        if(mReturnDate == null)
+        if (mReturnDate == null)
             mGrpReturn.setVisibility(View.GONE);
 
         //detail
@@ -216,7 +237,14 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     public void filterAnimation(View view, ViewGroup layoutMain) {
-        int x = view.getRight();
+//        // Could optimize by reusing a temporary Rect instead of allocating a new one
+//        Rect bounds = new Rect();
+//        view.getDrawingRect(bounds);
+//        int x = bounds.centerX();
+//        int y = bounds.centerY();
+
+
+        int x = (view.getRight() + view.getLeft()) / 2;
         int y = view.getBottom();
 
         int startRadius = 0;
@@ -228,7 +256,38 @@ public class SearchResultActivity extends AppCompatActivity {
         }
 
         view.setVisibility(View.VISIBLE);
+        anim.setDuration(800);
         anim.start();
+    }
+
+    public void filterAnimationReverse(final View view, ViewGroup layoutMain) {
+        int x = (view.getRight() + view.getLeft()) / 2;
+        int y = view.getBottom();
+
+        int startRadius = (int) Math.hypot(layoutMain.getWidth(), layoutMain.getHeight());
+        int endRadius = 0;
+
+        Animator anim = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            anim = ViewAnimationUtils.createCircularReveal(view, x, y, startRadius, endRadius);
+        }
+
+        view.setVisibility(View.VISIBLE);
+        anim.setDuration(800);
+        anim.start();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        view.setVisibility(View.GONE);
+                    }
+                });
+            }
+        },800);
+
     }
 
     public void resolveResultModel(FlightResults flightResults) {
