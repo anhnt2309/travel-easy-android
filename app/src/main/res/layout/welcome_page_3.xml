@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"
         app:view_behavior=".AnimationLaunch" />
-4
+
     <ImageView
         android:id="@+id/img_to_line"
         android:layout_width="80dp"
