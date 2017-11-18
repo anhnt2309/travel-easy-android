@@ -25,4 +25,11 @@
     <string name="wait_promt">Bạn vui lòng chờ một lát nhé . . .</string>
     <string name="result_header_string">Kết quả tìm kiếm</string>
     <string name="apply_string">Áp Dụng</string>
+    <string name="flight_type"><u>Loại chuyến bay</u></string>
+    <string name="filter_price"><u>Giá vé</u></string>
+    <string name="filter_time"><u>Thời gian</u></string>
+    <string name="filter_time_depart">Chuyến đi</string>
+    <string name="filter_time_return">Chuyến Về</string>
+    <string name="filter_total_found">(Tìm thấy <b>%1$d</b> chuyến bay)</string>
+    <string name="filter_count">(<b>%1$d</b> chuyến bay)</string>
 </resources>
