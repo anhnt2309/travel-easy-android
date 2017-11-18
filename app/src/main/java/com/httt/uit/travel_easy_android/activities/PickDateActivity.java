@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.httt.uit.travel_easy_android.MainActivity;
 import com.httt.uit.travel_easy_android.R;
+import com.httt.uit.travel_easy_android.manager.CacheManager;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
@@ -62,6 +65,7 @@ public class PickDateActivity extends AppCompatActivity {
         initView();
         initEvent();
 
+
         Intent intent = getIntent();
         if (intent == null)
             return;
@@ -82,6 +86,7 @@ public class PickDateActivity extends AppCompatActivity {
                     .inMode(CalendarPickerView.SelectionMode.RANGE)
                     .withSelectedDate(new Date());
         }
+        displayGuide(isRoundTrip);
 
         Long departTime = intent.getLongExtra(DEPART_DATE_DATE, 0);
         if (departTime == 0)
@@ -97,7 +102,10 @@ public class PickDateActivity extends AppCompatActivity {
 
         Long returnTime = intent.getLongExtra(RETURN_DATE_DATE, 0);
         if (returnTime == 0) {
-            oneWayUI();
+            if (!isRoundTrip)
+                oneWayUI();
+            if (isRoundTrip)
+                roundTripUI();
             return;
         }
         Date returnD = new Date();
@@ -248,5 +256,54 @@ public class PickDateActivity extends AppCompatActivity {
     public void oneWayUI() {
         rlOneWay.setVisibility(View.VISIBLE);
         rlRoundTrip.setVisibility(View.GONE);
+    }
+
+    public void displayGuide(boolean isRoundTrip) {
+        String isShown = CacheManager.getStringCacheData(MainActivity.GUIDE_SCREEN_DATE);
+        if (isShown != null)
+            return;
+
+        new TapTargetSequence(PickDateActivity.this)
+                .targets(
+                        TapTarget.forView(findViewById(R.id.grpEmptyView), "Bấm vào đây để chọn ngày cho chuyến đi. \nChọn 1 ngày cho chuyến bay một chiều và 2 ngày cho chuyến bay khứ hồi ")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.app_primary_color)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(isRoundTrip ? findViewById(R.id.rl_round_trip) : findViewById(R.id.rl_one_way), "Ngày chọn sẽ được hiển thị ở đây.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.shine_button), "Bấm vào đây để xác nhận ngày và trở về màn hình chính")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.app_primary_color)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white))
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+                        // Yay
+                        CacheManager.saveStringCacheData(MainActivity.GUIDE_SCREEN_DATE, MainActivity.GUIDE_SHOWN_VALUE);
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        // Boo
+                    }
+                }).start();
     }
 }

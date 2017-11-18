@@ -28,11 +28,15 @@ import android.widget.TextView;
 
 
 import com.arlib.floatingsearchview.FloatingSearchView;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.httt.uit.travel_easy_android.MainActivity;
 import com.httt.uit.travel_easy_android.R;
 import com.httt.uit.travel_easy_android.adapters.AutocompleteAdapter;
 import com.httt.uit.travel_easy_android.manager.ApiManager;
+import com.httt.uit.travel_easy_android.manager.CacheManager;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.request.MyDataCallback;
 import com.httt.uit.travel_easy_android.utils.StringUtils;
@@ -92,6 +96,7 @@ public class SearchAirportActivity extends AppCompatActivity {
         initUI();
         initEvent();
         searchViewSetup();
+        displayGuide();
         getNearestAirports();
 
     }
@@ -337,7 +342,7 @@ public class SearchAirportActivity extends AppCompatActivity {
             return;
         }
         Location location = mLocationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if (location != null){
+        if (location != null) {
             callNearByArportApi(location);
             return;
         }
@@ -353,7 +358,7 @@ public class SearchAirportActivity extends AppCompatActivity {
     LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
-           callNearByArportApi(location);
+            callNearByArportApi(location);
         }
 
         @Override
@@ -371,7 +376,8 @@ public class SearchAirportActivity extends AppCompatActivity {
 
         }
     };
-    public void callNearByArportApi(Location location){
+
+    public void callNearByArportApi(Location location) {
         ApiManager.getNearestAirports(SearchAirportActivity.this, location.getLatitude(), location.getLongitude(), new MyDataCallback<ArrayList<AutoCompleteAirport>>() {
             @Override
             public void success(ArrayList<AutoCompleteAirport> models) {
@@ -394,5 +400,69 @@ public class SearchAirportActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    public void displayGuide() {
+        String isShown = CacheManager.getStringCacheData(MainActivity.GUIDE_SCREEN_SEARCH);
+        if (isShown != null)
+            return;
+
+        new TapTargetSequence(SearchAirportActivity.this)
+                .targets(
+                        TapTarget.forView(findViewById(R.id.grpSearchView), "Nhập tên sân bay cần tìm ở đây.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.grpOnly), "Chọn ở đây nếu bạn chỉ muốn tìm sân bay của Việt Nam.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.app_primary_color)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.grpNear), "Danh sách sân bay gần bạn sẽ được hiển thị ở đây. \nBấm vào một sân bay để chọn.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.app_primary_color)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.grpFound), "Danh sách sân bay tìm được sẽ được hiển thị ở đây. \nBấm vào một sân bay để chọn.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.app_primary_color)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.shine_button), "Bấm vào đây để trở về màn hình chính")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.app_primary_color)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white))
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+                        // Yay
+                        CacheManager.saveStringCacheData(MainActivity.GUIDE_SCREEN_SEARCH, MainActivity.GUIDE_SHOWN_VALUE);
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        // Boo
+                    }
+                }).start();
     }
 }

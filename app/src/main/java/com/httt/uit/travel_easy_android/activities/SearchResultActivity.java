@@ -17,21 +17,28 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.gson.Gson;
 import com.httt.uit.travel_easy_android.MainActivity;
 import com.httt.uit.travel_easy_android.R;
 import com.httt.uit.travel_easy_android.adapters.SearchResultRecyclerviewAdapter;
+import com.httt.uit.travel_easy_android.manager.CacheManager;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
 import com.httt.uit.travel_easy_android.model.FlightResults;
 import com.httt.uit.travel_easy_android.model.Itineraries;
 import com.httt.uit.travel_easy_android.model.Results;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
+import com.mahfa.dnswitch.DayNightSwitch;
 import com.sackcentury.shinebuttonlib.ShineButton;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import co.ceryle.radiorealbutton.RadioRealButton;
+import co.ceryle.radiorealbutton.RadioRealButtonGroup;
+import io.feeeei.circleseekbar.CircleSeekBar;
 import me.grantland.widget.AutofitTextView;
 
 /**
@@ -58,6 +65,29 @@ public class SearchResultActivity extends AppCompatActivity {
     private RelativeLayout grpFilter;
     private LinearLayout grpBtnApplyFilter;
 
+    private CircleSeekBar seekBarDepartFrom;
+    private CircleSeekBar seekBarDepartTo;
+    private CircleSeekBar seekBarReturnFrom;
+    private CircleSeekBar seekBarReturnTo;
+    private TextView tvFilterDepartTimeFrom;
+    private TextView tvFilterDepartTimeTo;
+    private TextView tvFilterReturnTimeFrom;
+    private TextView tvFilterReturnTimeTo;
+    private int mDepartTimeFrom;
+    private int mDepartTimeTo;
+    private int mReturnTimeFrom;
+    private int mReturnTimeTo;
+
+    //filter screen
+    private DayNightSwitch dnsNonstop;
+    private DayNightSwitch dnsHasTop;
+    private TextView tvNonstopFlights;
+    private TextView tvHasStopFlights;
+    private RadioRealButtonGroup rbgPrice;
+    private TextView tvTotalFlights;
+    private LinearLayout grpReturnTime;
+
+
     private AutoCompleteAirport mOriginAirport;
     private AutoCompleteAirport mDestinationAirport;
     private Date mDepartDate;
@@ -68,6 +98,8 @@ public class SearchResultActivity extends AppCompatActivity {
     private int mNoChildren;
     private int mNoInfant;
     private int mType;
+    private int mPriceId = R.id.rb_all_money;
+    private boolean isRoundTrip = true;
     private FlightResults mFlightResults;
     ArrayList<Itineraries> itinerariesArrayList;
     ArrayList<Itineraries> nonStopitineraries;
@@ -82,10 +114,14 @@ public class SearchResultActivity extends AppCompatActivity {
         getData();
         fillUI();
 
+
         resolveResultModel(mFlightResults);
+        fillFlightsNumber();
         mResultAdapter = new SearchResultRecyclerviewAdapter(this, itinerariesArrayList, mType, mCurrency);
         rvResult.setAdapter(mResultAdapter);
         rvResult.setLayoutManager(new LinearLayoutManager(this));
+
+        displayScreenResultGuide();
 
     }
 
@@ -101,6 +137,7 @@ public class SearchResultActivity extends AppCompatActivity {
         tvClass = (TextView) findViewById(R.id.tv_class);
         tvCurrency = (TextView) findViewById(R.id.tv_currency);
         tvType = (TextView) findViewById(R.id.tv_type);
+        grpReturnTime = (LinearLayout) findViewById(R.id.grpTimeReturn);
 
         tvAdult = (TextView) findViewById(R.id.tv_adults);
         tvChildren = (TextView) findViewById(R.id.tv_childrens);
@@ -112,6 +149,7 @@ public class SearchResultActivity extends AppCompatActivity {
             public void onClick(View view) {
                 sbFilter.setChecked(false);
                 filterAnimation(grpFilter, grpFilter);
+                displayScreenFilterGuide();
             }
         });
 
@@ -119,6 +157,13 @@ public class SearchResultActivity extends AppCompatActivity {
         grpBtnApplyFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ArrayList<Itineraries> filteredArray = getFilterArray();
+                if (filteredArray == null) {
+                    filterAnimationReverse(grpFilter, grpFilter);
+                    return;
+                }
+                mResultAdapter = new SearchResultRecyclerviewAdapter(SearchResultActivity.this, filteredArray, mType, mCurrency);
+                rvResult.setAdapter(mResultAdapter);
                 filterAnimationReverse(grpFilter, grpFilter);
             }
         });
@@ -137,6 +182,178 @@ public class SearchResultActivity extends AppCompatActivity {
                 }, 600);
             }
         });
+
+        //filter screen
+        tvTotalFlights = (TextView) findViewById(R.id.tv_total_flight);
+        tvHasStopFlights = (TextView) findViewById(R.id.tv_hasstop_detail);
+        tvNonstopFlights = (TextView) findViewById(R.id.tv_nonstop_detail);
+
+
+        dnsHasTop = (DayNightSwitch) findViewById(R.id.switch_hasstop);
+        dnsNonstop = (DayNightSwitch) findViewById(R.id.switch_nonstop);
+        rbgPrice = (RadioRealButtonGroup) findViewById(R.id.rbg_price);
+        rbgPrice.setOnClickedButtonListener(new RadioRealButtonGroup.OnClickedButtonListener() {
+            @Override
+            public void onClickedButton(RadioRealButton button, int position) {
+                mPriceId = button.getId();
+            }
+        });
+
+        seekBarDepartFrom = (CircleSeekBar) findViewById(R.id.seek_depart_time_from);
+        seekBarDepartTo = (CircleSeekBar) findViewById(R.id.seek_depart_time_to);
+        seekBarReturnFrom = (CircleSeekBar) findViewById(R.id.seek_return_time_from);
+        seekBarReturnTo = (CircleSeekBar) findViewById(R.id.seek_return_time_to);
+
+        tvFilterDepartTimeFrom = (TextView) findViewById(R.id.tv_depart_time_from);
+        tvFilterDepartTimeTo = (TextView) findViewById(R.id.tv_depart_time_to);
+        tvFilterReturnTimeFrom = (TextView) findViewById(R.id.tv_return_time_from);
+        tvFilterReturnTimeTo = (TextView) findViewById(R.id.tv_return_time_to);
+        initSeekBarEvent();
+
+    }
+
+    public void fillFlightsNumber() {
+        if (itinerariesArrayList == null || nonStopitineraries == null || hasStopitineraries == null)
+            return;
+        tvTotalFlights.setText(getResources().getString(R.string.filter_total_found, itinerariesArrayList.size()));
+        tvNonstopFlights.setText(getResources().getString(R.string.filter_count, nonStopitineraries.size()));
+        tvHasStopFlights.setText(getResources().getString(R.string.filter_count, hasStopitineraries.size()));
+    }
+
+    private ArrayList<Itineraries> getFilterArray() {
+        if (!dnsNonstop.isNight()) {
+            return getFilteredArrayWithCondition(nonStopitineraries, mPriceId, mDepartTimeFrom, mDepartTimeTo, mReturnTimeFrom, mReturnTimeTo);
+        }
+        if (!dnsHasTop.isNight()) {
+            return getFilteredArrayWithCondition(hasStopitineraries, mPriceId, mDepartTimeFrom, mDepartTimeTo, mReturnTimeFrom, mReturnTimeTo);
+        }
+        if (!dnsHasTop.isNight() && !dnsNonstop.isNight()) {
+//            return itinerariesArrayList;
+            return getFilteredArrayWithCondition(itinerariesArrayList, mPriceId, mDepartTimeFrom, mDepartTimeTo, mReturnTimeFrom, mReturnTimeTo);
+        }
+        return null;
+    }
+
+    public ArrayList<Itineraries> getFilteredArrayWithCondition(ArrayList<Itineraries> array, int priceId, int departFrom, int departTo, int returnFrom, int returnTo) {
+        ArrayList<Itineraries> resultArray = new ArrayList<>();
+
+        if (priceId == R.id.rb_all_money) {
+            if (departFrom == departTo && returnFrom == returnTo)
+                resultArray.addAll(array);
+        }
+
+        for (Itineraries itineraries : array) {
+            double priceDB = Double.parseDouble(itineraries.fare.getTotal_price());
+            int priceDb = (int) priceDB;
+            Date departDate = DateUtils.parseDateTime(itineraries.getOutbound().getFlights().get(0).getDeparts_at());
+            Date returnDate = null;
+            if (itineraries.getInbound() != null)
+                returnDate = DateUtils.parseDateTime(itineraries.getInbound().getFlights().get(0).getDeparts_at());
+
+            if (priceId == R.id.rb_little_money) {
+                if (priceDb <= 1000000) {
+                    datefilter(itineraries, departFrom, departTo, returnFrom, returnTo, departDate, returnDate, resultArray);
+                }
+            }
+
+            if (priceId == R.id.rb_medium_money) {
+                if (priceDb > 1000000 && priceDb < 3000000) {
+                    resultArray.add(itineraries);
+                    datefilter(itineraries, departFrom, departTo, returnFrom, returnTo, departDate, returnDate, resultArray);
+                }
+            }
+
+            if (priceId == R.id.rb_large_money) {
+                if (priceDb >= 3000000) {
+                    resultArray.add(itineraries);
+                    datefilter(itineraries, departFrom, departTo, returnFrom, returnTo, departDate, returnDate, resultArray);
+                }
+            }
+            if (priceId == R.id.rb_all_money) {
+                if (departDate.getHours() >= departFrom && departDate.getHours() <= departTo)
+                    resultArray.add(itineraries);
+                if (returnDate != null)
+                    if (returnDate.getHours() >= returnFrom && returnDate.getHours() <= returnTo)
+                        resultArray.add(itineraries);
+            }
+
+        }
+        return resultArray;
+    }
+
+    public void datefilter(Itineraries itineraries, int departFrom, int departTo, int returnFrom, int returnTo,
+                           Date departDate, Date returnDate, ArrayList<Itineraries> resultArray) {
+        if (departFrom == departTo && returnFrom == returnTo)
+            resultArray.add(itineraries);
+        if (departDate.getHours() >= departFrom && departDate.getHours() <= departTo)
+            resultArray.add(itineraries);
+        if (returnDate != null)
+            if (returnDate.getHours() >= returnFrom && returnDate.getHours() <= returnTo)
+                resultArray.add(itineraries);
+    }
+
+    private void initSeekBarEvent() {
+        //event
+        seekBarDepartFrom.setOnSeekBarChangeListener(new CircleSeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onChanged(CircleSeekBar circleSeekBar, int i) {
+                onFilterTimeChange(true, i, seekBarDepartTo.getCurProcess());
+
+                if (i > seekBarDepartTo.getCurProcess())
+                    seekBarDepartTo.setCurProcess(i);
+
+            }
+        });
+
+        seekBarDepartTo.setOnSeekBarChangeListener(new CircleSeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onChanged(CircleSeekBar circleSeekBar, int i) {
+                onFilterTimeChange(true, seekBarDepartFrom.getCurProcess(), i);
+                if (i < seekBarDepartFrom.getCurProcess())
+                    seekBarDepartFrom.setCurProcess(i);
+
+            }
+        });
+
+        seekBarReturnFrom.setOnSeekBarChangeListener(new CircleSeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onChanged(CircleSeekBar circleSeekBar, int i) {
+                onFilterTimeChange(false, i, seekBarReturnTo.getCurProcess());
+                if (i > seekBarReturnTo.getCurProcess())
+                    seekBarReturnTo.setCurProcess(i);
+            }
+        });
+
+        seekBarReturnTo.setOnSeekBarChangeListener(new CircleSeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onChanged(CircleSeekBar circleSeekBar, int i) {
+                onFilterTimeChange(false, seekBarReturnFrom.getCurProcess(), i);
+                if (i < seekBarReturnFrom.getCurProcess())
+                    seekBarReturnFrom.setCurProcess(i);
+            }
+        });
+
+
+    }
+
+    private void onFilterTimeChange(boolean isDepart, int from, int to) {
+        String fromStr = from > 9 ? from + "" + ": 00" : "0" + from + ": 00";
+        String toStr = to > 9 ? to + "" + ": 00" : "0" + to + ": 00";
+        if (isDepart) {
+            mDepartTimeFrom = from;
+            mDepartTimeTo = to;
+            tvFilterDepartTimeFrom.setText(fromStr);
+            tvFilterDepartTimeTo.setText(toStr);
+            return;
+        } else {
+            mReturnTimeFrom = from;
+            mReturnTimeTo = to;
+            tvFilterReturnTimeFrom.setText(fromStr);
+            tvFilterReturnTimeTo.setText(toStr);
+            return;
+        }
+
+
     }
 
     private void fillUI() {
@@ -286,7 +503,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     }
                 });
             }
-        },800);
+        }, 800);
 
     }
 
@@ -302,12 +519,16 @@ public class SearchResultActivity extends AppCompatActivity {
                 itineraries.fare = results.getFare();
                 itinerariesArrayList.add(itineraries);
                 if (mType == MainActivity.DEFAULT_ROUND_TRIP) {
+                    isRoundTrip = true;
+                    grpReturnTime.setVisibility(View.VISIBLE);
                     if (itineraries.getInbound().getFlights().size() == 1 && itineraries.getOutbound().getFlights().size() == 1)
                         nonStopitineraries.add(itineraries);
                     if (itineraries.getInbound().getFlights().size() > 1 || itineraries.getOutbound().getFlights().size() > 1)
                         hasStopitineraries.add(itineraries);
                 }
                 if (mType == MainActivity.DEFAULT_ONE_WAY) {
+                    isRoundTrip = false;
+                    grpReturnTime.setVisibility(View.GONE);
                     if (itineraries.getOutbound().getFlights().size() == 1)
                         nonStopitineraries.add(itineraries);
                     if (itineraries.getOutbound().getFlights().size() > 1)
@@ -318,4 +539,137 @@ public class SearchResultActivity extends AppCompatActivity {
 
         Log.e("_x", flightResults.getCurrency());
     }
+
+    public void displayScreenResultGuide() {
+        String isShown = CacheManager.getStringCacheData(MainActivity.GUIDE_SCREEN_RESULT);
+        if (isShown != null)
+            return;
+        new TapTargetSequence(SearchResultActivity.this)
+                .targets(
+                        TapTarget.forView(findViewById(R.id.grpResultInfo), "Thông tin tìm kiếm chuyến bay sẽ được hiển thị ở đây. ")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.shine_button_filter), "Bấm vào đây để lọc kết quả chuyến bay.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.page1)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.temp_layout), "Các chuyến bay tìm thấy sẽ được hiển thị ở đây. Bấm vào một chuyến bay để xem chi tiết.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.shine_button_back), "Bấm vào đây để trở về màn hình tìm chuyến bay.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.page1)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white))
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+                        // Yay
+                        CacheManager.saveStringCacheData(MainActivity.GUIDE_SCREEN_RESULT, MainActivity.GUIDE_SHOWN_VALUE);
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        // Boo
+                    }
+                }).start();
+    }
+
+    public void displayScreenFilterGuide() {
+        String isShown = CacheManager.getStringCacheData(MainActivity.GUIDE_SCREEN_FILTER);
+        if (isShown != null)
+            return;
+        new TapTargetSequence(SearchResultActivity.this)
+                .targets(
+                        TapTarget.forView(findViewById(R.id.tv_total_flight), "Số lượng chuyến bay tìm thấy sẽ được hiển thị ở đây. ")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.grpNonStopFilter), "Lọc các chuyến bay thẳng.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.grpHasStopFilter), "Lọc các chuyến bay có trạm dừng.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.rbg_price), "Lọc giá chuyến bay tại đây.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.grpTimeDepart), "Lọc chuyến bay theo khoảng thời gian cất cánh đi.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.grpTimeReturn), "Lọc chuyến bay theo khoảng thời gian cất cánh về.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.grp_filter_apply), "Bấm vào đây để xem kết quả các chuyến bay theo các điều kiện lọc ở trên.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white))
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+                        // Yay
+                        CacheManager.saveStringCacheData(MainActivity.GUIDE_SCREEN_FILTER, MainActivity.GUIDE_SHOWN_VALUE);
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        // Boo
+                    }
+                }).start();
+    }
+
+
 }

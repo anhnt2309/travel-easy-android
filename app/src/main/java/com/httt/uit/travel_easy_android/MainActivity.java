@@ -1,7 +1,6 @@
 
 package com.httt.uit.travel_easy_android;
 
-import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -12,10 +11,7 @@ import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewAnimationUtils;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -24,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.github.badoualy.datepicker.DatePickerTimeline;
 import com.google.gson.Gson;
 import com.httt.uit.travel_easy_android.activities.PickDateActivity;
@@ -35,12 +33,10 @@ import com.httt.uit.travel_easy_android.animators.InSyncAnimator;
 import com.httt.uit.travel_easy_android.animators.RocketAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.RocketFlightAwayAnimator;
 import com.httt.uit.travel_easy_android.manager.ApiManager;
+import com.httt.uit.travel_easy_android.manager.CacheManager;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
 import com.httt.uit.travel_easy_android.model.FlightResults;
-import com.httt.uit.travel_easy_android.model.Flights;
-import com.httt.uit.travel_easy_android.model.Itineraries;
-import com.httt.uit.travel_easy_android.model.Results;
 import com.httt.uit.travel_easy_android.request.MyDataCallback;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
@@ -88,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
     public static final String FLIGHT_CLASS_MODEL = "FLIGHT_CLASS_MODEL";
     public static final String FLIGHT_CURRENCY_STRING = "FLIGHT_CURRENCY_STRING";
     public static final String FLIGHT_RESULT_MODEL = "FLIGHT_RESULT_MODEL";
+
+    public static final String GUIDE_SCREEN2 = "GUIDE_SCREEN2";
+    public static final String GUIDE_SCREEN3 = "GUIDE_SCREEN3";
+    public static final String GUIDE_SCREEN_SEARCH = "GUIDE_SCREEN_SEARCH";
+    public static final String GUIDE_SCREEN_DATE = "GUIDE_SCREEN_DATE";
+    public static final String GUIDE_SCREEN_RESULT = "GUIDE_SCREEN_RESULT";
+    public static final String GUIDE_SCREEN_FILTER = "GUIDE_SCREEN_FILTER";
+
+    public static final String GUIDE_SHOWN_VALUE = "YES";
 
     public static final int ONE_WAY_TYPE = 1236;
     public static final int ROUND_TRIP_TYPE = 1237;
@@ -176,17 +181,8 @@ public class MainActivity extends AppCompatActivity {
         initializePages();
         initializeBackgroundTransitions();
         explosionField = ExplosionField.attach2Window(MainActivity.this);
-//        ApiManager.getLocationInfo(this, "DLI", new MyDataCallback<JsonElement>() {
-//            @Override
-//            public void success(JsonElement jsonElement) {
-//                Log.d("abc", "" + jsonElement);
-//            }
-//
-//            @Override
-//            public void failure(Throwable t) {
-//                t.printStackTrace();
-//            }
-//        });
+
+
     }
 
     @Override
@@ -586,6 +582,7 @@ public class MainActivity extends AppCompatActivity {
                             tvCommandScene2.setVisibility(View.VISIBLE);
                             tvCommandScene2.setAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
                         }
+                        displayScreen2Guide();
                         break;
                     case 2:
                         if (tvAppName != null)
@@ -596,6 +593,7 @@ public class MainActivity extends AppCompatActivity {
                             inSyncAnimator = new InSyncAnimator(coordinatorLayout);
                             inSyncAnimator.play();
                         }
+                        displayScreen3Guide();
                         break;
 //                    case 3:
 //                        if (rocketFlightAwayAnimator == null) {
@@ -743,7 +741,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     grpLoadingScreen.setVisibility(View.GONE);
                 }
-            },500);
+            }, 500);
 
 
         }
@@ -774,6 +772,116 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(intent);
 
+    }
+
+    public void displayScreen2Guide() {
+        String isShown = CacheManager.getStringCacheData(GUIDE_SCREEN2);
+        if (isShown != null)
+            return;
+        new TapTargetSequence(MainActivity.this)
+                .targets(
+                        TapTarget.forView(findViewById(R.id.grpOrigin), "Bấm vào đây để chọn sân bay đi")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.grpDestination), "Bấm vào đây để chọn sân bay đến")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.shine_button_switch), "Bấm vào đây để đổi giữa điểm đi và điểm đến")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.app_primary_color)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white))
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+                        // Yay
+                        CacheManager.saveStringCacheData(GUIDE_SCREEN2, GUIDE_SHOWN_VALUE);
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        // Boo
+                    }
+                }).start();
+    }
+
+    public void displayScreen3Guide() {
+        String isShown = CacheManager.getStringCacheData(GUIDE_SCREEN3);
+        if (isShown != null)
+            return;
+        new TapTargetSequence(MainActivity.this)
+                .targets(
+                        TapTarget.forView(findViewById(R.id.rbg_fly_type), "Bấm vào đây để chọn loại chuyến bay bạn muốn. ")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true),
+                        TapTarget.forView(findViewById(R.id.sp_class), "Bấm vào đây để chọn hạng bay.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.grp_date), "Bấm vào đây chọn thời gian cho chuyến bay.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.grpPassenger), "Chọn số lượng hành khách cho chuyến bay tại đây.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white),
+                        TapTarget.forView(findViewById(R.id.floatingActionButton), "Bấm vào đây để bắt đầu tìm kiếm chuyến bay của bạn.")
+                                .dimColor(android.R.color.black)
+                                .outerCircleColor(R.color.transparent)
+                                .targetCircleColor(R.color.divider_color)
+                                .textColor(android.R.color.white)
+                                .cancelable(false)
+                                .drawShadow(true).targetCircleColor(R.color.white))
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+                        // Yay
+                        CacheManager.saveStringCacheData(GUIDE_SCREEN3, GUIDE_SHOWN_VALUE);
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        // Boo
+                    }
+                }).start();
     }
 
 

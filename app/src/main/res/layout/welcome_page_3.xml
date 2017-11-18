@@ -150,7 +150,6 @@
             app:rrb_textStyle="bold" />
     </co.ceryle.radiorealbutton.RadioRealButtonGroup>
 
-
     <ImageView
         android:id="@+id/img_infants"
         android:layout_width="wrap_content"
@@ -257,15 +256,16 @@
 
     </nl.dionsegijn.steppertouch.StepperTouch>
 
+
     <ImageView
         android:id="@+id/img_adults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/img_infants"
-        android:layout_marginBottom="67dp"
-        android:layout_marginLeft="50dp"
         android:src="@mipmap/ic_adult"
-        app:view_behavior=".ParallaxTitleBehaviour" />
+        app:view_behavior=".ParallaxTitleBehaviour"
+        android:layout_above="@+id/txt_adults_detail"
+        android:layout_alignLeft="@+id/img_childrens"
+        android:layout_alignStart="@+id/img_childrens" />
 
 
     <TextView
@@ -330,6 +330,16 @@
 
     </Spinner>
 
+    <LinearLayout
+        android:id="@+id/grpPassenger"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginBottom="100dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"

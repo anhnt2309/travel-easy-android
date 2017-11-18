@@ -33,6 +33,7 @@
         app:small_shine_offset_angle="20" />
 
     <LinearLayout
+        android:id="@+id/grpSearchView"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginBottom="5dp"
@@ -62,6 +63,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/grpOnly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
@@ -126,6 +128,12 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <View
+                android:id="@+id/grpNear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </View>
 
             <com.joanzapata.iconify.widget.IconTextView
                 android:id="@+id/itv_near"
@@ -182,7 +190,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
+            <View
+                android:id="@+id/grpFound"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            </View>
             <com.joanzapata.iconify.widget.IconTextView
                 android:id="@+id/itv_found"
                 style="@style/text_title"
