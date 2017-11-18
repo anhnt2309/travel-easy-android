@@ -80,11 +80,12 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         if (position == getItemCount() - 1) {
             holder.grpContainer.setVisibility(View.INVISIBLE);
             return;
+        } else {
+            holder.grpContainer.setVisibility(View.VISIBLE);
         }
         Itineraries itinerary = items.get(position);
         if (itinerary == null)
             return;
-
 
         if (type == MainActivity.DEFAULT_ROUND_TRIP)
             isRoundTrip = true;
