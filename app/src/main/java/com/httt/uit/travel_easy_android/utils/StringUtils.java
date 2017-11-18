@@ -36,4 +36,8 @@ public class StringUtils {
             currencyPrefix = "đ";
         return String.format("%,.0f", amount) + currencyPrefix;
     }
+
+    public static String formatPrice(double amount) {
+        return String.format("%,.0f", amount) ;
+    }
 }
