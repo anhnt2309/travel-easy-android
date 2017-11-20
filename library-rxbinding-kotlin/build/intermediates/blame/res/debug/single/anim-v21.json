@@ -1,18 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding-kotlin\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_out.xml",
-        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
+        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding-kotlin/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
     },
     {
-        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding-kotlin\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_in.xml",
-        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
-    },
-    {
-        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding-kotlin\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_in.xml",
-        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
-    },
-    {
-        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding-kotlin\\build\\intermediates\\res\\merged\\debug\\anim-v21\\design_bottom_sheet_slide_out.xml",
-        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
+        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding-kotlin/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
     }
 ]

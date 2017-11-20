@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v13\\values-v13.xml",
+        "outputFile": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v13/values-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,31 +11,7 @@
                     "endOffset": 109
                 },
                 "from": {
-                    "file": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\values-v13\\values-v13.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 58,
-                        "endOffset": 109
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v13\\values-v13.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 58,
-                    "endOffset": 109
-                },
-                "from": {
-                    "file": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\values-v13\\values-v13.xml",
+                    "file": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/values-v13/values-v13.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

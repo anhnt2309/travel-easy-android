@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v12\\values-v12.xml",
+        "outputFile": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v12/values-v12.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 274
                 },
                 "from": {
-                    "file": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\values-v12\\values-v12.xml",
+                    "file": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/values-v12/values-v12.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -33,7 +33,7 @@
                     "endOffset": 474
                 },
                 "from": {
-                    "file": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\values-v12\\values-v12.xml",
+                    "file": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/values-v12/values-v12.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -53,7 +53,7 @@
                     "endOffset": 593
                 },
                 "from": {
-                    "file": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\values-v12\\values-v12.xml",
+                    "file": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/values-v12/values-v12.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -72,92 +72,7 @@
                     "endOffset": 688
                 },
                 "from": {
-                    "file": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\values-v12\\values-v12.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 598,
-                        "endColumn": 94,
-                        "endOffset": 688
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-v12\\values-v12.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endLine": 4,
-                    "endColumn": 12,
-                    "endOffset": 274
-                },
-                "from": {
-                    "file": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\values-v12\\values-v12.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endLine": 4,
-                        "endColumn": 12,
-                        "endOffset": 274
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 279,
-                    "endLine": 7,
-                    "endColumn": 12,
-                    "endOffset": 474
-                },
-                "from": {
-                    "file": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\values-v12\\values-v12.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 279,
-                        "endLine": 7,
-                        "endColumn": 12,
-                        "endOffset": 474
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 479,
-                    "endColumn": 118,
-                    "endOffset": 593
-                },
-                "from": {
-                    "file": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\values-v12\\values-v12.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 479,
-                        "endColumn": 118,
-                        "endOffset": 593
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 598,
-                    "endColumn": 94,
-                    "endOffset": 688
-                },
-                "from": {
-                    "file": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\values-v12\\values-v12.xml",
+                    "file": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/values-v12/values-v12.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
