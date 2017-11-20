@@ -219,6 +219,9 @@ public class SearchAirportActivity extends AppCompatActivity {
             this.searchView.setBackground(mBackgroundDrawable);
         }
 
+        searchView.setDismissOnOutsideClick(true);
+        searchView.setShowSearchKey(true);
+
         this.searchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
             public void onSearchTextChanged(String oldQuery, String newQuery) {

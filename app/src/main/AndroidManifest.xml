@@ -38,6 +38,9 @@
             android:name=".activities.PickDateActivity"
             android:theme="@style/AppTheme.Transparent"></activity>
         <activity
+            android:name=".activities.SearchResultDetailActivity"
+            android:theme="@style/AppTheme.Transparent"></activity>
+        <activity
             android:name=".activities.SearchAirportActivity"
             android:theme="@style/AppTheme.Transparent"></activity>
         <activity

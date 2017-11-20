@@ -44,5 +44,6 @@
     <color name="clear_btn_color">#787878</color>
     <color name="overflow_icon_color">#787878</color>
     <color name="blue">#59ccda</color>
+    <color name="gray">#e2e6e9</color>
 
 </resources>
