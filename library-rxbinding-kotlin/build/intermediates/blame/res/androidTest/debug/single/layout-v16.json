@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding-kotlin/build/intermediates/res/merged/androidTest/debug/layout-v16/notification_template_custom_big.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/layout-v16/notification_template_custom_big.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding-kotlin\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v16\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\layout-v16\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding-kotlin\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout-v16\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\layout-v16\\notification_template_custom_big.xml"
     }
 ]

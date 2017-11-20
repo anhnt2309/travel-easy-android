@@ -45,7 +45,11 @@ public class AutoCompleteAirport implements Serializable{
         this.value = value;
         this.label = label;
     }
-
+    public AutoCompleteAirport(String a,String b,String c){
+        this.value=a;
+        this.airport_name=b;
+        this.city_name=c;
+    }
     public String getValue() {
         return value;
     }
@@ -53,4 +57,6 @@ public class AutoCompleteAirport implements Serializable{
     public String getLabel() {
         return label;
     }
+    public String getAirport_name(){return this.airport_name;};
+    public String getCity_name(){return this.city_name;};
 }

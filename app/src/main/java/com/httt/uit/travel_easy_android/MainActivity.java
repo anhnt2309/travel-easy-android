@@ -34,9 +34,11 @@ import com.httt.uit.travel_easy_android.animators.RocketAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.RocketFlightAwayAnimator;
 import com.httt.uit.travel_easy_android.manager.ApiManager;
 import com.httt.uit.travel_easy_android.manager.CacheManager;
+import com.httt.uit.travel_easy_android.manager.HistoryManager;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
 import com.httt.uit.travel_easy_android.model.FlightResults;
+import com.httt.uit.travel_easy_android.model.History;
 import com.httt.uit.travel_easy_android.request.MyDataCallback;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
@@ -153,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
     private int children;
     private int infant;
     private FlightClass selectedClass;
-
+    HistoryManager history =new HistoryManager(this);
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -181,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         initializePages();
         initializeBackgroundTransitions();
         explosionField = ExplosionField.attach2Window(MainActivity.this);
-
+        BackHistory(history);
 
     }
 
@@ -458,6 +460,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     String departDate = DateUtils.getSearchDate(mDepartDate);
                     String returnDate = DateUtils.getSearchDate(mReturnDate);
+                    history.addHistory(mOriginAirport);
+                    history.addHistory(mDestinationAirport);
                     //call api
                     grpLoadingScreen.setVisibility(View.VISIBLE);
                     ApiManager.getSearchResult(MainActivity.this, mOriginAirport.value, mDestinationAirport.value, departDate, returnDate, adult, children, infant, DEFAULT_CURRENCY, selectedClassString, resultsCallBack);
@@ -484,7 +488,8 @@ public class MainActivity extends AppCompatActivity {
                                 .show();
                         return;
                     }
-
+                    history.addHistory(mOriginAirport);
+                    history.addHistory(mDestinationAirport);
                     //call api
                     String departDate = DateUtils.getSearchDate(mDepartDate);
                     grpLoadingScreen.setVisibility(View.VISIBLE);
@@ -883,6 +888,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).start();
     }
-
-
+    public void BackHistory(HistoryManager a){
+        int i=a.getHistoryCount();
+        if(i==0)return;
+        History history=a.getHistoryById(i-1);
+        History history1=a.getHistoryById(i);
+        if(history==null||history1==null)return;
+        mOriginAirport=new AutoCompleteAirport(history.getValue(),history.getAirport(),history.getCity_name());
+        mDestinationAirport=new AutoCompleteAirport(history1.getValue(),history1.getAirport(),history1.getCity_name());
+        if(mOriginAirport==null||mDestinationAirport==null)return;
+        displayOriginAirport(mOriginAirport);
+         displayDestinationAirport(mDestinationAirport);
+    }
 }

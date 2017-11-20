@@ -1,90 +1,178 @@
 [
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_hint_foreground_material_light.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_tint_default.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_primary_text_material_dark.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_tint_spinner.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_primary_text_material_light.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_tint_default.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\color\\design_error.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_hint_foreground_material_dark.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/switch_thumb_material_light.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\color\\design_error.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_btn_colored_text_material.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_hint_foreground_material_light.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/switch_thumb_material_dark.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_secondary_text_material_light.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/design_error.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/color/design_error.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_tint_spinner.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_secondary_text_material_dark.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_tint_btn_checkable.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_secondary_text_material_dark.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_tint_spinner.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_btn_colored_borderless_text_material.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_search_url_text.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_tint_edittext.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_search_url_text.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_tint_seek_thumb.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_tint_switch_thumb.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_tint_switch_track.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/color/abc_primary_text_disable_only_material_light.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_tint_btn_checkable.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/debug/color/design_tint_password_toggle.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/color/design_tint_password_toggle.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\color\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\color\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\color\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\color\\abc_search_url_text.xml"
     }
 ]

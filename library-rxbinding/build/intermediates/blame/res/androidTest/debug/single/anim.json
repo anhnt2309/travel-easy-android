@@ -1,66 +1,130 @@
 [
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/design_fab_in.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/anim/design_fab_in.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/design_snackbar_out.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/anim/design_snackbar_out.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_fab_in.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\anim\\design_fab_in.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_in_top.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_slide_in_top.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\anim\\design_snackbar_in.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_out_top.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_slide_out_top.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_fade_out.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_popup_exit.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_popup_exit.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_slide_in_bottom.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_popup_enter.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_popup_enter.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_snackbar_out.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\anim\\design_snackbar_out.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/design_snackbar_in.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/anim/design_snackbar_in.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_fade_out.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_fade_out.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_fab_out.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\anim\\design_fab_out.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/design_bottom_sheet_slide_in.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/anim/design_bottom_sheet_slide_in.xml"
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/design_bottom_sheet_slide_out.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/anim/design_bottom_sheet_slide_out.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_fade_in.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_fade_in.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_fab_in.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\anim\\design_fab_in.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/975a3ffc4f781aaf504558e036212d67ecf389f6/output/res/anim/abc_slide_out_bottom.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
-        "merged": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/res/merged/androidTest/debug/anim/design_fab_out.xml",
-        "source": "/Users/TuanAnh 1/.android/build-cache/dd8366ff5f78b354fd4fba1db22aa8d14f2a609d/output/res/anim/design_fab_out.xml"
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_fab_out.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\anim\\design_fab_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_snackbar_out.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\anim\\design_snackbar_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\dd8366ff5f78b354fd4fba1db22aa8d14f2a609d\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\43c0bea24aa5ec17ac0dd8c15a0cbfbebac5ae59\\output\\res\\anim\\design_snackbar_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_fade_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_slide_out_top.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_popup_exit.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_slide_in_top.xml"
+    },
+    {
+        "merged": "C:\\Users\\hoqua\\Documents\\GitHub\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
+        "source": "C:\\Users\\hoqua\\.android\\build-cache\\670d0a2eeee22080c826df876d98f959d120f542\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\Users\\TuanAnh 1\\Documents\\7th Semester\\Mobile Developing\\travel-easy-android\\library-rxbinding\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
+        "source": "C:\\Users\\TuanAnh 1\\.android\\build-cache\\975a3ffc4f781aaf504558e036212d67ecf389f6\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     }
 ]
