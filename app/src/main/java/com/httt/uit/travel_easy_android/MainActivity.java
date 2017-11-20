@@ -27,6 +27,7 @@ import com.google.gson.Gson;
 import com.httt.uit.travel_easy_android.activities.PickDateActivity;
 import com.httt.uit.travel_easy_android.activities.SearchAirportActivity;
 import com.httt.uit.travel_easy_android.activities.SearchResultActivity;
+import com.httt.uit.travel_easy_android.activities.SearchResultDetailActivity;
 import com.httt.uit.travel_easy_android.adapters.ClassSpinnerAdapter;
 import com.httt.uit.travel_easy_android.animators.ChatAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.InSyncAnimator;
@@ -520,6 +521,7 @@ public class MainActivity extends AppCompatActivity {
                 displayOriginAirport(mOriginAirport);
                 displayDestinationAirport(mDestinationAirport);
 
+                startActivity(new Intent(MainActivity.this, SearchResultDetailActivity.class));
 
             }
         });
