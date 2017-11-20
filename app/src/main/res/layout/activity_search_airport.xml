@@ -157,6 +157,7 @@
                 android:divider="@color/transparent"
                 android:dividerHeight="10dp"
                 android:visibility="visible"
+                android:layoutAnimation="@anim/listview_item_animation"
                 tools:listitem="@layout/item_airport_search">
 
             </ListView>
@@ -214,6 +215,7 @@
                 android:paddingRight="15dp"
                 android:divider="@color/transparent"
                 android:dividerHeight="10dp"
+                android:layoutAnimation="@anim/listview_item_animation"
                 tools:listitem="@layout/item_airport_search">
 
             </ListView>
