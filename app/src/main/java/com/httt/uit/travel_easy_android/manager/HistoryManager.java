@@ -72,7 +72,7 @@ public class HistoryManager extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        History history = new History(cursor.getString(0),cursor.getString(1),cursor.getString(2));
+        History history = new History(cursor.getString(1),cursor.getString(2),cursor.getString(3));
         cursor.close();
         db.close();
         return history;
