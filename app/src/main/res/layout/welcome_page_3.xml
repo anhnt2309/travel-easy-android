@@ -426,9 +426,11 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/divider_date"
             android:layout_width="2dp"
+            android:orientation="vertical"
             android:layout_height="match_parent"
-            android:background="@color/light_gray"></LinearLayout>
+            android:background="@color/light_gray"/>
 
         <RelativeLayout
             android:id="@+id/ln_return_date"
