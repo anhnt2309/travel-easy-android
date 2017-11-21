@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton doneButton;
 
     private LinearLayout grpLoadingScreen;
+    private LinearLayout grpDividerDate;
 
     private int rbId = R.id.rb_round_trip;
     private int spInfantMax = 0;
@@ -285,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
         grpLoadingScreen = (LinearLayout) findViewById(R.id.grpLoadingScreen);
         grpLoadingScreen.setVisibility(View.GONE);
 
+        grpDividerDate = (LinearLayout) findViewById(R.id.divider_date);
         tvOriginCode3 = (TextView) findViewById(R.id.txt_from_code);
         tvOriginAirport3 = (AutofitTextView) findViewById(R.id.txt_from_city);
         tvDestinationCode3 = (TextView) findViewById(R.id.txt_to_code);
@@ -339,6 +341,7 @@ public class MainActivity extends AppCompatActivity {
                     mReturnDate = null;
                     explosionField.explode(lnReturnDate);
                     lnReturnDate.setVisibility(View.GONE);
+                    grpDividerDate.setVisibility(lnReturnDate.getVisibility());
                     lnDepartDate.setBackground(getResources().getDrawable(R.drawable.shadow_bg_color_full));
                 }
                 if (button.getId() == R.id.rb_round_trip) {
@@ -350,6 +353,7 @@ public class MainActivity extends AppCompatActivity {
                     //get View Back
                     lnReturnDate.animate().setDuration(150).setStartDelay(150).scaleX(1.0f).scaleY(1.0f).alpha(1.0f).start();
                     lnReturnDate.setVisibility(View.VISIBLE);
+                    grpDividerDate.setVisibility(lnReturnDate.getVisibility());
                     Animation animation = getFadeInAnimation();
                     spClass.setAnimation(animation);
                 }
