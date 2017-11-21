@@ -39,6 +39,9 @@ import java.util.Date;
 import co.ceryle.radiorealbutton.RadioRealButton;
 import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 import io.feeeei.circleseekbar.CircleSeekBar;
+import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
+import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter;
 import me.grantland.widget.AutofitTextView;
 
 /**
@@ -118,12 +121,14 @@ public class SearchResultActivity extends AppCompatActivity {
         resolveResultModel(mFlightResults);
         fillFlightsNumber();
         mResultAdapter = new SearchResultRecyclerviewAdapter(this, itinerariesArrayList, mType, mCurrency);
-        rvResult.setAdapter(mResultAdapter);
+
+        rvResult.setAdapter(getRecyclerViewAdapterAnimatior(mResultAdapter));
         rvResult.setLayoutManager(new LinearLayoutManager(this));
 
         displayScreenResultGuide();
 
     }
+
 
     private void initUI() {
         tvOriginCode = (TextView) findViewById(R.id.tv_result_origin_code);
@@ -163,7 +168,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     return;
                 }
                 mResultAdapter = new SearchResultRecyclerviewAdapter(SearchResultActivity.this, filteredArray, mType, mCurrency);
-                rvResult.setAdapter(mResultAdapter);
+                rvResult.setAdapter(getRecyclerViewAdapterAnimatior(mResultAdapter));
                 filterAnimationReverse(grpFilter, grpFilter);
             }
         });
@@ -221,13 +226,13 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     private ArrayList<Itineraries> getFilterArray() {
-        if (!dnsNonstop.isNight()) {
+        if (!dnsNonstop.isNight() && dnsHasTop.isNight()) {
             return getFilteredArrayWithCondition(nonStopitineraries, mPriceId, mDepartTimeFrom, mDepartTimeTo, mReturnTimeFrom, mReturnTimeTo);
         }
-        if (!dnsHasTop.isNight()) {
+        if (!dnsHasTop.isNight() && dnsNonstop.isNight()) {
             return getFilteredArrayWithCondition(hasStopitineraries, mPriceId, mDepartTimeFrom, mDepartTimeTo, mReturnTimeFrom, mReturnTimeTo);
         }
-        if (!dnsHasTop.isNight() && !dnsNonstop.isNight()) {
+        if (!dnsHasTop.isNight() && !dnsNonstop.isNight() || dnsHasTop.isNight() && dnsNonstop.isNight()) {
 //            return itinerariesArrayList;
             return getFilteredArrayWithCondition(itinerariesArrayList, mPriceId, mDepartTimeFrom, mDepartTimeTo, mReturnTimeFrom, mReturnTimeTo);
         }
@@ -278,6 +283,7 @@ public class SearchResultActivity extends AppCompatActivity {
             }
 
         }
+
         return resultArray;
     }
 
@@ -671,5 +677,11 @@ public class SearchResultActivity extends AppCompatActivity {
                 }).start();
     }
 
+    public ScaleInAnimationAdapter getRecyclerViewAdapterAnimatior(SearchResultRecyclerviewAdapter resultAdapter) {
+        AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(resultAdapter);
+        ScaleInAnimationAdapter scaleInAnimationAdapter = new ScaleInAnimationAdapter(alphaAdapter);
+        scaleInAnimationAdapter.setFirstOnly(false);
+        return scaleInAnimationAdapter;
+    }
 
 }
