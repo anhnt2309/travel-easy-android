@@ -384,6 +384,9 @@ public class SearchAirportActivity extends AppCompatActivity {
         ApiManager.getNearestAirports(SearchAirportActivity.this, location.getLatitude(), location.getLongitude(), new MyDataCallback<ArrayList<AutoCompleteAirport>>() {
             @Override
             public void success(ArrayList<AutoCompleteAirport> models) {
+                if (models == null)
+                    return;
+
                 Log.e("a1234", "" + models.size());
                 mLocationManager.removeUpdates(locationListener);
                 for (AutoCompleteAirport model : models) {
