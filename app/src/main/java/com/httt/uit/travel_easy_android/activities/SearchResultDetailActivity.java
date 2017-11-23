@@ -5,11 +5,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import com.github.florent37.hollyviewpager.HollyViewPager;
 import com.github.florent37.hollyviewpager.HollyViewPagerConfigurator;
 import com.httt.uit.travel_easy_android.R;
 import com.httt.uit.travel_easy_android.fragment.ScrollViewFragment;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +32,7 @@ public class SearchResultDetailActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     HollyViewPager hollyViewPager;
+    Document mDocument;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +41,43 @@ public class SearchResultDetailActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         hollyViewPager = (HollyViewPager) findViewById(R.id.hollyViewPager);
 
+        //craw data
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final StringBuilder builder = new StringBuilder();
+                    mDocument = Jsoup.connect("http://www.avcodes.co.uk/airlcoderes.asp")
+                            .data("status", "Y")
+                            .data("iataairl", "BL")
+                            .data("icaoairl", "")
+                            .data("account", "")
+                            .data("prefix", "")
+                            .data("airlname", "")
+                            .data("country", "")
+                            .data("callsign", "")
+                            .data("B1", "Submit")
+                            .header("content-type", "application/x-www-form-urlencoded")
+                            .post();
+
+                    Elements center = mDocument.select("center");
+
+                    String airlineName = center.select("td[class='tablebg']").text();
+
+                    String airlineLinks = center.select("a[href]").get(0).text();
+                    Elements countryLinks = center.select("img[src]");
+                    String  countryImage = countryLinks.get(1).absUrl("src");
+                    Log.d("xx", center.html());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+
+        if (mDocument != null) {
+            Log.d("xx", mDocument.body().html());
+        }
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(0xFFFFFFFF);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -40,7 +86,7 @@ public class SearchResultDetailActivity extends AppCompatActivity {
         hollyViewPager.setConfigurator(new HollyViewPagerConfigurator() {
             @Override
             public float getHeightPercentForPage(int page) {
-                return ((page+4)%10)/10f;
+                return ((page + 4) % 10) / 10f;
             }
         });
 
