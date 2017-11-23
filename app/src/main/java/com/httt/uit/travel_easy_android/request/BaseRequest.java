@@ -41,7 +41,7 @@ public class BaseRequest {
 
     private static final int DEVELOPMENT = 1;
     private static final int PRODUCTION = 2;
-    public static final String API_KEY = "SZfkJ2ZD43e1m7ZgaOnpiWGrAFtmsIhG";
+    public static final String API_KEY = "xt9RJfSPnOQAIlgYW4HcwJUMWEw6sf1U";
 
     //java.lang.IllegalArgumentException: baseUrl must end in /
     private static final String BASE_SERVER = "https://api.sandbox.amadeus.com/v1.2/";
