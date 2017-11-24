@@ -84,12 +84,11 @@
                         style="@style/text_subtitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_below="@id/tv_day_depart"
                         android:layout_marginTop="2dp"
                         android:text="@string/fa_custom_pick_date"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
+                        android:textSize="11sp" />
                 </RelativeLayout>
 
 
@@ -120,7 +119,7 @@
                         android:layout_marginTop="2dp"
                         android:text="@string/fa_custom_pick_date"
                         android:textColor="@color/black"
-                        android:textSize="12sp" />
+                        android:textSize="11sp" />
                 </RelativeLayout>
 
                 <ImageView

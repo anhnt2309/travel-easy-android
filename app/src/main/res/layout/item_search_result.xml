@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/grpContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     android:layout_marginTop="20dp"
-    android:id="@+id/grpContainer"
     android:background="@drawable/shadow_bg_square_primary_color"
     android:orientation="vertical">
 
@@ -17,7 +17,7 @@
         style="@style/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/img_airline"
+        android:layout_alignBottom="@+id/grpAirlineLogo"
 
         android:layout_alignLeft="@+id/grpOutBound"
         android:layout_alignStart="@+id/grpOutBound"
@@ -27,14 +27,37 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/img_airline"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+    <LinearLayout
+        android:id="@+id/grpAirlineLogo"
+        android:layout_width="183dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/bl" />
+        android:layout_marginRight="20dp">
 
+
+        <ImageView
+            android:id="@+id/img_airline"
+            android:layout_width="0dp"
+            android:layout_weight="40"
+            android:layout_height="70dp"
+            android:src="@drawable/bl" />
+
+        <View
+            android:id="@+id/divider_ailine_logo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="20dp"
+            android:background="@color/light_gray_inactive_icon" />
+
+        <ImageView
+            android:id="@+id/img_airline2"
+            android:layout_width="0dp"
+            android:layout_weight="40"
+            android:layout_height="70dp"
+            android:src="@drawable/bl" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/grpOutBound"
@@ -43,11 +66,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tv_price"
-        android:paddingBottom="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
 
         <ImageView
             android:layout_width="0dp"
@@ -193,11 +216,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/grpOutBound"
-        android:paddingBottom="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="20dp">
 
         <ImageView
             android:layout_width="0dp"
