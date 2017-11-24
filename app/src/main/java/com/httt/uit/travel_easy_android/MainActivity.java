@@ -525,7 +525,6 @@ public class MainActivity extends AppCompatActivity {
                 displayOriginAirport(mOriginAirport);
                 displayDestinationAirport(mDestinationAirport);
 
-                startActivity(new Intent(MainActivity.this, SearchResultDetailActivity.class));
 
             }
         });
