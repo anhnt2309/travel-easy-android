@@ -32,4 +32,15 @@
     <string name="filter_time_return">Chuyến Về</string>
     <string name="filter_total_found">(Tìm thấy <b>%1$d</b> chuyến bay)</string>
     <string name="filter_count">(<b>%1$d</b> chuyến bay)</string>
+    <string name="txt_depart">Chuyến đi</string>
+    <string name="txt_price_detail">Giá Vé</string>
+    <string name="txt_return">Chuyến về</string>
+    <string name="fa_total_time">{fa-clock-o} Tổng thời gian:</string>
+    <string name="fa_flight_number">{fa-pie-chart} Số chặng bay:</string>
+    <string name="fa_flight_time">{fa-clock-o} Thời gian :</string>
+    <string name="fa_aircraft">{fa-plane} Loại máy bay:</string>
+    <string name="fa_class">{fa-ticket} Hạng bay:</string>
+    <string name="fa_quality">{fa-star-half-o} Chất lượng:</string>
+    <string name="fa_quantity">{fa-hashtag} Số lượng ghế còn:</string>
+    <string name="btn_airline_web">Website của Vietjet Air</string>
 </resources>
