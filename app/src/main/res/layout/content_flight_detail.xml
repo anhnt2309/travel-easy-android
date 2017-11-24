@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+
+            <LinearLayout
+                android:id="@+id/grpLine"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:src="@drawable/ic_connect_dot" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/ic_connect_line">
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_connect_dot" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/grpLine">
+
+                <LinearLayout
+                    android:id="@+id/grpFirstOrgin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <me.grantland.widget.AutofitTextView
+                        style="@style/text_subtitle_color"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_weight="2"
+                        android:maxLines="2"
+                        android:text="HO CHI MINH"
+                        android:textColor="@color/light_gray_inactive_icon" />
+
+                    <TextView
+                        style="@style/text_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="SGN"
+                        android:textColor="@color/gray_active_icon"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/grpDepartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/grpFirstOrgin"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_first_depart_date"
+                        style="@style/text_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_toRightOf="@+id/grpLine"
+                        android:text="Thứ 2,10 tháng 11"
+                        android:textColor="@color/gray_active_icon"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/grpFirstDepartTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/grpDepartDate"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        style="@style/text_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="03:30"
+                        android:textColor="@color/gray_active_icon"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/grpFirstDepartTime"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/bl" />
+
+                        <TextView
+                            style="@style/text_subtitle_color"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="0dp"
+                            android:layout_weight="3"
+                            android:gravity="center_vertical|end"
+                            android:padding="0dp"
+                            android:text="Chuyến bay"
+                            android:textColor="@color/light_gray_inactive_icon"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            style="@style/text_subtitle_color"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|end"
+                            android:paddingRight="10dp"
+                            android:text="Cổng"
+                            android:textColor="@color/light_gray_inactive_icon"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vietjet Pacific"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="0dp"
+                            android:layout_weight="3"
+                            android:gravity="center_vertical|end"
+                            android:padding="0dp"
+                            android:text="VJ123"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            style="@style/text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_margin="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|end"
+                            android:paddingRight="20dp"
+                            android:text="1"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fa_flight_time"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp" />
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8 giờ 35 phút"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fa_aircraft"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp" />
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Airbus 321"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fa_class"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp" />
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="Phổ Thông"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fa_quality"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp" />
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="A"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fa_quantity"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp" />
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="3"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/grpFirstReturnTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/grpFirstOrgin"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="05:30"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_first_return_date"
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_toRightOf="@+id/grpLine"
+                            android:text="Thứ 2,10 tháng 11"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/grpFirstDestination"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <me.grantland.widget.AutofitTextView
+                            style="@style/text_subtitle_color"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:layout_weight="2"
+                            android:maxLines="2"
+                            android:text="DA LAT"
+                            android:textColor="@color/light_gray_inactive_icon" />
+
+                        <TextView
+                            style="@style/text_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:layout_weight="1"
+                            android:text="DLI"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center_horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/grp_filter_apply"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/shadow_bg_color_full_page3">
+
+                            <TextView
+                                style="@style/text_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginRight="30dp"
+                                android:text="@string/btn_airline_web"
+                                android:textSize="25dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>
