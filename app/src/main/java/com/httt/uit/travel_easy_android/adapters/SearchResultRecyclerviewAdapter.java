@@ -83,10 +83,18 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         } else {
             holder.grpContainer.setVisibility(View.VISIBLE);
         }
-        Itineraries itinerary = items.get(position);
+        final Itineraries itinerary = items.get(position);
         if (itinerary == null)
             return;
 
+        holder.grpContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOnItemClickListener.onItemClick(itinerary);
+            }
+        });
+
+        //display flight info
         if (type == MainActivity.DEFAULT_ROUND_TRIP)
             isRoundTrip = true;
 
@@ -109,8 +117,10 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         Outbound outbound = itinerary.getOutbound();
 
         ArrayList<Flights> outboundFlights = outbound.getFlights();
-        if (outboundFlights.size() == 1)
+        if (outboundFlights.size() == 1) {
             obFirstFlight = outboundFlights.get(0);
+            obSecondFlight = null;
+        }
         if (outboundFlights.size() == 2) {
             obFirstFlight = outboundFlights.get(0);
             obSecondFlight = outboundFlights.get(1);
@@ -138,12 +148,15 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         }
         if (isRoundTrip) {
             holder.mGrpInbound.setVisibility(View.VISIBLE);
+
             //handle inbound flights
             Inbound inbound = itinerary.getInbound();
 
             ArrayList<Flights> inboundFlights = inbound.getFlights();
-            if (inboundFlights.size() == 1)
+            if (inboundFlights.size() == 1) {
                 ibFirstFlight = inboundFlights.get(0);
+                ibSecondFlight = null;
+            }
             if (inboundFlights.size() == 2) {
                 ibFirstFlight = inboundFlights.get(0);
                 ibSecondFlight = inboundFlights.get(1);
@@ -210,6 +223,36 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
             holder.imgInboundIndicator.setImageResource(R.mipmap.ic_dot_hasstop);
         if (!ibhasStopFlight)
             holder.imgInboundIndicator.setImageResource(R.mipmap.ic_dot_nonstop);
+
+        //logo logic
+        if (isRoundTrip) {
+            // roundtrip case we only check stop flight different airline if depart and return flight have the same airline
+            if (hasStopFlight && ibhasStopFlight) {
+
+            }
+
+            if (hasStopFlight && !ibhasStopFlight) {
+
+            }
+
+            if (!hasStopFlight && ibhasStopFlight) {
+
+            }
+
+            if (!hasStopFlight && !ibhasStopFlight) {
+
+            }
+        } else {
+            if (hasStopFlight) {
+                if (obFirstFlight.getMarketing_airline().equals(obSecondFlight.getMarketing_airline())) {
+                    //// TODO: 11/24/17 hide second logo
+                } else {
+                    //// TODO: 11/24/17 show both logo
+                }
+
+            }
+        }
+
         String logoUrl = AIRLINE_LOGO_URL + obFirstFlight.getMarketing_airline() + ".png";
         Glide.with(mContext).load(logoUrl).into(holder.imgAirline);
         String price = StringUtils.formatPrice(priceDb, mCurrency);
@@ -221,7 +264,7 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         return items.size() + 1;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView tvPrice;
         public ImageView imgAirline;
 
@@ -277,5 +320,20 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
             tvOutboundFLight = itemView.findViewById(R.id.tv_outbound_flight);
             imgOutboundIndicator = itemView.findViewById(R.id.img_outbound_indicator);
         }
+
+        @Override
+        public void onClick(View view) {
+
+        }
+    }
+
+    private static OnItemClickListener mOnItemClickListener;
+
+    public interface OnItemClickListener {
+        public void onItemClick(Itineraries model);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
     }
 }

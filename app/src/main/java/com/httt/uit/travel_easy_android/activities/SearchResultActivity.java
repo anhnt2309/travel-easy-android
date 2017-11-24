@@ -48,7 +48,7 @@ import me.grantland.widget.AutofitTextView;
  * Created by TuanAnh on 11/13/17.
  */
 
-public class SearchResultActivity extends AppCompatActivity {
+public class SearchResultActivity extends AppCompatActivity implements SearchResultRecyclerviewAdapter.OnItemClickListener {
     private TextView tvOriginCode;
     private TextView tvDesCode;
     private AutofitTextView tvOriginAirport;
@@ -121,7 +121,7 @@ public class SearchResultActivity extends AppCompatActivity {
         resolveResultModel(mFlightResults);
         fillFlightsNumber();
         mResultAdapter = new SearchResultRecyclerviewAdapter(this, itinerariesArrayList, mType, mCurrency);
-
+        mResultAdapter.setOnItemClickListener(this);
         rvResult.setAdapter(getRecyclerViewAdapterAnimatior(mResultAdapter));
         rvResult.setLayoutManager(new LinearLayoutManager(this));
 
@@ -168,6 +168,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     return;
                 }
                 mResultAdapter = new SearchResultRecyclerviewAdapter(SearchResultActivity.this, filteredArray, mType, mCurrency);
+                mResultAdapter.setOnItemClickListener(SearchResultActivity.this);
                 rvResult.setAdapter(getRecyclerViewAdapterAnimatior(mResultAdapter));
                 filterAnimationReverse(grpFilter, grpFilter);
             }
@@ -684,4 +685,10 @@ public class SearchResultActivity extends AppCompatActivity {
         return scaleInAnimationAdapter;
     }
 
+    @Override
+    public void onItemClick(Itineraries model) {
+        Intent intent = new Intent(SearchResultActivity.this,SearchResultDetailActivity.class);
+        intent.putExtra(SearchResultDetailActivity.RESULT_DETAIL_MODEL_KEY,new Gson().toJson(model));
+        startActivity(intent);
+    }
 }
