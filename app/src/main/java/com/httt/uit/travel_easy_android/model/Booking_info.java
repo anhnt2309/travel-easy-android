@@ -1,10 +1,12 @@
 package com.httt.uit.travel_easy_android.model;
 
+import java.io.Serializable;
+
 /**
  * Created by TuanAnh on 11/12/17.
  */
 
-public class Booking_info {
+public class Booking_info implements Serializable{
     private String travel_class;
 
     private String seats_remaining;

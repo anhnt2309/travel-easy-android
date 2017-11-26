@@ -1,10 +1,12 @@
 package com.httt.uit.travel_easy_android.model;
 
+import java.io.Serializable;
+
 /**
  * Created by TuanAnh on 11/12/17.
  */
 
-public class Fare {
+public class Fare  implements Serializable{
 
     private Price_per_infant price_per_infant;
 

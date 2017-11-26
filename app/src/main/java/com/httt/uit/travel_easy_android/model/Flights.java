@@ -1,12 +1,15 @@
 package com.httt.uit.travel_easy_android.model;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by TuanAnh on 11/12/17.
  */
 
-public class Flights {
+public class Flights implements Serializable{
     public Fare fare;
 
     private String marketing_airline;

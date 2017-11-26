@@ -1,12 +1,13 @@
 package com.httt.uit.travel_easy_android.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by TuanAnh on 11/12/17.
  */
 
-public class Results {
+public class Results implements Serializable {
     private Fare fare;
 
     private ArrayList<Itineraries> itineraries;

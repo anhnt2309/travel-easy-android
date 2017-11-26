@@ -1,10 +1,12 @@
 package com.httt.uit.travel_easy_android.model;
 
+import java.io.Serializable;
+
 /**
  * Created by TuanAnh on 11/12/17.
  */
 
-public class Origin {
+public class Origin implements Serializable {
     private String airport;
 
     private String terminal;
