@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightResults;
+import com.httt.uit.travel_easy_android.model.airport.AirportInfo;
 import com.httt.uit.travel_easy_android.request.BaseRequest;
 import com.httt.uit.travel_easy_android.request.MyDataCallback;
 
@@ -13,6 +14,9 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Response;
+
 
 /**
  * Created by TuanAnh on 11/3/17.
@@ -81,5 +85,26 @@ public class ApiManager extends BaseRequest {
         GET(context, url, params, type, null, myCallback);
     }
 
+    public static void getAircraft(final Context context, String code, MyDataCallback<Response> myCallback) {
+        if (code == null)
+            return;
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("hex", code);
+
+
+        Type type = new TypeToken<Response>() {
+        }.getType();
+        String url = "hex-type.php";
+        String baseUrl = "https://ae.roplan.es/api/";
+        GETEXTERNAL(context, url, baseUrl, params, type, null, myCallback);
+    }
+
+    public static void getAirportInfo(final Context context, String code, MyDataCallback<AirportInfo> myCallback) {
+
+        Type type = new TypeToken<AirportInfo>() {
+        }.getType();
+        String url = "location/" + code;
+        GET(context, url, null, type, null, myCallback);
+    }
 
 }

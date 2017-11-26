@@ -67,6 +67,11 @@ public class BaseRequest {
                 @Path(value = "url", encoded = true) String path,
                 @QueryMap Map<String, Object> options);
 
+        @GET(GENERIC_URL)
+        Call<ResponseBody> getRaw(
+                @Path(value = "url", encoded = true) String path,
+                @QueryMap Map<String, Object> options);
+
         @PUT(GENERIC_URL)
         Call<JsonElement> putGeneric(
                 @QueryMap Map<String, Object> options,
@@ -91,6 +96,27 @@ public class BaseRequest {
             url.substring(1);
 
         String baseUrl = BaseRequest.getBaseUrl(usePrefix);
+        HashMap<String, String> headers = getStandardHeaderParameters();
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+                .create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        BaseRequestInterface baseRequestInterface = retrofit.create(BaseRequestInterface.class);
+        return baseRequestInterface;
+    }
+
+    public static BaseRequestInterface getBaseRequestInterface(String url, String externalURl) {
+//Auto-detect if we should use prefix or not
+        boolean usePrefix = !url.startsWith("/");
+        if (!usePrefix)
+            url.substring(1);
+
+        String baseUrl = externalURl;
         HashMap<String, String> headers = getStandardHeaderParameters();
 
         Gson gson = new GsonBuilder()
@@ -162,6 +188,35 @@ public class BaseRequest {
 
         BaseRequestInterface requestInterface = getBaseRequestInterface(url);
         Call<JsonElement> theCall = requestInterface.getGeneric(url, finalParams);
+        theCall.enqueue(theCallback);
+    }
+
+    protected static void GETEXTERNAL(final Context context, String url,String baseUrl, HashMap<String, Object> params, final Type theType, String dataWrapperElement, final MyDataCallback myCallback) {
+        HashMap<String, Object> finalParams = getStandardParameters();
+        if (params != null && params.size() > 0)
+            finalParams.putAll(params);
+
+
+        if (params == null)
+            params = new HashMap<>();
+
+
+        String functionName = Thread.currentThread().getStackTrace()[3].getMethodName();
+
+        retrofit2.Callback<ResponseBody> theCallback = new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                    myCallback.success(response);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    myCallback.failure(t);
+            }
+        };
+
+        BaseRequestInterface requestInterface = getBaseRequestInterface(url, baseUrl);
+        Call<ResponseBody> theCall = requestInterface.getRaw(url, finalParams);
         theCall.enqueue(theCallback);
     }
 
