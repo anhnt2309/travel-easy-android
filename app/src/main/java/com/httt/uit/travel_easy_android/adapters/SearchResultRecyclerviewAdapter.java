@@ -140,8 +140,8 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         }
 
         obDate = departDate.getDate() + "/" + (departDate.getMonth() + 1);
-        obDepartTime = String.format("%02d:%02d", departDate.getHours(), departDate.getMinutes());
-        obArriveTime = String.format("%02d:%02d", arriveDate.getHours(), arriveDate.getMinutes());
+        obDepartTime = DateUtils.getTimeFromDate(departDate);
+        obArriveTime = DateUtils.getTimeFromDate(arriveDate);
         obDuration = DateUtils.durationBetween2DateTime(departDate, arriveDate);
         if (!isRoundTrip) {
             holder.mGrpInbound.setVisibility(View.GONE);
@@ -176,8 +176,8 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
             }
 
             ibDate = ibdepartDate.getDate() + "/" + (ibdepartDate.getMonth() + 1);
-            ibDepartTime = String.format("%02d:%02d", ibdepartDate.getHours(), ibdepartDate.getMinutes());
-            ibArriveTime = String.format("%02d:%02d", ibarriveDate.getHours(), ibarriveDate.getMinutes());
+            ibDepartTime = DateUtils.getTimeFromDate(ibdepartDate);
+            ibArriveTime = DateUtils.getTimeFromDate(ibarriveDate);
             ibDuration = DateUtils.durationBetween2DateTime(ibdepartDate, ibarriveDate);
         }
 
@@ -226,6 +226,11 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
 
         //logo logic
         if (isRoundTrip) {
+            holder.imgAirline2.setVisibility(View.VISIBLE);
+            holder.logoDivider.setVisibility(holder.imgAirline2.getVisibility());
+
+            String logoUrl = AIRLINE_LOGO_URL + ibFirstFlight.getMarketing_airline() + ".png";
+            Glide.with(mContext).load(logoUrl).into(holder.imgAirline2);
             // roundtrip case we only check stop flight different airline if depart and return flight have the same airline
             if (hasStopFlight && ibhasStopFlight) {
 
@@ -246,10 +251,19 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
             if (hasStopFlight) {
                 if (obFirstFlight.getMarketing_airline().equals(obSecondFlight.getMarketing_airline())) {
                     //// TODO: 11/24/17 hide second logo
+                    holder.imgAirline2.setVisibility(View.GONE);
+                    holder.logoDivider.setVisibility(holder.imgAirline2.getVisibility());
                 } else {
                     //// TODO: 11/24/17 show both logo
+                    holder.imgAirline2.setVisibility(View.VISIBLE);
+                    holder.logoDivider.setVisibility(holder.imgAirline2.getVisibility());
+                    String logoUrl = AIRLINE_LOGO_URL + obSecondFlight.getMarketing_airline() + ".png";
+                    Glide.with(mContext).load(logoUrl).into(holder.imgAirline2);
                 }
-
+            }
+            if (!hasStopFlight) {
+                holder.imgAirline2.setVisibility(View.GONE);
+                holder.logoDivider.setVisibility(holder.imgAirline2.getVisibility());
             }
         }
 
@@ -267,7 +281,8 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView tvPrice;
         public ImageView imgAirline;
-
+        public ImageView imgAirline2;
+        public View logoDivider;
 
         //inbound
         public TextView tvInboundDate;
@@ -297,6 +312,8 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
             grpContainer = itemView.findViewById(R.id.grpContainer);
             tvPrice = (TextView) itemView.findViewById(R.id.tv_price);
             imgAirline = (ImageView) itemView.findViewById(R.id.img_airline);
+            imgAirline2 = itemView.findViewById(R.id.img_airline2);
+            logoDivider = itemView.findViewById(R.id.divider_ailine_logo);
 
             mGrpInbound = itemView.findViewById(R.id.grpInBound);
             mGrpOutbound = itemView.findViewById(R.id.grpInBound);

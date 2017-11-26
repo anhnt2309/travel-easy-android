@@ -20,18 +20,25 @@ import android.widget.TextView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.httt.uit.travel_easy_android.MainActivity;
 import com.httt.uit.travel_easy_android.R;
 import com.httt.uit.travel_easy_android.adapters.SearchResultRecyclerviewAdapter;
 import com.httt.uit.travel_easy_android.manager.CacheManager;
+import com.httt.uit.travel_easy_android.model.Airline;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
 import com.httt.uit.travel_easy_android.model.FlightResults;
+import com.httt.uit.travel_easy_android.model.Flights;
 import com.httt.uit.travel_easy_android.model.Itineraries;
 import com.httt.uit.travel_easy_android.model.Results;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.mahfa.dnswitch.DayNightSwitch;
 import com.sackcentury.shinebuttonlib.ShineButton;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -119,6 +126,8 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
 
 
         resolveResultModel(mFlightResults);
+
+
         fillFlightsNumber();
         mResultAdapter = new SearchResultRecyclerviewAdapter(this, itinerariesArrayList, mType, mCurrency);
         mResultAdapter.setOnItemClickListener(this);
@@ -217,6 +226,7 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
         initSeekBarEvent();
 
     }
+
 
     public void fillFlightsNumber() {
         if (itinerariesArrayList == null || nonStopitineraries == null || hasStopitineraries == null)
@@ -404,6 +414,8 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
         tvAdult.setText("" + mNoAdult);
         tvChildren.setText("" + mNoChildren);
         tvInfant.setText("" + mNoInfant);
+
+
     }
 
     private void getData() {
@@ -457,6 +469,7 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
 
 
         mCurrency = intent.getStringExtra(MainActivity.FLIGHT_CURRENCY_STRING);
+
 
     }
 
@@ -687,8 +700,14 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
 
     @Override
     public void onItemClick(Itineraries model) {
-        Intent intent = new Intent(SearchResultActivity.this,SearchResultDetailActivity.class);
-        intent.putExtra(SearchResultDetailActivity.RESULT_DETAIL_MODEL_KEY,new Gson().toJson(model));
+        Intent intent = new Intent(SearchResultActivity.this, SearchResultDetailActivity.class);
+        intent.putExtra(SearchResultDetailActivity.RESULT_DETAIL_MODEL_KEY, new Gson().toJson(model));
+        intent.putExtra(SearchResultDetailActivity.RESULT_DETAIL_ORIGIN_AIRPORT_KEY, new Gson().toJson(mOriginAirport));
+        intent.putExtra(SearchResultDetailActivity.RESULT_DETAIL_DESTINATION_AIRPORT_KEY, new Gson().toJson(mDestinationAirport));
+        intent.putExtra(SearchResultDetailActivity.RESULT_CURRENCY_KEY, mCurrency);
+        intent.putExtra(SearchResultDetailActivity.RESULT_ADULT_NUMBER_KEY, mNoAdult);
+        intent.putExtra(SearchResultDetailActivity.RESULT_CHILDREN_NUMBER_KEY, mNoChildren);
+        intent.putExtra(SearchResultDetailActivity.RESULT_INFANT_NUMBER_KEY, mNoInfant);
         startActivity(intent);
     }
 }
