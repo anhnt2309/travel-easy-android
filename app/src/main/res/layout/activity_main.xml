@@ -75,13 +75,30 @@
                 app:lottie_loop="true" />
 
             <TextView
+                android:id="@+id/textView4"
                 style="@style/text_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="20dp"
                 android:text="@string/wait_promt"
                 android:textColor="@color/black" />
 
+            <LinearLayout
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shadow_bg_state_page3">
+
+                <TextView
+                    style="@style/text_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:text="@string/cancel"
+                    android:textSize="25dp" />
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

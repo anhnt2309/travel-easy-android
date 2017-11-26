@@ -518,7 +518,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/shadow_bg_color_full_page3">
+            android:background="@drawable/shadow_bg_state_page3">
 
             <TextView
                 style="@style/text_title"

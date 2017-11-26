@@ -14,7 +14,8 @@
 
         android:paddingRight="10dp">
 
-        <include layout="@layout/hvp_header_placeholder" />
+        <include
+            layout="@layout/hvp_header_placeholder" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,13 +31,12 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="25dp"
                 android:text="TITLE"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="#CCC" />
+                android:background="@color/gray_active_icon" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,6 +54,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_origin_code"
                         style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -62,6 +63,7 @@
                         android:textSize="40sp" />
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/tv_origin_name"
                         style="@style/text_subtitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -85,7 +87,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/ic_result_plane" />
+                        android:src="@mipmap/ic_detail_plane" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -96,6 +98,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_destination_code"
                         style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -104,6 +107,7 @@
                         android:textSize="40sp" />
 
                     <me.grantland.widget.AutofitTextView
+                        android:id="@+id/tv_destination_name"
                         style="@style/text_subtitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -154,9 +158,11 @@
                                 android:textSize="15sp" />
 
                             <com.joanzapata.iconify.widget.IconTextView
+                                android:id="@+id/tv_total_time"
                                 style="@style/text_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:text="8 giờ 35 phút"
                                 android:textColor="@color/black"
                                 android:textSize="15sp" />
@@ -178,9 +184,11 @@
                                 android:textSize="15sp" />
 
                             <com.joanzapata.iconify.widget.IconTextView
+                                android:id="@+id/tv_num_of_flight"
                                 style="@style/text_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:text="2 "
                                 android:textColor="@color/black"
                                 android:textSize="15sp" />
@@ -188,9 +196,46 @@
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
-                <include layout="@layout/content_flight_detail" />
+                <include
+                    android:id="@+id/grpLayoutOutbound"
+                    layout="@layout/content_flight_detail" />
 
-                <include layout="@layout/content_flight_detail" />
+                <android.support.v7.widget.CardView
+                    android:id="@+id/grpWaitTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="40dp"
+                    app:cardElevation="4dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fa_wait_time"
+                            android:textColor="@color/gray_active_icon"
+                            android:textSize="15sp" />
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:id="@+id/tv_wait_time"
+                            style="@style/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="8 giờ 35 phút"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <include
+                    android:id="@+id/grpLayoutInbound"
+                    layout="@layout/content_flight_detail" />
             </LinearLayout>
         </LinearLayout>
 

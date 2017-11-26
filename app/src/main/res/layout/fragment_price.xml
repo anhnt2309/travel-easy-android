@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.github.ksoichiro.android.observablescrollview.ObservableScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+
+        android:paddingRight="10dp">
+
+        <include layout="@layout/hvp_header_placeholder" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="TITLE"
+                android:textSize="20sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#CCC" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ic_flight_detail_header"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="10"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <me.grantland.widget.AutofitTextView
+                        android:id="@+id/tv_origin_name"
+                        style="@style/text_subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="0dp"
+                        android:maxLines="2"
+                        android:text="Tổng giá"
+                        android:textColor="@color/light_gray_inactive_icon"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tv_total_price"
+                        style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5,000,000đ"
+                        android:textColor="@color/app_primary_color"
+                        android:textSize="40sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="12dp"
+
+                android:background="@color/white"
+                android:gravity="left"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/iconTextView2"
+                        style="@style/text_subtitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="2"
+                        android:gravity="left"
+                        android:maxLines="2"
+                        android:text="@string/txt_adult_price"
+                        android:textColor="@color/gray_active_icon"
+                        android:textSize="17sp" />
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/tv_adult_price_number"
+                        style="@style/text_subtitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:maxLines="2"
+                        android:text="XX"
+                        android:textColor="@color/light_gray_inactive_icon"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_adult_price"
+                    style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right"
+                    android:text="0đ"
+                    android:textColor="@color/app_primary_color"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/iconTextView3"
+                        style="@style/text_subtitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="2"
+                        android:gravity="left"
+                        android:maxLines="2"
+                        android:text="@string/txt_children_price"
+                        android:textColor="@color/gray_active_icon"
+                        android:textSize="17sp" />
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/tv_children_price_number"
+                        style="@style/text_subtitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:maxLines="2"
+                        android:text="XX"
+                        android:textColor="@color/light_gray_inactive_icon"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_children_price"
+                    style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right"
+                    android:text="0đ"
+                    android:textColor="@color/app_primary_color"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/iconTextView4"
+                        style="@style/text_subtitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="2"
+                        android:gravity="left"
+                        android:maxLines="2"
+                        android:text="@string/txt_infants_price"
+                        android:textColor="@color/gray_active_icon"
+                        android:textSize="17sp" />
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/tv_infant_price_number"
+                        style="@style/text_subtitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:maxLines="2"
+                        android:text="XX"
+                        android:textColor="@color/light_gray_inactive_icon"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_infants_price"
+                    style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:gravity="right"
+                    android:text="0đ"
+
+                    android:textColor="@color/app_primary_color"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/bg_line_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/white">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/iconTextView5"
+                    style="@style/text_subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="2"
+                    android:gravity="left"
+                    android:maxLines="2"
+                    android:text="@string/txt_refundable"
+                    android:textColor="@color/gray_active_icon"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/white">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/tv_refundable"
+                    style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:gravity="right"
+                    android:text="@string/txt_yes"
+
+                    android:textColor="@color/app_primary_color"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="12dp"
+            android:background="@color/white">
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/iconTextView6"
+                style="@style/text_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="2"
+                android:gravity="left"
+                android:maxLines="2"
+                android:text="@string/txt_change_penalties"
+                android:textColor="@color/gray_active_icon"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="12dp"
+            android:background="@color/white">
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/tv_change_penalties"
+                style="@android:style/TextAppearance.DeviceDefault.SearchResult.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="right"
+                android:text="@string/txt_no"
+                android:textColor="@color/app_primary_color"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
