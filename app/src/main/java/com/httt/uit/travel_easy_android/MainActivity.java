@@ -58,6 +58,7 @@ import butterknife.ButterKnife;
 import co.ceryle.radiorealbutton.RadioRealButton;
 import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 import greco.lorenzo.com.lgsnackbar.LGSnackbarManager;
+import greco.lorenzo.com.lgsnackbar.style.LGSnackBarTheme;
 import greco.lorenzo.com.lgsnackbar.style.LGSnackBarThemeManager;
 import me.grantland.widget.AutofitTextView;
 import nl.dionsegijn.steppertouch.OnStepCallback;
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int ROUND_TRIP_TYPE = 1237;
 
     private boolean animationReady = false;
+    private boolean isCancelled = false;
     private ValueAnimator backgroundAnimator;
     @BindView(R.id.coordinator)
     WelcomeCoordinatorLayout coordinatorLayout;
@@ -147,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout grpLoadingScreen;
     private LinearLayout grpDividerDate;
 
+    private LinearLayout grpBtnCancel;
+
     private int rbId = R.id.rb_round_trip;
     private int spInfantMax = 0;
     private Date mDepartDate;
@@ -157,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
     private int children;
     private int infant;
     private FlightClass selectedClass;
-    HistoryManager history =new HistoryManager(this);
+    HistoryManager history = new HistoryManager(this);
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -285,6 +289,8 @@ public class MainActivity extends AppCompatActivity {
 
         grpLoadingScreen = (LinearLayout) findViewById(R.id.grpLoadingScreen);
         grpLoadingScreen.setVisibility(View.GONE);
+
+        grpBtnCancel = (LinearLayout) findViewById(R.id.btn_cancel);
 
         grpDividerDate = (LinearLayout) findViewById(R.id.divider_date);
         tvOriginCode3 = (TextView) findViewById(R.id.txt_from_code);
@@ -529,6 +535,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        grpBtnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isCancelled = true;
+                grpLoadingScreen.setVisibility(View.GONE);
+            }
+        });
+
     }
 
     public void initAirportEvent() {
@@ -741,8 +755,15 @@ public class MainActivity extends AppCompatActivity {
     MyDataCallback<FlightResults> resultsCallBack = new MyDataCallback<FlightResults>() {
         @Override
         public void success(FlightResults flightResults) {
-            if (flightResults == null)
+            if (flightResults == null) {
+                grpLoadingScreen.setVisibility(View.GONE);
+                LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.ERROR,"Không tìm thấy kết quả hoặc đã có lỗi xảy ra. Vui lòng thử lại!!!");
                 return;
+            }
+            if (isCancelled) {
+                isCancelled = false;
+                return;
+            }
 
             startResultActivity(flightResults);
             Handler handler = new Handler();
@@ -893,16 +914,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).start();
     }
-    public void BackHistory(HistoryManager a){
-        int i=a.getHistoryCount();
-        if(i==0)return;
-        History history=a.getHistoryById(i-1);
-        History history1=a.getHistoryById(i);
-        if(history==null||history1==null)return;
-        mOriginAirport=new AutoCompleteAirport(history.getValue(),history.getAirport(),history.getCity_name());
-        mDestinationAirport=new AutoCompleteAirport(history1.getValue(),history1.getAirport(),history1.getCity_name());
-        if(mOriginAirport==null||mDestinationAirport==null)return;
+
+    public void BackHistory(HistoryManager a) {
+        int i = a.getHistoryCount();
+        if (i == 0) return;
+        History history = a.getHistoryById(i - 1);
+        History history1 = a.getHistoryById(i);
+        if (history == null || history1 == null) return;
+        mOriginAirport = new AutoCompleteAirport(history.getValue(), history.getAirport(), history.getCity_name());
+        mDestinationAirport = new AutoCompleteAirport(history1.getValue(), history1.getAirport(), history1.getCity_name());
+        if (mOriginAirport == null || mDestinationAirport == null) return;
         displayOriginAirport(mOriginAirport);
-         displayDestinationAirport(mDestinationAirport);
+        displayDestinationAirport(mDestinationAirport);
     }
 }
