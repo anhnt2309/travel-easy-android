@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class DateUtils {
-    private static String dayVns[] = {"Chủ Nhật","Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"};
+    private static String dayVns[] = {"Chủ Nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"};
 
     public static String getDay(Date date) {
         int dayIndex = date.getDay();
@@ -59,6 +59,18 @@ public class DateUtils {
         } catch (ParseException e) {
             return null;
         }
+    }
+
+    public static String getTimeFromDate(Date date) {
+        return String.format("%02d:%02d", date.getHours(), date.getMinutes());
+    }
+
+    public static String getSearchableDate(Date date) {
+        return String.format("%02d-%02d-%04d", date.getDate(), date.getMonth() + 1, (date.getYear() - 100 + 2000));
+    }
+
+    public static String getVNAirlineDate(Date date) {
+        return String.format("%04d-%02d-%02d", (date.getYear() - 100 + 2000), date.getMonth() + 1, date.getDate());
     }
 
     public static String durationBetween2DateTime(Date depart, Date arrive) {
