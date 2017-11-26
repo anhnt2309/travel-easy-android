@@ -3,7 +3,7 @@
     <string name="app_name">Trasy</string>
     <string name="adults">Người lớn</string>
     <string name="adult_detail">(Trên 12 tuổi)</string>
-    <string name="infants">Trẻ Sơ Sinh</string>
+    <string name="infants">Trẻ sơ sinh</string>
     <string name="infants_detail">(Dưới 2 tuổi)</string>
     <string name="childrens">Trẻ em</string>
     <string name="childerns_detail">(Dưới 12 tuổi)</string>
@@ -36,11 +36,27 @@
     <string name="txt_price_detail">Giá Vé</string>
     <string name="txt_return">Chuyến về</string>
     <string name="fa_total_time">{fa-clock-o} Tổng thời gian:</string>
+    <string name="fa_wait_time">{fa-clock-o} Thời gian dừng chân:</string>
     <string name="fa_flight_number">{fa-pie-chart} Số chặng bay:</string>
     <string name="fa_flight_time">{fa-clock-o} Thời gian :</string>
     <string name="fa_aircraft">{fa-plane} Loại máy bay:</string>
     <string name="fa_class">{fa-ticket} Hạng bay:</string>
     <string name="fa_quality">{fa-star-half-o} Chất lượng:</string>
     <string name="fa_quantity">{fa-hashtag} Số lượng ghế còn:</string>
-    <string name="btn_airline_web">Website của Vietjet Air</string>
+    <string name="fa_country">{fa-globe} Hãng bay nước :</string>
+    <string name="btn_airline_web">Website</string>
+    <string name="cancel">Huỷ</string>
+    <string name="txt_adult_price">{fa-credit-card-alt} Giá vé cho mỗi người lớn</string>
+    <string name="txt_children_price">{fa-money} Giá vé mỗi cho trẻ em</string>
+    <string name="txt_infants_price">{fa-usd} Giá vé cho mỗi trẻ sơ sinh</string>
+    <string name="txt_refundable">{fa-exclamation-triangle} Hoàn tiền khi huỷ vé</string>
+    <string name="txt_change_penalties">{fa-exclamation-triangle} Thu phí khi đổi ngày </string>
+    <string name="txt_time_number">{fa-times} <b>%1$d</b></string>
+    <string name="txt_yes">{fa-check} CÓ</string>
+    <string name="txt_no">{fa-times} KHÔNG</string>
+
+
+    <string name="action_back">Back</string>
+    <string name="action_forward">Forward</string>
+    <string name="action_bookmark">Bookmark</string>
 </resources>
