@@ -1,6 +1,7 @@
 
 package com.httt.uit.travel_easy_android;
 
+import android.animation.Animator;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -20,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.github.badoualy.datepicker.DatePickerTimeline;
@@ -27,7 +29,6 @@ import com.google.gson.Gson;
 import com.httt.uit.travel_easy_android.activities.PickDateActivity;
 import com.httt.uit.travel_easy_android.activities.SearchAirportActivity;
 import com.httt.uit.travel_easy_android.activities.SearchResultActivity;
-import com.httt.uit.travel_easy_android.activities.SearchResultDetailActivity;
 import com.httt.uit.travel_easy_android.adapters.ClassSpinnerAdapter;
 import com.httt.uit.travel_easy_android.animators.ChatAvatarsAnimator;
 import com.httt.uit.travel_easy_android.animators.InSyncAnimator;
@@ -150,6 +151,9 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout grpDividerDate;
 
     private LinearLayout grpBtnCancel;
+    private LinearLayout grpLoadingStatus;
+    private TextView tvLoadingStatus;
+    private LottieAnimationView lottieLoadingStatus;
 
     private int rbId = R.id.rb_round_trip;
     private int spInfantMax = 0;
@@ -161,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
     private int children;
     private int infant;
     private FlightClass selectedClass;
+    private Handler mHanlder;
+    private Handler mTimeOutHanlder;
     HistoryManager history = new HistoryManager(this);
 
     @Override
@@ -291,6 +297,9 @@ public class MainActivity extends AppCompatActivity {
         grpLoadingScreen.setVisibility(View.GONE);
 
         grpBtnCancel = (LinearLayout) findViewById(R.id.btn_cancel);
+        grpLoadingStatus = (LinearLayout) findViewById(R.id.grpLoadingStatus);
+        tvLoadingStatus = (TextView) findViewById(R.id.tv_loading_status);
+        lottieLoadingStatus = (LottieAnimationView) findViewById(R.id.lottie_loading_status);
 
         grpDividerDate = (LinearLayout) findViewById(R.id.divider_date);
         tvOriginCode3 = (TextView) findViewById(R.id.txt_from_code);
@@ -474,6 +483,27 @@ public class MainActivity extends AppCompatActivity {
                     history.addHistory(mOriginAirport);
                     history.addHistory(mDestinationAirport);
                     //call api
+                    mHanlder = new Handler();
+                    mTimeOutHanlder = new Handler();
+                    mHanlder.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            grpLoadingStatus.setVisibility(View.VISIBLE);
+                            grpLoadingStatus.setAnimation(AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.fade_in));
+                        }
+                    }, 20000);
+
+                    mTimeOutHanlder.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            grpLoadingScreen.setVisibility(View.GONE);
+                            LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.ERROR, "Quá thời gian cho phép. Vui lòng thử lại!!!");
+                            isCancelled = true;
+                        }
+                    }, 40000);
+                    isCancelled = false;
+                    grpLoadingStatus.setVisibility(View.GONE);
+
                     grpLoadingScreen.setVisibility(View.VISIBLE);
                     ApiManager.getSearchResult(MainActivity.this, mOriginAirport.value, mDestinationAirport.value, departDate, returnDate, adult, children, infant, DEFAULT_CURRENCY, selectedClassString, resultsCallBack);
                 }
@@ -503,7 +533,29 @@ public class MainActivity extends AppCompatActivity {
                     history.addHistory(mDestinationAirport);
                     //call api
                     String departDate = DateUtils.getSearchDate(mDepartDate);
+
+                    mHanlder = new Handler();
+                    mTimeOutHanlder = new Handler();
+                    mHanlder.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            grpLoadingStatus.setVisibility(View.VISIBLE);
+                            grpLoadingStatus.setAnimation(AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.fade_in));
+                        }
+                    }, 20000);
+
+                    mTimeOutHanlder.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            grpLoadingScreen.setVisibility(View.GONE);
+                            LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.ERROR, "Quá thời gian cho phép. Vui lòng thử lại!!!");
+                            isCancelled = true;
+                        }
+                    }, 40000);
+
+                    grpLoadingStatus.setVisibility(View.GONE);
                     grpLoadingScreen.setVisibility(View.VISIBLE);
+                    isCancelled = false;
                     ApiManager.getSearchResult(MainActivity.this, mOriginAirport.value, mDestinationAirport.value, departDate, "", adult, children, infant, DEFAULT_CURRENCY, selectedClassString, resultsCallBack);
                 }
             }
@@ -754,26 +806,30 @@ public class MainActivity extends AppCompatActivity {
 
     MyDataCallback<FlightResults> resultsCallBack = new MyDataCallback<FlightResults>() {
         @Override
-        public void success(FlightResults flightResults) {
+        public void success(final FlightResults flightResults) {
             if (flightResults == null) {
                 grpLoadingScreen.setVisibility(View.GONE);
-                LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.ERROR,"Không tìm thấy kết quả hoặc đã có lỗi xảy ra. Vui lòng thử lại!!!");
+                LGSnackbarManager.show(LGSnackBarTheme.SnackbarStyle.ERROR, "Không tìm thấy kết quả hoặc đã có lỗi xảy ra. Vui lòng thử lại!!!");
                 return;
             }
             if (isCancelled) {
                 isCancelled = false;
                 return;
             }
+            if (mHanlder != null)
+                mHanlder.removeCallbacksAndMessages(null);
 
+            if (mTimeOutHanlder != null) {
+                mTimeOutHanlder.removeCallbacksAndMessages(null);
+            }
             startResultActivity(flightResults);
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
+            Handler handler2 = new Handler();
+            handler2.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     grpLoadingScreen.setVisibility(View.GONE);
                 }
             }, 500);
-
 
         }
 
