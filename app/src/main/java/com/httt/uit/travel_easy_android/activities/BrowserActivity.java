@@ -1,7 +1,9 @@
 package com.httt.uit.travel_easy_android.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
@@ -17,6 +19,7 @@ import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.httt.uit.travel_easy_android.R;
@@ -26,6 +29,7 @@ public class BrowserActivity extends AppCompatActivity {
     // private String TAG = BrowserActivity.class.getSimpleName();
     private String url;
     private WebView webView;
+    private LinearLayout btnOpenWith;
     private ProgressBar progressBar;
     private float m_downX;
     CoordinatorLayout coordinatorLayout;
@@ -47,12 +51,20 @@ public class BrowserActivity extends AppCompatActivity {
         }
 
         webView = (WebView) findViewById(R.id.webView);
+        btnOpenWith = (LinearLayout) findViewById(R.id.btn_open);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
 
         initWebView();
 
         webView.loadUrl(url);
+        btnOpenWith.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(browserIntent);
+            }
+        });
     }
 
     private void initWebView() {
