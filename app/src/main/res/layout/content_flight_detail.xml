@@ -177,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
                             android:maxLines="2"
-                            android:text="Vietjet Pacific"
+                            tools:text="Vietjet Pacific"
                             android:textColor="@color/gray_active_icon"
                             android:textSize="15sp"
                             android:textStyle="bold" />

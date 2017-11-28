@@ -33,25 +33,25 @@
         android:id="@+id/grpLoadingScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/page3"
-        android:visibility="gone"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/page3"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:background="@drawable/cloud_bg2x">
+            android:background="@drawable/cloud_bg2x"
+            android:gravity="center">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/plane2x"
                 android:layout_marginBottom="30dp"
-               >
+                android:background="@drawable/plane2x">
 
             </LinearLayout>
         </LinearLayout>
@@ -67,38 +67,87 @@
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animation_view"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="0dp"
                 android:layout_above="@+id/subtitle"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="10"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="Plane.json"
                 app:lottie_loop="true" />
+
+            <LinearLayout
+                android:id="@+id/grpLoadingStatus"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:gravity="center_horizontal"
+                android:visibility="visible"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottie_loading_status"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/subtitle"
+                    android:layout_weight="2"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="crying_emoji.json"
+                    app:lottie_loop="true" />
+
+                <me.grantland.widget.AutofitTextView
+                    android:id="@+id/tv_loading_status"
+                    style="@style/text_subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="8"
+                    android:gravity="left|center"
+                    android:text="@string/txt_long_wait"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView4"
                 style="@style/text_subtitle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginBottom="20dp"
+                android:layout_weight="2"
                 android:text="@string/wait_promt"
                 android:textColor="@color/black" />
 
             <LinearLayout
-                android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/shadow_bg_state_page3">
+                android:layout_weight="2">
 
-                <TextView
-                    style="@style/text_title"
+                <LinearLayout
+                    android:id="@+id/btn_cancel"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:text="@string/cancel"
-                    android:textSize="25dp" />
+                    android:layout_height="40dp"
+
+                    android:background="@drawable/shadow_bg_state">
+
+                    <TextView
+                        style="@style/text_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:text="@string/cancel"
+                        android:textSize="25dp" />
+                </LinearLayout>
+
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

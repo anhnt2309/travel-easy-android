@@ -310,7 +310,22 @@
         app:view_behavior=".ParallaxTitleBehaviour">
 
     </nl.dionsegijn.steppertouch.StepperTouch>
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@id/txt_adults"
+        android:layout_above="@+id/stepper_adults">
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:rotation="180"
+        android:layout_marginTop="15dp"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="swipe_left.json"
+        app:lottie_loop="true" />
+    </LinearLayout>
     <Spinner
         android:id="@+id/sp_class"
         android:layout_width="match_parent"
@@ -347,7 +362,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/img_adults"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginLeft="45dp"
         android:text="@string/num_passenger"
         android:textColor="@color/black"
