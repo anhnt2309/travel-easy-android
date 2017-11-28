@@ -43,7 +43,16 @@ public class DateUtils {
     }
 
     public static String getSearchDate(Date date) {
-        String returnDate = (date.getYear() - 100 + 2000) + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        String dateString = "" + date.getDate();
+        String monthString = "" + (date.getMonth() + 1);
+        if (date.getDate() < 10){
+            dateString =String.format("%02d", date.getDate());
+        }
+        if((date.getMonth() + 1) < 10){
+            monthString = String.format("%02d", date.getMonth());
+        }
+
+            String returnDate = (date.getYear() - 100 + 2000) + "-" + monthString + "-" + dateString;
         return returnDate;
     }
 
