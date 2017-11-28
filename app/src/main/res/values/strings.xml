@@ -46,6 +46,7 @@
     <string name="fa_country">{fa-globe} Hãng bay nước :</string>
     <string name="btn_airline_web">Website</string>
     <string name="cancel">Huỷ</string>
+    <string name="open_in_browser">Mở bằng trình duyệt</string>
     <string name="txt_adult_price">{fa-credit-card-alt} Giá vé cho mỗi người lớn</string>
     <string name="txt_children_price">{fa-money} Giá vé mỗi cho trẻ em</string>
     <string name="txt_infants_price">{fa-usd} Giá vé cho mỗi trẻ sơ sinh</string>
@@ -54,9 +55,11 @@
     <string name="txt_time_number">{fa-times} <b>%1$d</b></string>
     <string name="txt_yes">{fa-check} CÓ</string>
     <string name="txt_no">{fa-times} KHÔNG</string>
-
+    <string name="txt_long_wait">Ôi không! Bạn vẫn còn đang chờ sao. Ráng chờ thêm tý nữa thôi nhé!!!!</string>
+    <string name="txt_success">Ta-daaaa! Đã tìm thấyc chuyến bay. Hãy chọn chuyến bay của bạn nào!!!!</string>
 
     <string name="action_back">Back</string>
     <string name="action_forward">Forward</string>
     <string name="action_bookmark">Bookmark</string>
+
 </resources>
