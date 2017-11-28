@@ -48,12 +48,13 @@ public class FareFragment extends Fragment {
     private int mNoAdult;
     private int mNoChildren;
     private int mNoInfant;
+    private boolean hasStopFlight;
 
     public FareFragment() {
 
     }
 
-    public static FareFragment newInstance(String title, Fare fare, String currency, int noAdult, int noChildren, int noInfant) {
+    public static FareFragment newInstance(String title, Fare fare, String currency, int noAdult, int noChildren, int noInfant, boolean ishasstop) {
         Bundle args = new Bundle();
         args.putString("title", title);
         args.putString("currency", currency);
@@ -61,6 +62,7 @@ public class FareFragment extends Fragment {
         args.putInt("noChildren", noChildren);
         args.putInt("noInfant", noInfant);
         args.putSerializable("fare_model", fare);
+        args.putBoolean("ishasstop", ishasstop);
 
 
         FareFragment fragment = new FareFragment();
@@ -87,6 +89,7 @@ public class FareFragment extends Fragment {
         mNoAdult = getArguments().getInt("noAdult");
         mNoChildren = getArguments().getInt("noChildren");
         mNoInfant = getArguments().getInt("noInfant");
+        hasStopFlight = getArguments().getBoolean("ishasstop");
 
         scrollView = view.findViewById(R.id.scrollView);
         title = view.findViewById(R.id.title);
@@ -112,22 +115,28 @@ public class FareFragment extends Fragment {
 
         if (mModel != null) {
             double priceDb = Double.parseDouble(mModel.getTotal_price());
+            priceDb = (hasStopFlight ? priceDb / 4 : priceDb / 2);
+
+
             String totalPrice = StringUtils.formatPrice(priceDb, mCurrency);
             tvTotalPrice.setText(totalPrice);
             if (mModel.getPrice_per_adult() != null) {
                 double priceAdult = Double.parseDouble(mModel.getPrice_per_adult().getTotal_fare());
+                priceAdult = (hasStopFlight ? priceAdult / 4 : priceAdult / 2);
                 String adultPrice = StringUtils.formatPrice(priceAdult, mCurrency);
                 tvAdultPrice.setText(adultPrice);
             }
 
             if (mModel.getPrice_per_child() != null) {
                 double priceChildren = Double.parseDouble(mModel.getPrice_per_child().getTotal_fare());
+                priceChildren = (hasStopFlight ? priceChildren / 4 : priceChildren / 2);
                 String adultChildren = StringUtils.formatPrice(priceChildren, mCurrency);
                 tvChildrenPrice.setText(adultChildren);
             }
 
             if (mModel.getPrice_per_infant() != null) {
                 double priceInfant = Double.parseDouble(mModel.getPrice_per_infant().getTotal_fare());
+                priceInfant = (hasStopFlight ? priceInfant / 4 : priceInfant / 2);
                 String adultInfant = StringUtils.formatPrice(priceInfant, mCurrency);
                 tvInfantPrice.setText(adultInfant);
             }

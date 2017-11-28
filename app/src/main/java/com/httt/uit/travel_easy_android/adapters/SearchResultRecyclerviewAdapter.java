@@ -121,22 +121,28 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
             obFirstFlight = outboundFlights.get(0);
             obSecondFlight = null;
         }
-        if (outboundFlights.size() == 2) {
+        if (outboundFlights.size() >= 2) {
             obFirstFlight = outboundFlights.get(0);
             obSecondFlight = outboundFlights.get(1);
         }
 
         if (obSecondFlight == null) {
             hasStopFlight = false;
-            departDate = DateUtils.parseDateTime(obFirstFlight.getDeparts_at());
-            arriveDate = DateUtils.parseDateTime(obFirstFlight.getArrives_at());
-            obFlight = obFirstFlight.getMarketing_airline() + obFirstFlight.getFlight_number();
+            if (obFirstFlight != null) {
+                departDate = DateUtils.parseDateTime(obFirstFlight.getDeparts_at());
+                arriveDate = DateUtils.parseDateTime(obFirstFlight.getArrives_at());
+                obFlight = obFirstFlight.getMarketing_airline() + obFirstFlight.getFlight_number();
+            }
+
         }
         if (obSecondFlight != null) {
             hasStopFlight = true;
-            departDate = DateUtils.parseDateTime(obFirstFlight.getDeparts_at());
-            arriveDate = DateUtils.parseDateTime(obSecondFlight.getArrives_at());
-            obFlight = obSecondFlight.getOrigin().getAirport();
+            if (obFirstFlight != null)
+                departDate = DateUtils.parseDateTime(obFirstFlight.getDeparts_at());
+            if (obSecondFlight != null) {
+                arriveDate = DateUtils.parseDateTime(obSecondFlight.getArrives_at());
+                obFlight = obSecondFlight.getOrigin().getAirport();
+            }
         }
 
         obDate = departDate.getDate() + "/" + (departDate.getMonth() + 1);

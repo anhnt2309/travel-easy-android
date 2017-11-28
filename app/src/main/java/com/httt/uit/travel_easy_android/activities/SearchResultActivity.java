@@ -124,9 +124,7 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
         getData();
         fillUI();
 
-
         resolveResultModel(mFlightResults);
-
 
         fillFlightsNumber();
         mResultAdapter = new SearchResultRecyclerviewAdapter(this, itinerariesArrayList, mType, mCurrency);
@@ -537,13 +535,23 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
         for (Results results : flightResults.getResults()) {
             for (Itineraries itineraries : results.getItineraries()) {
                 itineraries.fare = results.getFare();
-                itinerariesArrayList.add(itineraries);
+                //only get flight with 1stop
+                if (itineraries.getInbound() != null) {
+                    if (itineraries.getInbound().getFlights().size() <= 2)
+                        itinerariesArrayList.add(itineraries);
+                }
+
+                if (itineraries.getOutbound() != null) {
+                    if (itineraries.getOutbound().getFlights().size() <= 2)
+                        itinerariesArrayList.add(itineraries);
+                }
+
                 if (mType == MainActivity.DEFAULT_ROUND_TRIP) {
                     isRoundTrip = true;
                     grpReturnTime.setVisibility(View.VISIBLE);
                     if (itineraries.getInbound().getFlights().size() == 1 && itineraries.getOutbound().getFlights().size() == 1)
                         nonStopitineraries.add(itineraries);
-                    if (itineraries.getInbound().getFlights().size() > 1 || itineraries.getOutbound().getFlights().size() > 1)
+                    if (itineraries.getInbound().getFlights().size() == 2 || itineraries.getOutbound().getFlights().size() == 2)
                         hasStopitineraries.add(itineraries);
                 }
                 if (mType == MainActivity.DEFAULT_ONE_WAY) {
@@ -551,7 +559,7 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
                     grpReturnTime.setVisibility(View.GONE);
                     if (itineraries.getOutbound().getFlights().size() == 1)
                         nonStopitineraries.add(itineraries);
-                    if (itineraries.getOutbound().getFlights().size() > 1)
+                    if (itineraries.getOutbound().getFlights().size() == 2)
                         hasStopitineraries.add(itineraries);
                 }
             }

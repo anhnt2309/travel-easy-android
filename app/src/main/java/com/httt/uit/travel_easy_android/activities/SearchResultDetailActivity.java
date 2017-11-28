@@ -22,6 +22,8 @@ import com.httt.uit.travel_easy_android.model.Airline;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.Flights;
 import com.httt.uit.travel_easy_android.model.Itineraries;
+import com.httt.uit.travel_easy_android.model.Outbound;
+import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.joanzapata.iconify.Iconify;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.sackcentury.shinebuttonlib.ShineButton;
@@ -70,6 +72,8 @@ public class SearchResultDetailActivity extends AppCompatActivity {
     private int mNoAdult;
     private int mNoChildren;
     private int mNoInfant;
+    private boolean hasStopFlight;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,14 +149,14 @@ public class SearchResultDetailActivity extends AppCompatActivity {
                         return ScrollViewFragment.newInstance((String) getPageTitle(position), mModel.getOutbound().getFlights(), mOriginAirport, mDestinationAirport, mCurrency, mNoAdult, mNoChildren, mNoInfant);
                     if (position == 1)
 
-                        return FareFragment.newInstance((String) getPageTitle(position), mModel.fare, mCurrency, mNoAdult, mNoChildren, mNoInfant);
+                        return FareFragment.newInstance((String) getPageTitle(position), mModel.fare, mCurrency, mNoAdult, mNoChildren, mNoInfant,hasStopFlight);
                 } else {
                     if (position == 0)
                         return ScrollViewFragment.newInstance((String) getPageTitle(position), mModel.getOutbound().getFlights(), mOriginAirport, mDestinationAirport, mCurrency, mNoAdult, mNoChildren, mNoInfant);
                     if (position == 1)
                         return ScrollViewFragment.newInstance((String) getPageTitle(position), mModel.getInbound().getFlights(), mDestinationAirport, mOriginAirport, mCurrency, mNoAdult, mNoChildren, mNoInfant);
                     if (position == 2)
-                        return FareFragment.newInstance((String) getPageTitle(position), mModel.fare, mCurrency, mNoAdult, mNoChildren, mNoInfant);
+                        return FareFragment.newInstance((String) getPageTitle(position), mModel.fare, mCurrency, mNoAdult, mNoChildren, mNoInfant,hasStopFlight);
                 }
                 return ScrollViewFragment.newInstance((String) getPageTitle(position));
             }
@@ -191,6 +195,34 @@ public class SearchResultDetailActivity extends AppCompatActivity {
         if (modelString.isEmpty())
             return;
         mModel = new Gson().fromJson(modelString, Itineraries.class);
+
+
+
+        //Outbound handle
+        Outbound outbound = mModel.getOutbound();
+        Flights obFirstFlight = null;
+        Flights obSecondFlight = null;
+
+        ArrayList<Flights> outboundFlights = outbound.getFlights();
+        if (outboundFlights.size() == 1) {
+            obFirstFlight = outboundFlights.get(0);
+
+        }
+        if (outboundFlights.size() >= 2) {
+            obFirstFlight = outboundFlights.get(0);
+            obSecondFlight = outboundFlights.get(1);
+        }
+
+        if (obSecondFlight == null) {
+            hasStopFlight = false;
+
+        }
+        if (obSecondFlight != null) {
+            hasStopFlight = true;
+
+        }
+
+
 
         String originString = intent.getStringExtra(RESULT_DETAIL_ORIGIN_AIRPORT_KEY);
         mOriginAirport = new Gson().fromJson(originString, AutoCompleteAirport.class);
