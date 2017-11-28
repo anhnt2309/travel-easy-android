@@ -32,6 +32,8 @@ import com.httt.uit.travel_easy_android.utils.DateUtils;
 
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -321,9 +323,10 @@ public class ScrollViewFragment extends Fragment {
         String bookingCode = flights.getBooking_info().getBooking_code();
         String seatRemain = flights.getBooking_info().getSeats_remaining();
         firstAirline = null;
-        for (Airline airline : mAirlines)
-            if (airline.code.toLowerCase().equals(flights.getMarketing_airline().toLowerCase()))
-                firstAirline = airline;
+        if (mAirlines != null)
+            for (Airline airline : mAirlines)
+                if (airline.code.toLowerCase().equals(flights.getMarketing_airline().toLowerCase()))
+                    firstAirline = airline;
 
         if (firstAirline != null) {
             tvFirstAirlineName.setText(firstAirline.name);
@@ -506,12 +509,11 @@ public class ScrollViewFragment extends Fragment {
         String website = airline.website;
         String fullWebsite = "https://" + website;
         if (airline.code.toLowerCase().equals("bl")) {
-            fullWebsite += "/vn/vi/home?origin=" + origin + "&destination=" + destination + "&club-jetstar=0&adult=" + mNoAdult + "&children=" + mNoChildren + "&infants=" + mNoInfant + "&flexible=1&currency=VND&departure-date=" + departDateString + "";
+            fullWebsite += "/vn/vi/home?origin=" + origin + "&destination=" + destination + "&flight-type=1&selected-departure-date=" + departDateString + "&adult=" + mNoAdult + "&children=" + mNoChildren + "&infants=" + mNoInfant + "&currency=VND";
         }
         if (airline.code.toLowerCase().equals("vn")) {
-            fullWebsite = "https://wl-prod.sabresonicweb.com/SSW2010/VNVN/webqtrip.html?searchType=NORMAL&journeySpan=OW&origin=" + origin + "&destination=" + destination + "&departureDate=" + departDateVN + "&numAdults=" + mNoAdult + "&numChildren=" + mNoChildren + "&numInfants=" + mNoInfant + "&alternativeLandingPage=true&promoCode=&lang=en_US";
+            fullWebsite = "https://m.sabresonicweb.com/SSW2010/VNM0/#webqtrip/e1s1?searchType=NORMAL&journeySpan=RT&origin=" + origin + "&destination=" + destination + "&departureDate=" + departDateVN + "&numAdults=" + mNoAdult + "&numChildren=" + mNoChildren + "&numInfants=" + mNoInfant + "&alternativeLandingPage=AIR_SEARCH_PAGE&lang=en_US&promoCode=";
         }
-
 
         Log.e("xx ", fullWebsite);
         return fullWebsite;
