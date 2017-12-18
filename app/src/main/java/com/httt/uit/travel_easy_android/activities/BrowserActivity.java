@@ -88,6 +88,8 @@ public class BrowserActivity extends AppCompatActivity {
                 super.onPageFinished(view, url);
                 progressBar.setVisibility(View.GONE);
                 invalidateOptionsMenu();
+                String javascript="javascript:document.getElementsByName('viewport')[0].setAttribute('content', 'initial-scale=1.0,maximum-scale=10.0');";
+                view.loadUrl(javascript);
             }
 
             @Override

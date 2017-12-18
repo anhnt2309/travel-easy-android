@@ -403,7 +403,6 @@ public class ScrollViewFragment extends Fragment {
                 Intent intent = new Intent(getContext(), BrowserActivity.class);
                 intent.putExtra("url", getFullWebsite(firstAirline, flights.getOrigin().getAirport(), flights.getDestination().getAirport(), departDate));
                 startActivity(intent);
-                startActivity(intent);
             }
         });
     }
