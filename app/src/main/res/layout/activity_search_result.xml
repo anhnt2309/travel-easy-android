@@ -682,7 +682,7 @@
                     app:rrb_drawableWidth="30dp"
                     app:rrb_rippleColor="@color/app_primary_color"
                     app:rrb_selectorColor="@color/transparent"
-                    app:rrb_text="...500k"
+                    app:rrb_text="...1000k"
                     app:rrb_textColor="@color/white"
                     app:rrb_textSize="10sp"
                     app:rrb_textStyle="bold" />
@@ -697,7 +697,7 @@
                     app:rrb_drawableWidth="30dp"
                     app:rrb_rippleColor="@color/app_primary_color"
                     app:rrb_selectorColor="@color/transparent"
-                    app:rrb_text="500k...5500k"
+                    app:rrb_text="1000k...5500k"
                     app:rrb_textColor="@color/white"
                     app:rrb_textSize="10sp"
                     app:rrb_textStyle="bold" />
