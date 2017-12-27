@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "682123374081",
+    "firebase_url": "https://traveleasy-166207.firebaseio.com",
+    "project_id": "traveleasy-166207",
+    "storage_bucket": "traveleasy-166207.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:682123374081:android:05e40256bd8ff942",
+        "android_client_info": {
+          "package_name": "com.httt.uit.travel_easy_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "682123374081-admihhg4hr9j67oudkgn6chf24aadiit.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.httt.uit.travel_easy_android",
+            "certificate_hash": "1e3e506963ef20e839720cc1905cfdb4c84bb2b5"
+          }
+        },
+        {
+          "client_id": "682123374081-am38ig8vffavpmdmg7rvhi6e6q4b9lgp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADKIYoH4e__492vML4dge1qN5jfZ_D4A8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "682123374081-am38ig8vffavpmdmg7rvhi6e6q4b9lgp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
