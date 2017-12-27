@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme.Transparent">
 
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".MainActivity"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name="activities.SplashActivity"
             android:screenOrientation="sensorPortrait"></activity>
         <!-- TileService for "Update the Tile UI" section -->
 
