@@ -45,14 +45,14 @@ public class DateUtils {
     public static String getSearchDate(Date date) {
         String dateString = "" + date.getDate();
         String monthString = "" + (date.getMonth() + 1);
-        if (date.getDate() < 10){
-            dateString =String.format("%02d", date.getDate());
+        if (date.getDate() < 10) {
+            dateString = String.format("%02d", date.getDate());
         }
-        if((date.getMonth() + 1) < 10){
-            monthString = String.format("%02d", date.getMonth());
+        if ((date.getMonth() + 1) < 10) {
+            monthString = String.format("%02d", (date.getMonth() + 1));
         }
 
-            String returnDate = (date.getYear() - 100 + 2000) + "-" + monthString + "-" + dateString;
+        String returnDate = (date.getYear() - 100 + 2000) + "-" + monthString + "-" + dateString;
         return returnDate;
     }
 
