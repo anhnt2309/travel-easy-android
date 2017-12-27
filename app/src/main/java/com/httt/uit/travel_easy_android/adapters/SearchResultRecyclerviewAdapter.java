@@ -202,13 +202,31 @@ public class SearchResultRecyclerviewAdapter extends RecyclerView.Adapter<Search
         }
         holder.tvOutboundFLight.setText(obFlight);
         holder.tvOutboundDuration.setText(obDuration);
-        if (hasStopFlight) {
-            priceDb = priceDb / 4;
-            holder.imgOutboundIndicator.setImageResource(R.mipmap.ic_dot_hasstop);
+
+        if (isRoundTrip) {
+            if (hasStopFlight) {
+                priceDb = priceDb / 4;
+                if (ibhasStopFlight)
+                    priceDb = priceDb / 4;
+                holder.imgOutboundIndicator.setImageResource(R.mipmap.ic_dot_hasstop);
+            }
+            if (!hasStopFlight) {
+                priceDb = priceDb / 2;
+                if (ibhasStopFlight)
+                    priceDb = priceDb / 2;
+                holder.imgOutboundIndicator.setImageResource(R.mipmap.ic_dot_nonstop);
+            }
         }
-        if (!hasStopFlight) {
-            priceDb = priceDb / 2;
-            holder.imgOutboundIndicator.setImageResource(R.mipmap.ic_dot_nonstop);
+        if(!isRoundTrip){
+            if (hasStopFlight) {
+                priceDb = priceDb / 4;
+
+                holder.imgOutboundIndicator.setImageResource(R.mipmap.ic_dot_hasstop);
+            }
+            if (!hasStopFlight) {
+                priceDb = priceDb / 2;
+                holder.imgOutboundIndicator.setImageResource(R.mipmap.ic_dot_nonstop);
+            }
         }
 
 

@@ -30,7 +30,9 @@ import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
 import com.httt.uit.travel_easy_android.model.FlightResults;
 import com.httt.uit.travel_easy_android.model.Flights;
+import com.httt.uit.travel_easy_android.model.Inbound;
 import com.httt.uit.travel_easy_android.model.Itineraries;
+import com.httt.uit.travel_easy_android.model.Outbound;
 import com.httt.uit.travel_easy_android.model.Results;
 import com.httt.uit.travel_easy_android.utils.DateUtils;
 import com.mahfa.dnswitch.DayNightSwitch;
@@ -257,8 +259,90 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
         }
 
         for (Itineraries itineraries : array) {
-            double priceDB = Double.parseDouble(itineraries.fare.getTotal_price());
-            int priceDb = (int) priceDB;
+            double priceDb = Double.parseDouble(itineraries.fare.getTotal_price());
+//            int priceDb = (int) priceDB;
+
+
+            if (mType == MainActivity.DEFAULT_ROUND_TRIP)
+                isRoundTrip = true;
+
+            if (mType == MainActivity.DEFAULT_ONE_WAY)
+                isRoundTrip = false;
+
+
+            //Correct Price
+            Outbound outbound = itineraries.getOutbound();
+            Flights obFirstFlight = null;
+            Flights obSecondFlight = null;
+            Flights ibFirstFlight = null;
+            Flights ibSecondFlight = null;
+            boolean hasStopFlight = false;
+            boolean ibhasStopFlight = false;
+
+
+            ArrayList<Flights> outboundFlights = outbound.getFlights();
+            if (outboundFlights.size() == 1) {
+                obFirstFlight = outboundFlights.get(0);
+                obSecondFlight = null;
+            }
+            if (outboundFlights.size() >= 2) {
+                obFirstFlight = outboundFlights.get(0);
+                obSecondFlight = outboundFlights.get(1);
+            }
+
+            if (obSecondFlight == null) {
+                hasStopFlight = false;
+
+            }
+            if (obSecondFlight != null) {
+                hasStopFlight = true;
+            }
+
+            if (isRoundTrip) {
+                //handle inbound flights
+                Inbound inbound = itineraries.getInbound();
+
+                ArrayList<Flights> inboundFlights = inbound.getFlights();
+                if (inboundFlights.size() == 1) {
+                    ibFirstFlight = inboundFlights.get(0);
+                    ibSecondFlight = null;
+                }
+                if (inboundFlights.size() == 2) {
+                    ibFirstFlight = inboundFlights.get(0);
+                    ibSecondFlight = inboundFlights.get(1);
+                }
+
+                if (ibSecondFlight == null) {
+                    ibhasStopFlight = false;
+
+                }
+                if (ibSecondFlight != null) {
+                    ibhasStopFlight = true;
+
+                }
+                if (hasStopFlight) {
+                    priceDb = priceDb / 4;
+                    if (ibhasStopFlight)
+                        priceDb = priceDb / 4;
+
+                }
+                if (!hasStopFlight) {
+                    priceDb = priceDb / 2;
+                    if (ibhasStopFlight)
+                        priceDb = priceDb / 2;
+                }
+            }
+            if (!isRoundTrip) {
+                if (hasStopFlight) {
+                    priceDb = priceDb / 4;
+
+                }
+                if (!hasStopFlight) {
+                    priceDb = priceDb / 2;
+                }
+            }
+
+
             Date departDate = DateUtils.parseDateTime(itineraries.getOutbound().getFlights().get(0).getDeparts_at());
             Date returnDate = null;
             if (itineraries.getInbound() != null)
@@ -271,14 +355,14 @@ public class SearchResultActivity extends AppCompatActivity implements SearchRes
             }
 
             if (priceId == R.id.rb_medium_money) {
-                if (priceDb > 1000000 && priceDb < 3000000) {
+                if (priceDb > 1000000 && priceDb < 5500000) {
                     resultArray.add(itineraries);
                     datefilter(itineraries, departFrom, departTo, returnFrom, returnTo, departDate, returnDate, resultArray);
                 }
             }
 
             if (priceId == R.id.rb_large_money) {
-                if (priceDb >= 3000000) {
+                if (priceDb >= 5500000) {
                     resultArray.add(itineraries);
                     datefilter(itineraries, departFrom, departTo, returnFrom, returnTo, departDate, returnDate, resultArray);
                 }
