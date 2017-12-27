@@ -4,7 +4,7 @@ repositories {
     jcenter()
     mavenCentral()
     maven {
-       url "http://dl.bintray.com/glomadrian/maven"
+        url "http://dl.bintray.com/glomadrian/maven"
     }
     maven {
         url "https://jitpack.io"
@@ -13,7 +13,7 @@ repositories {
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.0'
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.httt.uit.travel_easy_android"
         minSdkVersion 16
@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-database:11.0.4'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -120,6 +121,7 @@ dependencies {
 
     compile 'org.jsoup:jsoup:1.11.2'
 
+
     compile project(path: ':library')
 }
 
@@ -134,3 +136,5 @@ configurations.all {
         }
     }
 }
+
+apply plugin: 'com.google.gms.google-services'
