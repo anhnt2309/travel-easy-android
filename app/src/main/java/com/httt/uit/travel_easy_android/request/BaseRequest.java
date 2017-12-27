@@ -2,15 +2,27 @@ package com.httt.uit.travel_easy_android.request;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
+import android.widget.ArrayAdapter;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.httt.uit.travel_easy_android.MainActivity;
+import com.httt.uit.travel_easy_android.manager.CacheManager;
+import com.httt.uit.travel_easy_android.model.APIKey;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -31,10 +43,6 @@ import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 
-
-/**
- * Created by nguyetquoi on 12/16/16.
- */
 
 public class BaseRequest {
     public static final String LOG_TAG = "BaseRequest";
@@ -191,7 +199,7 @@ public class BaseRequest {
         theCall.enqueue(theCallback);
     }
 
-    protected static void GETEXTERNAL(final Context context, String url,String baseUrl, HashMap<String, Object> params, final Type theType, String dataWrapperElement, final MyDataCallback myCallback) {
+    protected static void GETEXTERNAL(final Context context, String url, String baseUrl, HashMap<String, Object> params, final Type theType, String dataWrapperElement, final MyDataCallback myCallback) {
         HashMap<String, Object> finalParams = getStandardParameters();
         if (params != null && params.size() > 0)
             finalParams.putAll(params);
@@ -206,12 +214,12 @@ public class BaseRequest {
         retrofit2.Callback<ResponseBody> theCallback = new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-                    myCallback.success(response);
+                myCallback.success(response);
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    myCallback.failure(t);
+                myCallback.failure(t);
             }
         };
 
@@ -275,8 +283,19 @@ public class BaseRequest {
      * Common method to construct standard parameters such as device parameters
      */
     private static HashMap<String, Object> getStandardParameters() {
+
         HashMap<String, Object> params = new HashMap<>();
-        params.put("apikey", API_KEY);
+        APIKey keys = CacheManager.getObjectCacheData(MainActivity.APIKEY_KEY, APIKey.class);
+        ArrayList<String> keyList = new ArrayList<>();
+        keyList.add(keys.key1);
+        keyList.add(keys.key2);
+        keyList.add(keys.key3);
+        keyList.add(keys.key4);
+
+        Random rand = new Random();
+        String key = keyList.get(rand.nextInt(4));
+
+        params.put("apikey", key);
 //        params.put("os", "android");
 ////        params.put("app_ver", AppUtils.getAppVersionName());
 //        params.put("os_type", 2);

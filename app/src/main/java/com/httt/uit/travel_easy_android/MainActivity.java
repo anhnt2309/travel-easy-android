@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -25,6 +26,11 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.github.badoualy.datepicker.DatePickerTimeline;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.httt.uit.travel_easy_android.activities.PickDateActivity;
 import com.httt.uit.travel_easy_android.activities.SearchAirportActivity;
@@ -37,6 +43,7 @@ import com.httt.uit.travel_easy_android.animators.RocketFlightAwayAnimator;
 import com.httt.uit.travel_easy_android.manager.ApiManager;
 import com.httt.uit.travel_easy_android.manager.CacheManager;
 import com.httt.uit.travel_easy_android.manager.HistoryManager;
+import com.httt.uit.travel_easy_android.model.APIKey;
 import com.httt.uit.travel_easy_android.model.AutoCompleteAirport;
 import com.httt.uit.travel_easy_android.model.FlightClass;
 import com.httt.uit.travel_easy_android.model.FlightResults;
@@ -53,6 +60,7 @@ import com.tapadoo.alerter.Alerter;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,6 +77,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String APIKEY_KEY = "APIKEY_KEY";
+
     public static final int ROUND_TRIP_DATE_REQUEST = 1234;
     public static final int ONE_WAY_DATE_REQUEST = 1235;
     public static final int ORIGIN_AIRPORT_REQUEST = 1238;
@@ -178,6 +188,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("key");
+
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                APIKey value = dataSnapshot.getValue(APIKey.class);
+                CacheManager.saveObjectCacheData(APIKEY_KEY, value);
+                Log.d("Base", "Value is: " + dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("Base", "Failed to read value.", error.toException());
+            }
+        });
 
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         LGSnackbarManager.prepare(getApplicationContext(),
@@ -393,7 +424,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStep(int i, boolean b) {
                 int currentAdults = spAdults.stepper.getValue();
-                if (currentAdults < spInfantMax) {
+                if (currentAdults < spInfants.stepper.getValue()) {
                     spInfants.stepper.setMax(currentAdults);
                     spInfantMax = currentAdults;
                     spInfants.stepper.setValue(currentAdults);
@@ -489,7 +520,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             grpLoadingStatus.setVisibility(View.VISIBLE);
-                            grpLoadingStatus.setAnimation(AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.fade_in));
+                            grpLoadingStatus.setAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
                         }
                     }, 20000);
 
@@ -540,7 +571,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             grpLoadingStatus.setVisibility(View.VISIBLE);
-                            grpLoadingStatus.setAnimation(AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.fade_in));
+                            grpLoadingStatus.setAnimation(AnimationUtils.loadAnimation(MainActivity.this, android.R.anim.fade_in));
                         }
                     }, 20000);
 
