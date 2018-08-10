@@ -293,7 +293,7 @@ public class BaseRequest {
         keyList.add(keys.key4);
 
         Random rand = new Random();
-        String key = keyList.get(rand.nextInt(4));
+        String key = keyList.get(rand.nextInt(3));
 
         params.put("apikey", key);
 //        params.put("os", "android");

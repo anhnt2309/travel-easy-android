@@ -1,35 +1,35 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+ADDED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
 	package
-		ADDED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:11-59
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		ADDED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:11-59
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-		ADDED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		ADDED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-		ADDED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		ADDED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml:1:1-61
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
 uses-sdk
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-		ADDED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		ADDED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-		ADDED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
-		INJECTED from /Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		ADDED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml
+		INJECTED from /Users/Tuan_Anh/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/src/main/AndroidManifest.xml

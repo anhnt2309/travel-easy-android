@@ -11,8 +11,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -76,7 +79,7 @@ import tyrantgit.explosionfield.ExplosionField;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener{
     public static final String APIKEY_KEY = "APIKEY_KEY";
 
     public static final int ROUND_TRIP_DATE_REQUEST = 1234;
@@ -115,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean animationReady = false;
     private boolean isCancelled = false;
     private ValueAnimator backgroundAnimator;
+
     @BindView(R.id.coordinator)
     WelcomeCoordinatorLayout coordinatorLayout;
     private RocketAvatarsAnimator rocketAvatarsAnimator;
@@ -138,13 +142,13 @@ public class MainActivity extends AppCompatActivity {
     private StepperTouch spChildrens;
     private StepperTouch spInfants;
 
-    private RelativeLayout grpOrigin;
+    private View grpOrigin;
     private AutofitTextView tvOriginAiportName;
     private TextView tvOriginCity;
     private TextView tvOriginCode;
     private ImageView imgOriginCity;
 
-    private RelativeLayout grpDestination;
+    private View grpDestination;
     private AutofitTextView tvDestinationAirportName;
     private TextView tvDestinationCity;
     private TextView tvDestinationCode;
@@ -178,6 +182,8 @@ public class MainActivity extends AppCompatActivity {
     private Handler mHanlder;
     private Handler mTimeOutHanlder;
     HistoryManager history = new HistoryManager(this);
+
+    private GestureDetectorCompat mDetector;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -221,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
                 .build()
         );
 
+        mDetector = new GestureDetectorCompat(this,this);
 
         initializeListeners();
         initializePages();
@@ -344,13 +351,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initAirportHolder() {
-        grpOrigin = (RelativeLayout) findViewById(R.id.grpOrigin);
+        grpOrigin = (View) findViewById(R.id.grpOrigin);
         tvOriginAiportName = (AutofitTextView) findViewById(R.id.txt_airport_name);
         tvOriginCity = (TextView) findViewById(R.id.txt_city_name);
         tvOriginCode = (TextView) findViewById(R.id.tv_depart_code);
         imgOriginCity = (ImageView) findViewById(R.id.img_city);
 
-        grpDestination = (RelativeLayout) findViewById(R.id.grpDestination);
+        grpDestination = (View) findViewById(R.id.grpDestination);
         tvDestinationAirportName = (AutofitTextView) findViewById(R.id.txt_airport_name_return);
         tvDestinationCity = (TextView) findViewById(R.id.txt_city_name_return);
         tvDestinationCode = (TextView) findViewById(R.id.tv_return_code);
@@ -642,6 +649,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SearchAirportActivity.class);
                 startActivityForResult(intent, DESTINATION_AIRPORT_REQUEST);
+            }
+        });
+
+        grpDestination.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                mDetector.onTouchEvent(motionEvent);
+                return false;
             }
         });
     }
@@ -1013,5 +1028,40 @@ public class MainActivity extends AppCompatActivity {
         if (mOriginAirport == null || mDestinationAirport == null) return;
         displayOriginAirport(mOriginAirport);
         displayDestinationAirport(mDestinationAirport);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        Log.d("Main","onDown: " + motionEvent.toString());
+//        grpDestination.setEnabled(false);
+        return true;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+        Log.d("Main","onShowPress: " + motionEvent.toString());
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        Log.d("Main","onSingleTapUp: " + motionEvent.toString());
+        return true;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        Log.d("Main","onScroll: " + motionEvent.toString());
+        return true;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+        Log.d("Main","onLongPress: " + motionEvent.toString());
+    }
+
+    @Override
+    public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        Log.d("Main","onFling: " + motionEvent.toString());
+        return true;
     }
 }

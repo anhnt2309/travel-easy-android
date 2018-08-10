@@ -164,7 +164,7 @@
         android:textSize="25sp"
         app:view_behavior=".ParallaxTitleBehaviour" />
 
-    <com.redbooth.WelcomePageLayout
+    <RelativeLayout
         android:id="@+id/grpOrigin"
         android:layout_width="match_parent"
         android:layout_height="140dp"
@@ -271,7 +271,7 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
 
-    </com.redbooth.WelcomePageLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/txt_to"
@@ -283,7 +283,7 @@
         android:textSize="25sp"
         app:view_behavior=".ParallaxTitleBehaviour" />
 
-    <com.redbooth.WelcomePageLayout
+    <RelativeLayout
         android:id="@+id/grpDestination"
         android:layout_width="match_parent"
         android:layout_height="140dp"
@@ -385,5 +385,5 @@
             android:textColor="@color/black"
             android:textSize="15sp" />
 
-    </com.redbooth.WelcomePageLayout>
+    </RelativeLayout>
 </com.redbooth.WelcomePageLayout>

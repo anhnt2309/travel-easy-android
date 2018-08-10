@@ -1,6 +1,40 @@
 {
     "logs": [
         {
+            "outputFile": "/Volumes/Untitled 1/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding-kotlin/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-land/values-land.xml",
+            "map": [
+                {
+                    "source": "/Users/TuanAnh 1/.gradle/caches/transforms-1/files-1.1/design-25.3.1.aar/2aee3af6cbf0f44f211009b6c4e40495/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "232"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "328",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "505"
+                    }
+                },
+                {
+                    "source": "/Users/TuanAnh 1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/bcd6514ee5be8c1ff86d55a758ba4f6f/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,125,189,260",
+                        "endColumns": "69,63,70,67",
+                        "endOffsets": "120,184,255,323"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding-kotlin/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {

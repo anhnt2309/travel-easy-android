@@ -1,6 +1,22 @@
 {
     "logs": [
         {
+            "outputFile": "/Volumes/Untitled 1/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/Users/TuanAnh 1/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.3.1.aar/bcd6514ee5be8c1ff86d55a758ba4f6f/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/TuanAnh 1/Documents/7th Semester/Mobile Developing/travel-easy-android/library-rxbinding/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
